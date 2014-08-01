@@ -12,7 +12,9 @@
 @interface MainViewController (){
     BOOL _ready;
     NSString *_levelsFile;
-    NSDictionary *_levelsDescription;
+    NSArray *_levelsDescription;
+    NSDictionary *_colors;
+    int _currentLevel;
 }
 
 @end
@@ -33,15 +35,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _levelsDescription = [NSDictionary dictionaryWithContentsOfFile:[self levelsFile]];
-    
-    if(_levelsDescription){
-        NSLog(@"%@", _levelsDescription[@"levels"][0][@"name"]);
-    } else {
-        NSLog(@"FAIL");
-    }
+    NSDictionary *tmpDict = [NSDictionary dictionaryWithContentsOfFile:[self levelsFile]];
+    _levelsDescription = tmpDict[@"levels"];
+    _colors = tmpDict[@"colors"];
+    _currentLevel = [self lastLevel];
     
     LevelViewController *levelsVC = [[LevelViewController alloc] init];
+    levelsVC.delegate = self;
     [self showViewController:levelsVC];
 }
 
@@ -73,6 +73,22 @@
         _levelsFile = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
     }
     return _levelsFile;
+}
+
+- (int)lastLevel{
+    int nb = (int)_levelsDescription.count;
+    for (int i = 0; i < nb; i++) {
+        if(!_levelsDescription[i][@"completed"]){
+            return i;
+        }
+    }
+    return 0;
+}
+
+- (void)launchLevel:(int)level{
+    _currentLevel = level;
+    
+    
 }
 
 @end

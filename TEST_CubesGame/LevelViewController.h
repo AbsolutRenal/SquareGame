@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LevelViewControllerDelegate <NSObject>
+
+@required
+- (void)launchLevel:(int)level;
+
+@end
+
 @interface LevelViewController : UIViewController
+
+@property (strong, nonatomic) id<LevelViewControllerDelegate> delegate;
 
 @end

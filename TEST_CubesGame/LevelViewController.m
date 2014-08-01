@@ -23,6 +23,16 @@
     return self;
 }
 
+- (id)initWithCurrentLevel:(int)current withNbLevel:(int)nb withLastCompleted:(int)last{
+    
+    self = [super init];
+    if(self){
+        
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

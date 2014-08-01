@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LevelViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <LevelViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIView *buttonsContainer;

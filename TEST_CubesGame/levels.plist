@@ -2,13 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>colors</key>
+	<dict>
+		<key>dark</key>
+		<string>#2c3e50</string>
+		<key>blue</key>
+		<string>#2980b9</string>
+		<key>red</key>
+		<string>#c0392b</string>
+	</dict>
 	<key>levels</key>
 	<array>
 		<dict>
 			<key>completed</key>
 			<false/>
 			<key>name</key>
-			<string>level named 1</string>
+			<string>1</string>
 			<key>matrix</key>
 			<dict>
 				<key>items</key>
@@ -27,6 +36,84 @@
 				<key>rows</key>
 				<integer>3</integer>
 			</dict>
+			<key>end</key>
+			<string>Click Me</string>
+		</dict>
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>name</key>
+			<string>2</string>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>position</key>
+						<string>0,0</string>
+						<key>dot</key>
+						<string>0,1</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>position</key>
+						<string>0,3</string>
+						<key>dot</key>
+						<string>0,2</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>1</integer>
+				<key>rows</key>
+				<integer>4</integer>
+			</dict>
+			<key>end</key>
+			<string>So, this is a game about squares. You can probably already tell</string>
+		</dict>
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>name</key>
+			<string>3</string>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>position</key>
+						<string>1,2</string>
+						<key>dot</key>
+						<string>1,0</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>position</key>
+						<string>0,0</string>
+						<key>dot</key>
+						<string>0,2</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>position</key>
+						<string>3,1</string>
+						<key>dot</key>
+						<string>1,1</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>3</integer>
+			</dict>
+			<key>end</key>
+			<string>Squares are what this game is about, for the most part</string>
 		</dict>
 	</array>
 </dict>
