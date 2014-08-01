@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="5056"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="buttonsContainer" destination="WL2-p3-CFu" id="LtG-3Q-S7f"/>
+                <outlet property="container" destination="RcT-X3-g4f" id="SLn-kp-fyM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,15 +17,30 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T32-tG-hDE">
-                    <rect key="frame" x="173" y="318" width="42" height="21"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WL2-p3-CFu" userLabel="Buttons Container">
+                    <rect key="frame" x="0.0" y="513" width="320" height="55"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="GwM-aG-3b7"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RcT-X3-g4f" userLabel="Game Container">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="WL2-p3-CFu" secondAttribute="trailing" id="Dzy-AF-Zdm"/>
+                <constraint firstItem="WL2-p3-CFu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XQ0-Xt-ehV"/>
+                <constraint firstItem="RcT-X3-g4f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f94-ed-X95"/>
+                <constraint firstAttribute="trailing" secondItem="RcT-X3-g4f" secondAttribute="trailing" id="fon-Hf-Iz0"/>
+                <constraint firstItem="RcT-X3-g4f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lSA-6y-Ds8"/>
+                <constraint firstItem="WL2-p3-CFu" firstAttribute="top" secondItem="RcT-X3-g4f" secondAttribute="bottom" id="obp-xC-lLD"/>
+                <constraint firstAttribute="bottom" secondItem="WL2-p3-CFu" secondAttribute="bottom" id="tu5-5a-gST"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

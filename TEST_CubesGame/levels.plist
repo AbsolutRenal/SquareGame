@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>levels</key>
+	<array>
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>name</key>
+			<string>level named 1</string>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>position</key>
+						<string>0,0</string>
+						<key>dot</key>
+						<string>0,2</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>1</integer>
+				<key>rows</key>
+				<integer>3</integer>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

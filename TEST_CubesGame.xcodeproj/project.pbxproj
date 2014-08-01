@@ -27,6 +27,12 @@
 		9BCEDDAD198BCEFE005FDE5C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDAA198BCEFE005FDE5C /* Default.png */; };
 		9BCEDDAE198BCEFE005FDE5C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDAB198BCEFE005FDE5C /* Default-568h@2x.png */; };
 		9BCEDDAF198BCEFE005FDE5C /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDAC198BCEFE005FDE5C /* Default~iphone.png */; };
+		9BCEDDB3198BD430005FDE5C /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEDDB1198BD430005FDE5C /* LevelViewController.m */; };
+		9BCEDDB4198BD430005FDE5C /* LevelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDB2198BD430005FDE5C /* LevelViewController.xib */; };
+		9BCEDDB8198BD43E005FDE5C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEDDB6198BD43E005FDE5C /* GameViewController.m */; };
+		9BCEDDB9198BD43E005FDE5C /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDB7198BD43E005FDE5C /* GameViewController.xib */; };
+		9BCEDDBC198BDA0B005FDE5C /* LevelNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEDDBB198BDA0B005FDE5C /* LevelNumberView.m */; };
+		9BCEDDBE198BDF4F005FDE5C /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDBD198BDF4F005FDE5C /* levels.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +71,15 @@
 		9BCEDDAA198BCEFE005FDE5C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9BCEDDAB198BCEFE005FDE5C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9BCEDDAC198BCEFE005FDE5C /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		9BCEDDB0198BD430005FDE5C /* LevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelViewController.h; sourceTree = "<group>"; };
+		9BCEDDB1198BD430005FDE5C /* LevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelViewController.m; sourceTree = "<group>"; };
+		9BCEDDB2198BD430005FDE5C /* LevelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelViewController.xib; sourceTree = "<group>"; };
+		9BCEDDB5198BD43E005FDE5C /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		9BCEDDB6198BD43E005FDE5C /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		9BCEDDB7198BD43E005FDE5C /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		9BCEDDBA198BDA0B005FDE5C /* LevelNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelNumberView.h; sourceTree = "<group>"; };
+		9BCEDDBB198BDA0B005FDE5C /* LevelNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelNumberView.m; sourceTree = "<group>"; };
+		9BCEDDBD198BDF4F005FDE5C /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +143,14 @@
 			children = (
 				9BCEDD7D198BCABB005FDE5C /* AppDelegate.h */,
 				9BCEDD7E198BCABB005FDE5C /* AppDelegate.m */,
+				9BCEDDB5198BD43E005FDE5C /* GameViewController.h */,
+				9BCEDDB6198BD43E005FDE5C /* GameViewController.m */,
+				9BCEDDB7198BD43E005FDE5C /* GameViewController.xib */,
+				9BCEDDB0198BD430005FDE5C /* LevelViewController.h */,
+				9BCEDDB1198BD430005FDE5C /* LevelViewController.m */,
+				9BCEDDB2198BD430005FDE5C /* LevelViewController.xib */,
+				9BCEDDBA198BDA0B005FDE5C /* LevelNumberView.h */,
+				9BCEDDBB198BDA0B005FDE5C /* LevelNumberView.m */,
 				9BCEDD9D198BCAE6005FDE5C /* MainViewController.h */,
 				9BCEDD9E198BCAE6005FDE5C /* MainViewController.m */,
 				9BCEDD9F198BCAE6005FDE5C /* MainViewController.xib */,
@@ -142,6 +165,7 @@
 			children = (
 				9BCEDD76198BCABB005FDE5C /* TEST_CubesGame-Info.plist */,
 				9BCEDD77198BCABB005FDE5C /* InfoPlist.strings */,
+				9BCEDDBD198BDF4F005FDE5C /* levels.plist */,
 				9BCEDD7A198BCABB005FDE5C /* main.m */,
 				9BCEDD7C198BCABB005FDE5C /* TEST_CubesGame-Prefix.pch */,
 			);
@@ -264,12 +288,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BCEDD79198BCABB005FDE5C /* InfoPlist.strings in Resources */,
+				9BCEDDB4198BD430005FDE5C /* LevelViewController.xib in Resources */,
 				9BCEDDAD198BCEFE005FDE5C /* Default.png in Resources */,
 				9BCEDDA7198BCCBA005FDE5C /* icon120.png in Resources */,
 				9BCEDDA6198BCCBA005FDE5C /* icon114.png in Resources */,
+				9BCEDDB9198BD43E005FDE5C /* GameViewController.xib in Resources */,
 				9BCEDDA1198BCAE6005FDE5C /* MainViewController.xib in Resources */,
 				9BCEDDAF198BCEFE005FDE5C /* Default~iphone.png in Resources */,
 				9BCEDDAE198BCEFE005FDE5C /* Default-568h@2x.png in Resources */,
+				9BCEDDBE198BDF4F005FDE5C /* levels.plist in Resources */,
 				9BCEDDA8198BCCBA005FDE5C /* icon57.png in Resources */,
 				9BCEDD81198BCABB005FDE5C /* Images.xcassets in Resources */,
 			);
@@ -290,9 +317,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BCEDDB8198BD43E005FDE5C /* GameViewController.m in Sources */,
 				9BCEDD7F198BCABB005FDE5C /* AppDelegate.m in Sources */,
 				9BCEDDA0198BCAE6005FDE5C /* MainViewController.m in Sources */,
 				9BCEDD7B198BCABB005FDE5C /* main.m in Sources */,
+				9BCEDDBC198BDA0B005FDE5C /* LevelNumberView.m in Sources */,
+				9BCEDDB3198BD430005FDE5C /* LevelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +517,7 @@
 				9BCEDD99198BCABB005FDE5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9BCEDD9A198BCABB005FDE5C /* Build configuration list for PBXNativeTarget "TEST_CubesGameTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +526,7 @@
 				9BCEDD9C198BCABB005FDE5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
