@@ -19,4 +19,6 @@
 
 @property (strong, nonatomic) id<LevelViewControllerDelegate> delegate;
 
+- (instancetype)initWithCurrentLevel:(int)current withNbLevel:(int)nb withLastCompleted:(int)last;
+
 @end

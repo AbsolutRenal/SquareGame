@@ -23,12 +23,14 @@
     return self;
 }
 
-- (id)initWithCurrentLevel:(int)current withNbLevel:(int)nb withLastCompleted:(int)last{
+- (instancetype)initWithCurrentLevel:(int)current withNbLevel:(int)nb withLastCompleted:(int)last{
     
     self = [super init];
     if(self){
         
     }
+    
+//    NSLog(@"current:%d, nb:%d, last:%d", current, nb, last);
     
     return self;
 }

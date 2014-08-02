@@ -40,7 +40,7 @@
     _colors = tmpDict[@"colors"];
     _currentLevel = [self lastLevel];
     
-    LevelViewController *levelsVC = [[LevelViewController alloc] init];
+    LevelViewController *levelsVC = [[LevelViewController alloc] initWithCurrentLevel:_currentLevel withNbLevel:(int)_levelsDescription.count withLastCompleted:_currentLevel];
     levelsVC.delegate = self;
     [self showViewController:levelsVC];
 }
@@ -77,12 +77,17 @@
 
 - (int)lastLevel{
     int nb = (int)_levelsDescription.count;
-    for (int i = 0; i < nb; i++) {
-        if(!_levelsDescription[i][@"completed"]){
+    int i;
+    BOOL completed;
+    
+    for (i = 0; i < nb; i++) {
+//        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
+        completed = [_levelsDescription[i][@"completed"]  isEqual:@1];
+        if(!completed){
             return i;
         }
     }
-    return 0;
+    return i;
 }
 
 - (void)launchLevel:(int)level{
