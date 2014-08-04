@@ -20,6 +20,7 @@
 @end
 
 @interface LevelNumberView : UIView
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic)IBOutlet UIButton *label;
 + (instancetype)presentInViewController:(UIViewController <LevelNumberViewDelegate>*)controller;
+- (IBAction)selectLevel:(UIButton *)sender;
 @end

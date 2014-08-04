@@ -33,7 +33,6 @@
     
     // Pass in a reference of the viewController.
     owner.levelNumberView.delegateViewController = controller;
-//    owner.levelNumberView.backgroundColor = [UIColor greenColor];
     
     // Add (thus retain).
     [controller.view addSubview:owner.levelNumberView];
@@ -41,17 +40,9 @@
     return owner.levelNumberView;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"TOUCH ENDED");
-    [self selectLevel];
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"TOUCH BEGAN");
-}
-
-- (void)selectLevel{
-    [self.delegateViewController selectLevel:(int)self.label.text];
+- (IBAction)selectLevel:(UIButton *)sender{
+    NSLog(@"-- SELECT : %@", self.label.titleLabel.text);
+    [self.delegateViewController selectLevel:[self.label.titleLabel.text intValue]];
 }
 
 /*

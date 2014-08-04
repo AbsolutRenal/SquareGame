@@ -7,27 +7,56 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LevelNumberViewOwner">
             <connections>
-                <outlet property="levelNumberView" destination="iN0-l3-epB" id="8Wy-U7-c2w"/>
+                <outlet property="levelNumberView" destination="J6x-h1-gvX" id="f1d-Sd-FZv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" verticalCompressionResistancePriority="40" id="iN0-l3-epB" customClass="LevelNumberView">
+        <view contentMode="scaleToFill" verticalCompressionResistancePriority="40" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylt-Tk-uLU">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6x-h1-gvX" customClass="LevelNumberView">
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DGY-Rp-BMJ">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.38300280129999997" green="0.59713495770000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co7-f2-XGv">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="F8v-sO-TAe"/>
+                                <constraint firstAttribute="width" constant="40" id="mKZ-DF-Rj4"/>
+                            </constraints>
+                            <state key="normal" title="Button">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="selectLevel:" destination="J6x-h1-gvX" eventType="touchUpInside" id="nNn-b1-Spz"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Co7-f2-XGv" firstAttribute="top" secondItem="J6x-h1-gvX" secondAttribute="top" id="IlQ-2V-Fvq"/>
+                        <constraint firstItem="Co7-f2-XGv" firstAttribute="leading" secondItem="J6x-h1-gvX" secondAttribute="leading" id="Tzc-a1-txy"/>
+                        <constraint firstAttribute="width" constant="40" id="V2P-Mo-UIg"/>
+                        <constraint firstAttribute="height" constant="40" id="kKa-7u-lwY"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="label" destination="Co7-f2-XGv" id="MJP-MJ-FJ2"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="J6x-h1-gvX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nqg-zK-ub7"/>
+                <constraint firstItem="J6x-h1-gvX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WaK-Gg-rgR"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="label" destination="Ylt-Tk-uLU" id="Wk4-bb-8hZ"/>
-            </connections>
         </view>
     </objects>
 </document>

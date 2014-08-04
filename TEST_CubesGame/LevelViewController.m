@@ -80,13 +80,15 @@
         level.backgroundColor = [UIColor grayColor];
         
         if(i <= _lastLevel){
-            level.label.text = self.levelNames[i];
+            [level.label setTitle:self.levelNames[i] forState:UIControlStateNormal];
+            [level.label setTitle:self.levelNames[i] forState:UIControlStateHighlighted];
             
             if(i == _currentLevel){
-                level.label.textColor = [UIColor redColor];
+                [level.label setTintColor:[UIColor redColor]];
             }
         } else {
-            level.label.text = @".";
+            [level.label setTitle:@"." forState:UIControlStateNormal];
+            [level.label setTitle:@"." forState:UIControlStateHighlighted];
         }
         
 //        [self.view addSubview:level];
