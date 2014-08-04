@@ -72,11 +72,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-//    NSLog(@"LEVELS NAMES:%@", self.levelNames);
-    
-    
+    // Do any additional setup after loading the view from its nib.    
 }
 
 - (void)clearLevelButtons{
@@ -88,13 +84,11 @@
 }
 
 - (void)showNextLevels:(id)sender{
-//    NSLog(@"NEXT");
     _startLevel += _nbLevelByPage;
     [self populateFromLevel:_startLevel];
 }
 
 - (void)showPreviousLevels:(id)sender{
-//    NSLog(@"PREVIOUS");
     _startLevel -= _nbLevelByPage;
     [self populateFromLevel:_startLevel];
 }
@@ -154,27 +148,10 @@
     
     self.nextButton.hidden = YES;
     
-//    CGFloat w = 40.0;
-//    CGFloat h = 40.0;
-//    int minOffset = 20;
-//    double offset = 0.0;
-//    double startOffsetY = 0.0;
-//    int nbColumns = 0;
-//    int nbRows = 0;
     int currentRow;
     LevelNumberView *level;
     
     for (int i = startLevel; i < _nbLevels; i++) {
-//        if(i == startLevel){
-//            nbColumns = floor(self.view.bounds.size.width / ((w + minOffset) + minOffset));
-//            offset = (self.view.bounds.size.width - (w * nbColumns)) / (nbColumns +1);
-//            
-//            nbRows = floor(self.view.bounds.size.height / ((h + offset) + offset));
-//            startOffsetY = (self.view.bounds.size.height - (nbRows * (h + offset) - offset)) * .5;
-////            NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, startOffsetY);
-////            NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", nbColumns, nbRows, offset);
-//        }
-        
         currentRow = floor((i - startLevel) / _nbColumns);
         
         if(currentRow >= _nbRows){
