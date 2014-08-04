@@ -52,7 +52,7 @@
     
     CGFloat w = 0.0;
     CGFloat h = 0.0;
-    int minOffset = 40;
+    int minOffset = 20;
     double offset = 0.0;
     double startOffsetY = 0.0;
     LevelNumberView *level;
@@ -60,7 +60,6 @@
     int nbRows;
     
     for (int i = 0; i < _nbLevels; i++) {
-//        level = [[LevelNumberView alloc] init];
         level = [LevelNumberView presentInViewController:self];
         
         if(w == 0.0){
@@ -90,9 +89,6 @@
             [level.label setTitle:@"." forState:UIControlStateNormal];
             [level.label setTitle:@"." forState:UIControlStateHighlighted];
         }
-        
-//        [self.view addSubview:level];
-//        NSLog(@"label:%@", level.label);
     }
 }
 

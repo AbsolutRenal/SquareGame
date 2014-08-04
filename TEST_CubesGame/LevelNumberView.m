@@ -42,7 +42,9 @@
 
 - (IBAction)selectLevel:(UIButton *)sender{
     NSLog(@"-- SELECT : %@", self.label.titleLabel.text);
-    [self.delegateViewController selectLevel:[self.label.titleLabel.text intValue]];
+    
+    if(![self.label.titleLabel.text isEqualToString:@"."])
+        [self.delegateViewController selectLevel:[self.label.titleLabel.text intValue]];
 }
 
 /*

@@ -31,7 +31,9 @@
                                 <constraint firstAttribute="height" constant="40" id="F8v-sO-TAe"/>
                                 <constraint firstAttribute="width" constant="40" id="mKZ-DF-Rj4"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <state key="normal" title="Button">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
