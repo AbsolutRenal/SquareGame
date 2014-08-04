@@ -41,6 +41,7 @@
     owner.levelNumberView.label.titleLabel.text = @"";
     [owner.levelNumberView.label setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [owner.levelNumberView.label setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    [owner.levelNumberView.label setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateDisabled];
     
     // Pass in a reference of the viewController.
     owner.levelNumberView.delegateViewController = controller;
@@ -52,9 +53,9 @@
 }
 
 - (IBAction)selectLevel:(UIButton *)sender{
-    NSLog(@"-- SELECT : %@", self.label.titleLabel.text);
+//    NSLog(@"-- SELECT : %@", self.label.titleLabel.text);
     
-    if(![self.label.titleLabel.text isEqualToString:@"."])
+//    if(![self.label.titleLabel.text isEqualToString:@"."])
         [self.delegateViewController selectLevel:[self.label.titleLabel.text intValue]];
 }
 

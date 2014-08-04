@@ -98,14 +98,12 @@
     self.nextButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [self.nextButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.nextButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    self.nextButton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10);
-//    [self.nextButton.titleLabel sizeToFit];
+    self.nextButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
     [self.nextButton sizeToFit];
     self.nextButton.frame = CGRectMake(self.view.frame.size.width - self.nextButton.frame.size.width - 20, self.view.frame.size.height - self.nextButton.frame.size.height - 20, self.nextButton.frame.size.width, self.nextButton.frame.size.height);
     [self.view addSubview:self.nextButton];
     [self.nextButton addTarget:self action:@selector(showNextLevels:) forControlEvents:UIControlEventTouchUpInside];
     
-//    self.prevButton = [[FUIButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height - 40, 70, 30)];
     self.prevButton = [[FUIButton alloc] init];
     [self.prevButton setTitle:@"< PREVIOUS" forState:UIControlStateNormal];
     [self.prevButton setTitle:@"< PREVIOUS" forState:UIControlStateHighlighted];
@@ -116,8 +114,7 @@
     self.prevButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [self.prevButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.prevButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    self.prevButton.titleEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10);
-//    [self.prevButton.titleLabel sizeToFit];
+    self.prevButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
     [self.prevButton sizeToFit];
     self.prevButton.frame = CGRectMake(20, self.view.frame.size.height - self.prevButton.frame.size.height - 20, self.prevButton.frame.size.width, self.prevButton.frame.size.height);
     [self.view addSubview:self.prevButton];
@@ -153,7 +150,6 @@
             nbRows = floor(self.view.bounds.size.height / ((h + offset) + offset));
             startOffsetY = (self.view.bounds.size.height - (nbRows * (h + offset) - offset)) * .5;
 //            NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, startOffsetY);
-            
 //            NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", nbColumns, nbRows, offset);
         }
         
@@ -162,13 +158,10 @@
         if(currentRow >= nbRows){
             if(_nbLevelByPage == 0)
                 _nbLevelByPage = i;
-//            NSLog(@"NB:%d", _nbLevelByPage);
             
             self.nextButton.hidden = NO;
             return;
         }
-        
-//        NSLog(@"i:%d", i);
         
         level = [LevelNumberView presentInViewController:self];
         [_levelButtons addObject:level];
@@ -183,6 +176,7 @@
                 [level.label setTitleColor:[UIColor sunflowerColor] forState:UIControlStateHighlighted];
             }
         } else {
+            level.label.enabled = NO;
             [level.label setTitle:@"." forState:UIControlStateNormal];
             [level.label setTitle:@"." forState:UIControlStateHighlighted];
         }
