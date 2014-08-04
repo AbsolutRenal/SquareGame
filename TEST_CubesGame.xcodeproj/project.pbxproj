@@ -53,7 +53,6 @@
 		9BCEDDAF198BCEFE005FDE5C /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDAC198BCEFE005FDE5C /* Default~iphone.png */; };
 		9BCEDDB3198BD430005FDE5C /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEDDB1198BD430005FDE5C /* LevelViewController.m */; };
 		9BCEDDB8198BD43E005FDE5C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEDDB6198BD43E005FDE5C /* GameViewController.m */; };
-		9BCEDDB9198BD43E005FDE5C /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDB7198BD43E005FDE5C /* GameViewController.xib */; };
 		9BCEDDBC198BDA0B005FDE5C /* LevelNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEDDBB198BDA0B005FDE5C /* LevelNumberView.m */; };
 		9BCEDDBE198BDF4F005FDE5C /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BCEDDBD198BDF4F005FDE5C /* levels.plist */; };
 /* End PBXBuildFile section */
@@ -112,6 +111,49 @@
 		9B3D7221198FC77D001D45FC /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
 		9B3D7222198FC77D001D45FC /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
 		9B3D7223198FC77D001D45FC /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D723C198FCB84001D45FC /* FlatUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
+		9B3D723D198FCB84001D45FC /* FUIAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
+		9B3D723E198FCB84001D45FC /* FUIAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
+		9B3D723F198FCB84001D45FC /* FUIButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
+		9B3D7240198FCB84001D45FC /* FUIButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUIButton.m; sourceTree = "<group>"; };
+		9B3D7241198FCB84001D45FC /* FUICellBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUICellBackgroundView.h; sourceTree = "<group>"; };
+		9B3D7242198FCB84001D45FC /* FUICellBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUICellBackgroundView.m; sourceTree = "<group>"; };
+		9B3D7243198FCB84001D45FC /* FUIPopoverBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUIPopoverBackgroundView.h; sourceTree = "<group>"; };
+		9B3D7244198FCB84001D45FC /* FUIPopoverBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUIPopoverBackgroundView.m; sourceTree = "<group>"; };
+		9B3D7245198FCB84001D45FC /* FUISegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUISegmentedControl.h; sourceTree = "<group>"; };
+		9B3D7246198FCB84001D45FC /* FUISegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUISegmentedControl.m; sourceTree = "<group>"; };
+		9B3D7247198FCB84001D45FC /* FUISwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUISwitch.h; sourceTree = "<group>"; };
+		9B3D7248198FCB84001D45FC /* FUISwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUISwitch.m; sourceTree = "<group>"; };
+		9B3D7249198FCB84001D45FC /* FUITextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUITextField.h; sourceTree = "<group>"; };
+		9B3D724A198FCB84001D45FC /* FUITextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUITextField.m; sourceTree = "<group>"; };
+		9B3D724B198FCB84001D45FC /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		9B3D724C198FCB84001D45FC /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		9B3D724D198FCB84001D45FC /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		9B3D724E198FCB84001D45FC /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		9B3D724F198FCB84001D45FC /* UIBarButtonItem+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7250198FCB84001D45FC /* UIBarButtonItem+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7251198FCB84001D45FC /* UIColor+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7252198FCB84001D45FC /* UIColor+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7253198FCB84001D45FC /* UIFont+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7254198FCB84001D45FC /* UIFont+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7255198FCB84001D45FC /* UIImage+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7256198FCB84001D45FC /* UIImage+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7257198FCB84001D45FC /* UINavigationBar+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7258198FCB84001D45FC /* UINavigationBar+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7259198FCB84001D45FC /* UIPopoverController+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D725A198FCB84001D45FC /* UIPopoverController+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D725B198FCB85001D45FC /* UIProgressView+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D725C198FCB85001D45FC /* UIProgressView+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D725D198FCB85001D45FC /* UISlider+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UISlider+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D725E198FCB85001D45FC /* UISlider+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UISlider+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D725F198FCB85001D45FC /* UIStepper+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStepper+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7260198FCB85001D45FC /* UIStepper+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStepper+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7261198FCB85001D45FC /* UITabBar+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7262198FCB85001D45FC /* UITabBar+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7263198FCB85001D45FC /* UITableViewCell+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7264198FCB85001D45FC /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
+		9B3D7265198FCB85001D45FC /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
+		9B3D7266198FCB85001D45FC /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
 		9B6CEFE2198E942D004BC1E8 /* LevelNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelNumberView.xib; sourceTree = "<group>"; };
 		9BCEDD6B198BCABB005FDE5C /* TEST_CubesGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEST_CubesGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BCEDD6E198BCABB005FDE5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -142,7 +184,6 @@
 		9BCEDDB1198BD430005FDE5C /* LevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelViewController.m; sourceTree = "<group>"; };
 		9BCEDDB5198BD43E005FDE5C /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		9BCEDDB6198BD43E005FDE5C /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		9BCEDDB7198BD43E005FDE5C /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		9BCEDDBA198BDA0B005FDE5C /* LevelNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelNumberView.h; sourceTree = "<group>"; };
 		9BCEDDBB198BDA0B005FDE5C /* LevelNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelNumberView.m; sourceTree = "<group>"; };
 		9BCEDDBD198BDF4F005FDE5C /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
@@ -222,6 +263,57 @@
 			path = FlatUI;
 			sourceTree = "<group>";
 		};
+		9B3D723B198FCB84001D45FC /* FlatUI */ = {
+			isa = PBXGroup;
+			children = (
+				9B3D723C198FCB84001D45FC /* FlatUIKit.h */,
+				9B3D723D198FCB84001D45FC /* FUIAlertView.h */,
+				9B3D723E198FCB84001D45FC /* FUIAlertView.m */,
+				9B3D723F198FCB84001D45FC /* FUIButton.h */,
+				9B3D7240198FCB84001D45FC /* FUIButton.m */,
+				9B3D7241198FCB84001D45FC /* FUICellBackgroundView.h */,
+				9B3D7242198FCB84001D45FC /* FUICellBackgroundView.m */,
+				9B3D7243198FCB84001D45FC /* FUIPopoverBackgroundView.h */,
+				9B3D7244198FCB84001D45FC /* FUIPopoverBackgroundView.m */,
+				9B3D7245198FCB84001D45FC /* FUISegmentedControl.h */,
+				9B3D7246198FCB84001D45FC /* FUISegmentedControl.m */,
+				9B3D7247198FCB84001D45FC /* FUISwitch.h */,
+				9B3D7248198FCB84001D45FC /* FUISwitch.m */,
+				9B3D7249198FCB84001D45FC /* FUITextField.h */,
+				9B3D724A198FCB84001D45FC /* FUITextField.m */,
+				9B3D724B198FCB84001D45FC /* Lato-Bold.ttf */,
+				9B3D724C198FCB84001D45FC /* Lato-Italic.ttf */,
+				9B3D724D198FCB84001D45FC /* Lato-Light.ttf */,
+				9B3D724E198FCB84001D45FC /* Lato-Regular.ttf */,
+				9B3D724F198FCB84001D45FC /* UIBarButtonItem+FlatUI.h */,
+				9B3D7250198FCB84001D45FC /* UIBarButtonItem+FlatUI.m */,
+				9B3D7251198FCB84001D45FC /* UIColor+FlatUI.h */,
+				9B3D7252198FCB84001D45FC /* UIColor+FlatUI.m */,
+				9B3D7253198FCB84001D45FC /* UIFont+FlatUI.h */,
+				9B3D7254198FCB84001D45FC /* UIFont+FlatUI.m */,
+				9B3D7255198FCB84001D45FC /* UIImage+FlatUI.h */,
+				9B3D7256198FCB84001D45FC /* UIImage+FlatUI.m */,
+				9B3D7257198FCB84001D45FC /* UINavigationBar+FlatUI.h */,
+				9B3D7258198FCB84001D45FC /* UINavigationBar+FlatUI.m */,
+				9B3D7259198FCB84001D45FC /* UIPopoverController+FlatUI.h */,
+				9B3D725A198FCB84001D45FC /* UIPopoverController+FlatUI.m */,
+				9B3D725B198FCB85001D45FC /* UIProgressView+FlatUI.h */,
+				9B3D725C198FCB85001D45FC /* UIProgressView+FlatUI.m */,
+				9B3D725D198FCB85001D45FC /* UISlider+FlatUI.h */,
+				9B3D725E198FCB85001D45FC /* UISlider+FlatUI.m */,
+				9B3D725F198FCB85001D45FC /* UIStepper+FlatUI.h */,
+				9B3D7260198FCB85001D45FC /* UIStepper+FlatUI.m */,
+				9B3D7261198FCB85001D45FC /* UITabBar+FlatUI.h */,
+				9B3D7262198FCB85001D45FC /* UITabBar+FlatUI.m */,
+				9B3D7263198FCB85001D45FC /* UITableViewCell+FlatUI.h */,
+				9B3D7264198FCB85001D45FC /* UITableViewCell+FlatUI.m */,
+				9B3D7265198FCB85001D45FC /* UIToolbar+FlatUI.h */,
+				9B3D7266198FCB85001D45FC /* UIToolbar+FlatUI.m */,
+			);
+			name = FlatUI;
+			path = TEST_CubesGame/FlatUI;
+			sourceTree = "<group>";
+		};
 		9BCEDD62198BCABB005FDE5C = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +338,7 @@
 		9BCEDD6D198BCABB005FDE5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B3D723B198FCB84001D45FC /* FlatUI */,
 				9BCEDD6E198BCABB005FDE5C /* Foundation.framework */,
 				9BCEDD70198BCABB005FDE5C /* CoreGraphics.framework */,
 				9BCEDD72198BCABB005FDE5C /* UIKit.framework */,
@@ -262,7 +355,6 @@
 				9BCEDD7E198BCABB005FDE5C /* AppDelegate.m */,
 				9BCEDDB5198BD43E005FDE5C /* GameViewController.h */,
 				9BCEDDB6198BD43E005FDE5C /* GameViewController.m */,
-				9BCEDDB7198BD43E005FDE5C /* GameViewController.xib */,
 				9BCEDDB0198BD430005FDE5C /* LevelViewController.h */,
 				9BCEDDB1198BD430005FDE5C /* LevelViewController.m */,
 				9BCEDDBA198BDA0B005FDE5C /* LevelNumberView.h */,
@@ -411,7 +503,6 @@
 				9BCEDDA7198BCCBA005FDE5C /* icon120.png in Resources */,
 				9BCEDDA6198BCCBA005FDE5C /* icon114.png in Resources */,
 				9B3D722B198FC77D001D45FC /* Lato-Bold.ttf in Resources */,
-				9BCEDDB9198BD43E005FDE5C /* GameViewController.xib in Resources */,
 				9BCEDDA1198BCAE6005FDE5C /* MainViewController.xib in Resources */,
 				9B3D722C198FC77D001D45FC /* Lato-Italic.ttf in Resources */,
 				9BCEDDAF198BCEFE005FDE5C /* Default~iphone.png in Resources */,

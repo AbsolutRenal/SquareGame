@@ -19,12 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DGY-Rp-BMJ">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co7-f2-XGv">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co7-f2-XGv" customClass="FUIButton">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
@@ -53,7 +48,6 @@
                     </connections>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="J6x-h1-gvX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nqg-zK-ub7"/>
                 <constraint firstItem="J6x-h1-gvX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WaK-Gg-rgR"/>

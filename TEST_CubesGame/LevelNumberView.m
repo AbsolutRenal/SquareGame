@@ -7,6 +7,8 @@
 //
 
 #import "LevelNumberView.h"
+#import "UIColor+FlatUI.h"
+#import "UIFont+FlatUI.h"
 
 @implementation LevelNumberViewOwner
 @end
@@ -30,6 +32,15 @@
     // Instantiating encapsulated here.
     LevelNumberViewOwner *owner = [LevelNumberViewOwner new];
     [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:owner options:nil];
+    
+    owner.levelNumberView.label.buttonColor = [UIColor turquoiseColor];
+    owner.levelNumberView.label.shadowColor = [UIColor greenSeaColor];
+    owner.levelNumberView.label.shadowHeight = 3.0f;
+    owner.levelNumberView.label.cornerRadius = 6.0f;
+    owner.levelNumberView.label.titleLabel.font = [UIFont boldFlatFontOfSize:18];
+    owner.levelNumberView.label.titleLabel.text = @"";
+    [owner.levelNumberView.label setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [owner.levelNumberView.label setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
     // Pass in a reference of the viewController.
     owner.levelNumberView.delegateViewController = controller;

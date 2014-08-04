@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FUIButton.h"
 
 @class LevelNumberView;
 
@@ -20,7 +21,7 @@
 @end
 
 @interface LevelNumberView : UIView
-@property (weak, nonatomic)IBOutlet UIButton *label;
+@property (weak, nonatomic)IBOutlet FUIButton *label;
 + (instancetype)presentInViewController:(UIViewController <LevelNumberViewDelegate>*)controller;
 - (IBAction)selectLevel:(UIButton *)sender;
 @end
