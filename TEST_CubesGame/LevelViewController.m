@@ -21,6 +21,14 @@
     int _startLevel;
     int _clickedLevel;
     
+    CGFloat _itemWidth;
+    CGFloat _itemHeight;
+    int _minOffset;
+    double _offset;
+    double _startOffsetY;
+    int _nbColumns;
+    int _nbRows;
+    
     NSMutableArray *_levelButtons;
 }
 
@@ -51,6 +59,9 @@
         _maxRows = 4;
         _levelButtons = [[NSMutableArray alloc] init];
         _nbLevelByPage = 0;
+        _itemWidth = 40.0;
+        _itemHeight = 40.0;
+        _minOffset = 20;
     }
     
 //    NSLog(@"current:%d, nb:%d, last:%d", current, nb, last);
@@ -120,6 +131,16 @@
     self.prevButton.frame = CGRectMake(20, self.view.frame.size.height - self.prevButton.frame.size.height - 20, self.prevButton.frame.size.width, self.prevButton.frame.size.height);
     [self.view addSubview:self.prevButton];
     [self.prevButton addTarget:self action:@selector(showPreviousLevels:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _nbColumns = floor(self.view.bounds.size.width / ((_itemWidth + _minOffset) + _minOffset));
+    _offset = (self.view.bounds.size.width - (_itemWidth * _nbColumns)) / (_nbColumns +1);
+    
+    _nbRows = floor(self.view.bounds.size.height / ((_itemHeight + _offset) + _offset));
+    _startOffsetY = (self.view.bounds.size.height - (_nbRows * (_itemHeight + _offset) - _offset)) * .5;
+    
+    _nbLevelByPage = _nbRows * _nbColumns;
+//    NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, _startOffsetY);
+//    NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", _nbColumns, _nbRows, _offset);
 }
 
 - (void)populateFromLevel:(int)startLevel{
@@ -133,40 +154,37 @@
     
     self.nextButton.hidden = YES;
     
-    CGFloat w = 40.0;
-    CGFloat h = 40.0;
-    int minOffset = 20;
-    double offset = 0.0;
-    double startOffsetY = 0.0;
-    LevelNumberView *level;
-    int nbColumns = 0;
-    int nbRows = 0;
+//    CGFloat w = 40.0;
+//    CGFloat h = 40.0;
+//    int minOffset = 20;
+//    double offset = 0.0;
+//    double startOffsetY = 0.0;
+//    int nbColumns = 0;
+//    int nbRows = 0;
     int currentRow;
+    LevelNumberView *level;
     
     for (int i = startLevel; i < _nbLevels; i++) {
-        if(i == startLevel){
-            nbColumns = floor(self.view.bounds.size.width / ((w + minOffset) + minOffset));
-            offset = (self.view.bounds.size.width - (w * nbColumns)) / (nbColumns +1);
-            
-            nbRows = floor(self.view.bounds.size.height / ((h + offset) + offset));
-            startOffsetY = (self.view.bounds.size.height - (nbRows * (h + offset) - offset)) * .5;
-//            NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, startOffsetY);
-//            NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", nbColumns, nbRows, offset);
-        }
+//        if(i == startLevel){
+//            nbColumns = floor(self.view.bounds.size.width / ((w + minOffset) + minOffset));
+//            offset = (self.view.bounds.size.width - (w * nbColumns)) / (nbColumns +1);
+//            
+//            nbRows = floor(self.view.bounds.size.height / ((h + offset) + offset));
+//            startOffsetY = (self.view.bounds.size.height - (nbRows * (h + offset) - offset)) * .5;
+////            NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, startOffsetY);
+////            NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", nbColumns, nbRows, offset);
+//        }
         
-        currentRow = floor((i - startLevel) / nbColumns);
+        currentRow = floor((i - startLevel) / _nbColumns);
         
-        if(currentRow >= nbRows){
-            if(_nbLevelByPage == 0)
-                _nbLevelByPage = i;
-            
+        if(currentRow >= _nbRows){
             self.nextButton.hidden = NO;
             return;
         }
         
         level = [LevelNumberView presentInViewController:self];
         [_levelButtons addObject:level];
-        level.frame = CGRectMake(offset + ((i - startLevel) % nbColumns) * (w + offset), startOffsetY + (currentRow * (h + offset)), w, h);
+        level.frame = CGRectMake(_offset + ((i - startLevel) % _nbColumns) * (_itemWidth + _offset), _startOffsetY + (currentRow * (_itemHeight + _offset)), _itemWidth, _itemHeight);
         
         if(i <= _lastLevel){
             [level.label setTitle:[NSString stringWithFormat:@"%d", i+1] forState:UIControlStateNormal];
@@ -187,8 +205,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    _startLevel = 0;
     [self configureView];
+    
+    _startLevel = _currentLevel - (_currentLevel % _nbLevelByPage);
     [self populateFromLevel:_startLevel];
 }
 
