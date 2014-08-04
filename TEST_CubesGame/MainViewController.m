@@ -15,6 +15,7 @@
     NSArray *_levelsDescription;
     NSDictionary *_colors;
     int _currentLevel;
+    NSArray *_levelNames;
 }
 
 @end
@@ -40,8 +41,13 @@
     _colors = tmpDict[@"colors"];
     _currentLevel = [self lastLevel];
     
+    [self openLevelsVC];
+}
+
+- (void)openLevelsVC{
     LevelViewController *levelsVC = [[LevelViewController alloc] initWithCurrentLevel:_currentLevel withNbLevel:(int)_levelsDescription.count withLastCompleted:_currentLevel];
     levelsVC.delegate = self;
+    levelsVC.levelNames = [self levelNames];
     [self showViewController:levelsVC];
 }
 
@@ -88,6 +94,20 @@
         }
     }
     return i;
+}
+
+- (NSArray *)levelNames{
+    if(!_levelNames){
+        NSMutableArray *levels = [[NSMutableArray alloc] initWithCapacity:_levelsDescription.count];
+        int nb = (int)_levelsDescription.count;
+        for (int i = 0; i < nb; i++) {
+            levels[i] = _levelsDescription[i][@"name"];
+        }
+        
+        _levelNames = [[NSArray alloc] initWithArray:levels];
+    }
+    
+    return _levelNames;
 }
 
 - (void)launchLevel:(int)level{

@@ -15,7 +15,7 @@
 	<array>
 		<dict>
 			<key>completed</key>
-			<true/>
+			<false/>
 			<key>name</key>
 			<string>1</string>
 			<key>matrix</key>

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LevelNumberView.h"
 
 @protocol LevelViewControllerDelegate <NSObject>
 
@@ -15,9 +16,10 @@
 
 @end
 
-@interface LevelViewController : UIViewController
+@interface LevelViewController : UIViewController <LevelNumberViewDelegate>
 
 @property (strong, nonatomic) id<LevelViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSArray *levelNames;
 
 - (instancetype)initWithCurrentLevel:(int)current withNbLevel:(int)nb withLastCompleted:(int)last;
 

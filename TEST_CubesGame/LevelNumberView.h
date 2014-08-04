@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class LevelNumberView;
+
+@interface LevelNumberViewOwner : NSObject
+@property (weak, nonatomic) IBOutlet LevelNumberView *levelNumberView;
+@end
+
+@protocol LevelNumberViewDelegate <NSObject>
+@required
+- (void)selectLevel:(int)nb;
+@end
+
 @interface LevelNumberView : UIView
-
 @property (weak, nonatomic) IBOutlet UILabel *label;
-
++ (instancetype)presentInViewController:(UIViewController <LevelNumberViewDelegate>*)controller;
 @end

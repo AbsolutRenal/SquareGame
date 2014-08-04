@@ -8,6 +8,13 @@
 
 #import "LevelNumberView.h"
 
+@implementation LevelNumberViewOwner
+@end
+
+@interface LevelNumberView ()
+@property (strong, nonatomic) UIViewController <LevelNumberViewDelegate> *delegateViewController;
+@end
+
 @implementation LevelNumberView
 
 - (id)initWithFrame:(CGRect)frame
@@ -17,6 +24,34 @@
         // Initialization code
     }
     return self;
+}
+
++ (instancetype)presentInViewController:(UIViewController <LevelNumberViewDelegate>*)controller{
+    // Instantiating encapsulated here.
+    LevelNumberViewOwner *owner = [LevelNumberViewOwner new];
+    [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:owner options:nil];
+    
+    // Pass in a reference of the viewController.
+    owner.levelNumberView.delegateViewController = controller;
+//    owner.levelNumberView.backgroundColor = [UIColor greenColor];
+    
+    // Add (thus retain).
+    [controller.view addSubview:owner.levelNumberView];
+    
+    return owner.levelNumberView;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"TOUCH ENDED");
+    [self selectLevel];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"TOUCH BEGAN");
+}
+
+- (void)selectLevel{
+    [self.delegateViewController selectLevel:(int)self.label.text];
 }
 
 /*
