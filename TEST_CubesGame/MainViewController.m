@@ -101,35 +101,9 @@
 }
 
 - (void)launchLevel:(int)level{
-    _clickedLevel = level;
+    _currentLevel = level;
     
-    _isPlaying = YES;
-    
-    if(_isPlaying && level != _currentLevel){
-        FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:nil
-                                                              message:@"You are about to reset the level you were playing"
-                                                             delegate:self cancelButtonTitle:@"Cancel"
-                                                    otherButtonTitles:@"Confirm", nil];
-        alertView.titleLabel.textColor = [UIColor cloudsColor];
-        alertView.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-        alertView.messageLabel.textColor = [UIColor cloudsColor];
-        alertView.messageLabel.font = [UIFont flatFontOfSize:14];
-        alertView.backgroundOverlay.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:0.8];
-        alertView.alertContainer.backgroundColor = [UIColor midnightBlueColor];
-        alertView.defaultButtonColor = [UIColor cloudsColor];
-        alertView.defaultButtonShadowColor = [UIColor asbestosColor];
-        alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
-        alertView.defaultButtonTitleColor = [UIColor asbestosColor];
-        [alertView show];
-    }
-}
-
-- (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(buttonIndex != alertView.cancelButtonIndex){
-        _currentLevel = _clickedLevel;
-        
-        
-    }
+    NSLog(@"LAUNCH LEVEL %d", level);
 }
 
 @end

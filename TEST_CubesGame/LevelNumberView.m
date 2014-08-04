@@ -56,7 +56,7 @@
 //    NSLog(@"-- SELECT : %@", self.label.titleLabel.text);
     
 //    if(![self.label.titleLabel.text isEqualToString:@"."])
-        [self.delegateViewController selectLevel:[self.label.titleLabel.text intValue]];
+        [self.delegateViewController selectLevel:[self.label.titleLabel.text intValue] -1];
 }
 
 /*

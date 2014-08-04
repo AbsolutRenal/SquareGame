@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LevelViewController.h"
-#import "FUIAlertView.h"
 
-@interface MainViewController : UIViewController <LevelViewControllerDelegate, FUIAlertViewDelegate>
+@interface MainViewController : UIViewController <LevelViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIView *buttonsContainer;

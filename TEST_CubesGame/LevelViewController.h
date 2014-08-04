@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LevelNumberView.h"
+#import "FUIAlertView.h"
 
 @protocol LevelViewControllerDelegate <NSObject>
 
@@ -16,7 +17,7 @@
 
 @end
 
-@interface LevelViewController : UIViewController <LevelNumberViewDelegate>
+@interface LevelViewController : UIViewController <LevelNumberViewDelegate, FUIAlertViewDelegate>
 
 @property (strong, nonatomic) id<LevelViewControllerDelegate> delegate;
 
