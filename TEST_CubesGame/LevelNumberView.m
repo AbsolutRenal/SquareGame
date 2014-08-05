@@ -33,6 +33,7 @@
     LevelNumberViewOwner *owner = [LevelNumberViewOwner new];
     [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:owner options:nil];
     
+//    owner.levelNumberView.label.adjustsImageWhenHighlighted = NO;
     owner.levelNumberView.label.buttonColor = [UIColor turquoiseColor];
     owner.levelNumberView.label.shadowColor = [UIColor greenSeaColor];
     owner.levelNumberView.label.shadowHeight = 3.0f;
