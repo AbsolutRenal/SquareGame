@@ -7,8 +7,6 @@
 //
 
 #import "LevelNumberView.h"
-#import "UIColor+FlatUI.h"
-#import "UIFont+FlatUI.h"
 
 @implementation LevelNumberViewOwner
 @end
@@ -58,6 +56,13 @@
     
 //    if(![self.label.titleLabel.text isEqualToString:@"."])
         [self.delegateViewController selectLevel:[self.label.titleLabel.text intValue] -1];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+    [super willMoveToSuperview:newSuperview];
+    
+    if(newSuperview == nil)
+        self.delegateViewController = nil;
 }
 
 /*

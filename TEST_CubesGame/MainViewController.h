@@ -11,7 +11,5 @@
 
 @interface MainViewController : UIViewController <LevelViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *container;
-@property (weak, nonatomic) IBOutlet UIView *buttonsContainer;
 
 @end

@@ -8,9 +8,6 @@
 
 #import "MainViewController.h"
 #import "LevelViewController.h"
-#import "FUIAlertView.h"
-#import "UIColor+FlatUI.h"
-#import "UIFont+FlatUI.h"
 
 @interface MainViewController (){
     BOOL _ready;
@@ -20,6 +17,9 @@
     int _currentLevel;
     int _clickedLevel;
     BOOL _isPlaying;
+    
+    UIView *_buttonContainer;
+    UIView *_container;
 }
 
 @end
@@ -45,7 +45,29 @@
     _colors = tmpDict[@"colors"];
     _currentLevel = [self lastLevel];
     
-    [self openLevelsVC];
+    [self layoutDefaultView];
+}
+
+- (void)layoutDefaultView{
+    _container = [[UIView alloc] init];
+    [self.view addSubview:_container];
+    
+    _buttonContainer = [[UIView alloc] init];
+    [self.view addSubview:_buttonContainer];
+    _buttonContainer.backgroundColor = [UIColor grayColor];
+    
+    NSDictionary *viewsDict = NSDictionaryOfVariableBindings(_container, _buttonContainer);
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    _container.translatesAutoresizingMaskIntoConstraints = NO;
+    _buttonContainer.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view removeConstraints:self.view.constraints];
+//    [_container removeConstraints:_container.constraints];
+//    [_buttonContainer removeConstraints:_buttonContainer.constraints];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_container]|" options:0 metrics:nil views:viewsDict]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_buttonContainer]|" options:0 metrics:nil views:viewsDict]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_container][_buttonContainer(55)]|" options:0 metrics:nil views:viewsDict]];
 }
 
 - (void)openLevelsVC{
@@ -63,10 +85,10 @@
 - (void)showViewController:(UIViewController *)child{
 //    [child willMoveToParentViewController:self];
     
-    child.view.frame = self.container.frame;
+    child.view.frame = _container.frame;
 //    NSLog(@"CONTAINER FRAME:%f", self.container.frame.size.height);
     child.view.alpha = 0;
-    [self.container addSubview:child.view];
+    [_container addSubview:child.view];
     [self addChildViewController:child];
     
     [UIView animateWithDuration:.6 animations:^{
@@ -91,7 +113,7 @@
     BOOL completed;
     
     for (i = 0; i < nb; i++) {
-//        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
+        //        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
         completed = [_levelsDescription[i][@"completed"]  isEqual:@1];
         if(!completed){
             return i;
@@ -104,6 +126,16 @@
     _currentLevel = level;
     
     NSLog(@"LAUNCH LEVEL %d", level);
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self openLevelsVC];
 }
 
 @end

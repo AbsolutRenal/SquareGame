@@ -8,8 +8,6 @@
 
 #import "LevelViewController.h"
 #import "LevelNumberView.h"
-#import "UIColor+FlatUI.h"
-#import "UIFont+FlatUI.h"
 
 @interface LevelViewController (){
     int _currentLevel;
@@ -76,11 +74,30 @@
 }
 
 - (void)clearLevelButtons{
-    for (LevelNumberView *button in _levelButtons) {
+//    NSLog(@"########## NB ITEMS : %lu", (unsigned long)_levelButtons.count);
+//    for (LevelNumberView *button in _levelButtons) {
+//        NSLog(@"...");
+//        NSLog(@"BUTTON %@", button);
+//        NSLog(@"LAYER %@", button.layer);
+//        NSLog(@"-- SUPER VIEW %@", button.superview);
+//        if(button && button.superview == self.view)
+//            NSLog(@"OK");
+//        else
+//            NSLog(@"OUPPS");
+//        if([button isKindOfClass:[LevelNumberView class]])
+//            NSLog(@"OK");
+//        else
+//            NSLog(@"OUPPS");
+    
+    LevelNumberView *button;
+    while (_levelButtons.count > 0) {
+        button = (LevelNumberView *)_levelButtons[0];
         [button removeFromSuperview];
+        [_levelButtons removeObjectAtIndex:0];
     }
     
-    _levelButtons = [[NSMutableArray alloc] init];
+//    _levelButtons = nil;
+//    _levelButtons = [[NSMutableArray alloc] init];
 }
 
 - (void)showNextLevels:(id)sender{
@@ -133,8 +150,8 @@
     _startOffsetY = (self.view.bounds.size.height - (_nbRows * (_itemHeight + _offset) - _offset)) * .5;
     
     _nbLevelByPage = _nbRows * _nbColumns;
-//    NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, _startOffsetY);
-//    NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", _nbColumns, _nbRows, _offset);
+    NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, _startOffsetY);
+    NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", _nbColumns, _nbRows, _offset);
 }
 
 - (void)populateFromLevel:(int)startLevel{

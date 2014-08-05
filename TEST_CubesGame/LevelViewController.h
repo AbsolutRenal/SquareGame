@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "LevelNumberView.h"
-#import "FUIAlertView.h"
 
 @protocol LevelViewControllerDelegate <NSObject>
 
