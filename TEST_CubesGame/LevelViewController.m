@@ -72,7 +72,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.    
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)clearLevelButtons{
@@ -95,34 +95,34 @@
 
 - (void)configureView{
     self.nextButton = [[FUIButton alloc] init];
-    [self.nextButton setTitle:@"NEXT >" forState:UIControlStateNormal];
-    [self.nextButton setTitle:@"NEXT >" forState:UIControlStateHighlighted];
+    [self.nextButton setTitle:@">" forState:UIControlStateNormal];
+    [self.nextButton setTitle:@">" forState:UIControlStateHighlighted];
     self.nextButton.buttonColor = [UIColor turquoiseColor];
     self.nextButton.shadowColor = [UIColor greenSeaColor];
     self.nextButton.shadowHeight = 3.0f;
-    self.nextButton.cornerRadius = 6.0f;
+    self.nextButton.cornerRadius = 20.0f;
     self.nextButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [self.nextButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.nextButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     self.nextButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
     [self.nextButton sizeToFit];
-    self.nextButton.frame = CGRectMake(self.view.frame.size.width - self.nextButton.frame.size.width - 20, self.view.frame.size.height - self.nextButton.frame.size.height - 20, self.nextButton.frame.size.width, self.nextButton.frame.size.height);
+    self.nextButton.frame = CGRectMake(self.view.frame.size.width - self.nextButton.frame.size.width - 50, self.view.frame.size.height - self.nextButton.frame.size.height - 20, self.nextButton.frame.size.width, self.nextButton.frame.size.height);
     [self.view addSubview:self.nextButton];
     [self.nextButton addTarget:self action:@selector(showNextLevels:) forControlEvents:UIControlEventTouchUpInside];
     
     self.prevButton = [[FUIButton alloc] init];
-    [self.prevButton setTitle:@"< PREVIOUS" forState:UIControlStateNormal];
-    [self.prevButton setTitle:@"< PREVIOUS" forState:UIControlStateHighlighted];
+    [self.prevButton setTitle:@"<" forState:UIControlStateNormal];
+    [self.prevButton setTitle:@"<" forState:UIControlStateHighlighted];
     self.prevButton.buttonColor = [UIColor turquoiseColor];
     self.prevButton.shadowColor = [UIColor greenSeaColor];
     self.prevButton.shadowHeight = 3.0f;
-    self.prevButton.cornerRadius = 6.0f;
+    self.prevButton.cornerRadius = 20.0f;
     self.prevButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [self.prevButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.prevButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     self.prevButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
     [self.prevButton sizeToFit];
-    self.prevButton.frame = CGRectMake(20, self.view.frame.size.height - self.prevButton.frame.size.height - 20, self.prevButton.frame.size.width, self.prevButton.frame.size.height);
+    self.prevButton.frame = CGRectMake(50, self.view.frame.size.height - self.prevButton.frame.size.height - 20, self.prevButton.frame.size.width, self.prevButton.frame.size.height);
     [self.view addSubview:self.prevButton];
     [self.prevButton addTarget:self action:@selector(showPreviousLevels:) forControlEvents:UIControlEventTouchUpInside];
     
