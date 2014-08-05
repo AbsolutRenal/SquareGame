@@ -28,6 +28,8 @@
     int _nbRows;
     
     NSMutableArray *_levelButtons;
+    
+    UIView *_titleView;
 }
 
 @property (strong, nonatomic)FUIButton *nextButton;
@@ -111,6 +113,20 @@
 }
 
 - (void)configureView{
+    _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    _titleView.backgroundColor = [UIColor turquoiseColor];
+    [self.view addSubview:_titleView];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.font = [UIFont boldFlatFontOfSize:18];
+    titleLabel.text = @"LEVELS";
+    titleLabel.textColor = [UIColor cloudsColor];
+    titleLabel.backgroundColor = [UIColor colorWithWhite:0. alpha:0.];
+    [titleLabel sizeToFit];
+    titleLabel.center = CGPointMake(_titleView.frame.size.width * .5, (_titleView.frame.size.height - 10) * .5  + 10);
+    [_titleView addSubview:titleLabel];
+    
+    
     self.nextButton = [[FUIButton alloc] init];
     [self.nextButton setTitle:@">" forState:UIControlStateNormal];
     [self.nextButton setTitle:@">" forState:UIControlStateHighlighted];
