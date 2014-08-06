@@ -20,6 +20,10 @@
     
     UIView *_buttonContainer;
     UIView *_container;
+    
+    FUIButton *_levelsButton;
+    FUIButton *_resetButton;
+    FUIButton *_undoButton;
 }
 
 @end
@@ -52,14 +56,11 @@
     _container = [[UIView alloc] init];
     [self.view addSubview:_container];
     
-    _buttonContainer = [[UIView alloc] init];
-    [self.view addSubview:_buttonContainer];
-    _buttonContainer.backgroundColor = [UIColor grayColor];
+    [self configureButtonContainer];
     
     NSDictionary *viewsDict = NSDictionaryOfVariableBindings(_container, _buttonContainer);
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     _container.translatesAutoresizingMaskIntoConstraints = NO;
-    _buttonContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view removeConstraints:self.view.constraints];
 //    [_container removeConstraints:_container.constraints];
@@ -68,6 +69,54 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_container]|" options:0 metrics:nil views:viewsDict]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_buttonContainer]|" options:0 metrics:nil views:viewsDict]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_container][_buttonContainer(55)]|" options:0 metrics:nil views:viewsDict]];
+}
+
+- (void)configureButtonContainer{
+    _buttonContainer = [[UIView alloc] init];
+    [self.view addSubview:_buttonContainer];
+    _buttonContainer.backgroundColor = [UIColor turquoiseColor];
+    
+    _buttonContainer.layer.borderColor = [UIColor greenSeaColor].CGColor;
+    _buttonContainer.layer.borderWidth = 1.0;
+//    _buttonContainer.layer.cornerRadius = 6.0f;
+    
+    _undoButton = [self configureButtonWithTitle:@"UNDO"];
+    [_buttonContainer addSubview:_undoButton];
+    
+    _resetButton = [self configureButtonWithTitle:@"RESET"];
+    [_buttonContainer addSubview:_resetButton];
+
+    _levelsButton = [self configureButtonWithTitle:@"LEVELS"];
+    [_buttonContainer addSubview:_levelsButton];
+    
+    
+    _buttonContainer.translatesAutoresizingMaskIntoConstraints = NO;
+    _undoButton.translatesAutoresizingMaskIntoConstraints = NO;
+    _resetButton.translatesAutoresizingMaskIntoConstraints = NO;
+    _levelsButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSDictionary *_constrainedView = NSDictionaryOfVariableBindings(_undoButton, _resetButton, _levelsButton);
+    [_buttonContainer removeConstraints:_buttonContainer.constraints];
+    [_buttonContainer addConstraint:[NSLayoutConstraint constraintWithItem:_undoButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_buttonContainer attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+//    [_buttonContainer addConstraint:[NSLayoutConstraint constraintWithItem:_undoButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_buttonContainer attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    [_buttonContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_undoButton]-[_resetButton(_undoButton)]-[_levelsButton(_resetButton)]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:_constrainedView]];
+    
+}
+
+- (FUIButton *)configureButtonWithTitle:(NSString *)title{
+    FUIButton *btn = [[FUIButton alloc] init];
+    btn.buttonColor = [UIColor greenSeaColor];
+    btn.shadowColor = [UIColor midnightBlueColor];
+    btn.shadowHeight = 3.0f;
+    btn.cornerRadius = 6.0f;
+    btn.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateHighlighted];
+    [btn setTitle:title forState:UIControlStateDisabled];
+    btn.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+    [btn sizeToFit];
+    
+    return btn;
 }
 
 - (void)openLevelsVC{

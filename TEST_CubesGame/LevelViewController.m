@@ -166,8 +166,8 @@
     _startOffsetY = (self.view.bounds.size.height - (_nbRows * (_itemHeight + _offset) - _offset)) * .5;
     
     _nbLevelByPage = _nbRows * _nbColumns;
-    NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, _startOffsetY);
-    NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", _nbColumns, _nbRows, _offset);
+//    NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, _startOffsetY);
+//    NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", _nbColumns, _nbRows, _offset);
 }
 
 - (void)populateFromLevel:(int)startLevel{
