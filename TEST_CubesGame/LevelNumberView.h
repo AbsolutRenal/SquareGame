@@ -23,4 +23,5 @@
 @property (weak, nonatomic)IBOutlet FUIButton *label;
 + (instancetype)presentInViewController:(UIViewController <LevelNumberViewDelegate>*)controller;
 - (IBAction)selectLevel:(UIButton *)sender;
+- (void)shouldSelect:(BOOL)should;
 @end

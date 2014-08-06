@@ -171,7 +171,7 @@
 }
 
 - (void)populateFromLevel:(int)startLevel{
-    [self clearLevelButtons];
+//    [self clearLevelButtons];
     
     _startLevel = startLevel;
     if(startLevel == 0)
@@ -189,25 +189,35 @@
         
         if(currentRow >= _nbRows){
             self.nextButton.hidden = NO;
-            return;
+            break;
         }
         
-        level = [LevelNumberView presentInViewController:self];
-        [_levelButtons addObject:level];
-        level.frame = CGRectMake(_offset + ((i - startLevel) % _nbColumns) * (_itemWidth + _offset), _startOffsetY + (currentRow * (_itemHeight + _offset)), _itemWidth, _itemHeight);
+        if(_levelButtons.count == _nbLevelByPage){
+            level = _levelButtons[i-startLevel];
+            level.hidden = NO;
+        } else {
+            level = [LevelNumberView presentInViewController:self];
+            [_levelButtons addObject:level];
+            level.frame = CGRectMake(_offset + ((i - startLevel) % _nbColumns) * (_itemWidth + _offset), _startOffsetY + (currentRow * (_itemHeight + _offset)), _itemWidth, _itemHeight);
+        }
+        
         
         if(i <= _lastLevel){
+            level.label.enabled = YES;
             [level.label setTitle:[NSString stringWithFormat:@"%d", i+1] forState:UIControlStateNormal];
             [level.label setTitle:[NSString stringWithFormat:@"%d", i+1] forState:UIControlStateHighlighted];
             
-            if(i == _currentLevel){
-                [level.label setTitleColor:[UIColor sunflowerColor] forState:UIControlStateNormal];
-                [level.label setTitleColor:[UIColor sunflowerColor] forState:UIControlStateHighlighted];
-            }
+            [level shouldSelect:i == _currentLevel ];
         } else {
             level.label.enabled = NO;
             [level.label setTitle:@"." forState:UIControlStateNormal];
             [level.label setTitle:@"." forState:UIControlStateHighlighted];
+        }
+    }
+    
+    if((_nbLevels - startLevel) < _levelButtons.count){
+        for(int j = _nbLevels - startLevel; j < _nbLevelByPage; j++){
+            ((LevelNumberView *)_levelButtons[j]).hidden = YES;
         }
     }
 }

@@ -51,6 +51,17 @@
     return owner.levelNumberView;
 }
 
+- (void)shouldSelect:(BOOL)should{
+    if(should){
+        [self.label setTitleColor:[UIColor sunflowerColor] forState:UIControlStateNormal];
+        [self.label setTitleColor:[UIColor sunflowerColor] forState:UIControlStateHighlighted];
+    } else {
+        [self.label setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+        [self.label setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+        [self.label setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateDisabled];
+    }
+}
+
 - (IBAction)selectLevel:(UIButton *)sender{
 //    NSLog(@"-- SELECT : %@", self.label.titleLabel.text);
     
