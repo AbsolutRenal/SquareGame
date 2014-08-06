@@ -9,37 +9,48 @@
 #import "MainViewController.h"
 #import "LevelViewController.h"
 #import "GameViewController.h"
+#import "GameDatas.h"
 
 @interface MainViewController (){
     BOOL _ready;
-    NSString *_levelsFile;
-    NSArray *_levelsDescription;
-    NSDictionary *_colors;
-    int _currentLevel;
-    int _clickedLevel;
     BOOL _isPlaying;
     
-    UIView *_buttonContainer;
-    UIView *_container;
+//    UIView *_buttonContainer;
+//    UIView *_container;
     
     FUIButton *_levelsButton;
     FUIButton *_resetButton;
     FUIButton *_undoButton;
     
-    GameViewController *_gameVC;
-    LevelViewController *_levelsVC;
+//    GameViewController *_gameVC;
+//    LevelViewController *_levelVC;
+    
+    GameDatas *datas;
 }
-
+@property (strong, nonatomic)LevelViewController *levelVC;
+@property (strong, nonatomic)GameViewController *gameVC;
+@property (strong, nonatomic)UIView *container;
+@property (strong, nonatomic)UIView *buttonContainer;
 @end
 
 @implementation MainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
+
+- (id)init{
+    self = [super init];
+    
+    if(self){
+        
     }
+    
     return self;
 }
 
@@ -48,65 +59,63 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSDictionary *tmpDict = [NSDictionary dictionaryWithContentsOfFile:[self levelsFile]];
-    _levelsDescription = tmpDict[@"levels"];
-    _colors = tmpDict[@"colors"];
-    _currentLevel = [self lastLevel];
+    datas = [[GameDatas alloc] init];
     
     [self layoutDefaultView];
 }
 
 - (void)layoutDefaultView{
-    _container = [[UIView alloc] init];
-    [self.view addSubview:_container];
+    self.container = [[UIView alloc] init];
+    [self.view addSubview:self.container];
     
     [self configureButtonContainer];
     
-    NSDictionary *viewsDict = NSDictionaryOfVariableBindings(_container, _buttonContainer);
+//    NSDictionary *viewsDict = NSDictionaryOfVariableBindings(self.container, self.buttonContainer);
+    NSDictionary *viewsDict = @{@"container":self.container, @"buttonContainer":self.buttonContainer};
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
-    _container.translatesAutoresizingMaskIntoConstraints = NO;
+    self.container.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view removeConstraints:self.view.constraints];
-//    [_container removeConstraints:_container.constraints];
-//    [_buttonContainer removeConstraints:_buttonContainer.constraints];
+//    [self.container removeConstraints:self.container.constraints];
+//    [self.buttonContainer removeConstraints:self.buttonContainer.constraints];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_container]|" options:0 metrics:nil views:viewsDict]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_buttonContainer]|" options:0 metrics:nil views:viewsDict]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_container][_buttonContainer(55)]|" options:0 metrics:nil views:viewsDict]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[container]|" options:0 metrics:nil views:viewsDict]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[buttonContainer]|" options:0 metrics:nil views:viewsDict]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[container][buttonContainer(55)]|" options:0 metrics:nil views:viewsDict]];
 }
 
 - (void)configureButtonContainer{
-    _buttonContainer = [[UIView alloc] init];
-    [self.view addSubview:_buttonContainer];
-    _buttonContainer.backgroundColor = [UIColor turquoiseColor];
+    self.buttonContainer = [[UIView alloc] init];
+    [self.view addSubview:self.buttonContainer];
+    self.buttonContainer.backgroundColor = [UIColor turquoiseColor];
     
-    _buttonContainer.layer.borderColor = [UIColor greenSeaColor].CGColor;
-    _buttonContainer.layer.borderWidth = 1.0;
-//    _buttonContainer.layer.cornerRadius = 6.0f;
+    self.buttonContainer.layer.borderColor = [UIColor greenSeaColor].CGColor;
+    self.buttonContainer.layer.borderWidth = 1.0;
+//    self.buttonContainer.layer.cornerRadius = 6.0f;
     
     _undoButton = [self configureButtonWithTitle:@"UNDO"];
-    [_buttonContainer addSubview:_undoButton];
+    [self.buttonContainer addSubview:_undoButton];
     [_undoButton addTarget:self action:@selector(undoAction) forControlEvents:UIControlEventTouchUpInside];
     
     _resetButton = [self configureButtonWithTitle:@"RESET"];
-    [_buttonContainer addSubview:_resetButton];
+    [self.buttonContainer addSubview:_resetButton];
     [_resetButton addTarget:self action:@selector(resetLevel) forControlEvents:UIControlEventTouchUpInside];
 
     _levelsButton = [self configureButtonWithTitle:@"LEVELS"];
-    [_buttonContainer addSubview:_levelsButton];
+    [self.buttonContainer addSubview:_levelsButton];
     [_levelsButton addTarget:self action:@selector(openLevelsVC) forControlEvents:UIControlEventTouchUpInside];
     
     
-    _buttonContainer.translatesAutoresizingMaskIntoConstraints = NO;
+    self.buttonContainer.translatesAutoresizingMaskIntoConstraints = NO;
     _undoButton.translatesAutoresizingMaskIntoConstraints = NO;
     _resetButton.translatesAutoresizingMaskIntoConstraints = NO;
     _levelsButton.translatesAutoresizingMaskIntoConstraints = NO;
     
     NSDictionary *_constrainedView = NSDictionaryOfVariableBindings(_undoButton, _resetButton, _levelsButton);
-    [_buttonContainer removeConstraints:_buttonContainer.constraints];
-    [_buttonContainer addConstraint:[NSLayoutConstraint constraintWithItem:_undoButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_buttonContainer attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
-//    [_buttonContainer addConstraint:[NSLayoutConstraint constraintWithItem:_undoButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_buttonContainer attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    [_buttonContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_undoButton]-[_resetButton(_undoButton)]-[_levelsButton(_resetButton)]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:_constrainedView]];
+    [self.buttonContainer removeConstraints:self.buttonContainer.constraints];
+    [self.buttonContainer addConstraint:[NSLayoutConstraint constraintWithItem:_undoButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.buttonContainer attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+//    [self.buttonContainer addConstraint:[NSLayoutConstraint constraintWithItem:_undoButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.buttonContainer attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    [self.buttonContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_undoButton]-[_resetButton(_undoButton)]-[_levelsButton(_resetButton)]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:_constrainedView]];
     
 }
 
@@ -115,12 +124,12 @@
 }
 
 - (void)undoAction{
-//    NSLog(@"UNDO ready:%d / levelsVC:%@", _ready, _levelsVC);
+//    NSLog(@"UNDO ready:%d / levelsVC:%@", _ready, self.levelVC);
     
     if(!_ready)
         return;
     
-    if(_levelsVC != nil)
+    if(self.levelVC != nil)
        [self removeLevelsVC];
 }
 
@@ -141,9 +150,9 @@
 }
 
 - (void)openGameVC{
-    _gameVC = [[GameViewController alloc] initWithCurrentLevel:_currentLevel];
-    _gameVC.delegate = self;
-    [self showViewController:_gameVC];
+    self.gameVC = [[GameViewController alloc] initWithCurrentLevel:datas.currentLevel];
+    self.gameVC.delegate = self;
+    [self showViewController:self.gameVC];
 }
 
 - (void)openLevelsVC{
@@ -158,38 +167,40 @@
     _resetButton.hidden = YES;
     _levelsButton.hidden = YES;
     
-    _levelsVC = [[LevelViewController alloc] initWithCurrentLevel:_currentLevel withNbLevel:(int)_levelsDescription.count withLastCompleted:[self lastLevel]];
-    _levelsVC.delegate = self;
+    self.levelVC = [[LevelViewController alloc] initWithCurrentLevel:datas.currentLevel withNbLevel:(int)[datas nbLevels] withLastCompleted:[datas lastLevel]];
+    self.levelVC.delegate = self;
     
-    _levelsVC.view.alpha = 0.;
-    _levelsVC.view.frame = CGRectMake(_container.frame.origin.x + _container.frame.size.width, _container.frame.origin.y, _container.frame.size.width, _container.frame.size.height);
+    self.levelVC.view.alpha = 0.;
+    self.levelVC.view.frame = CGRectMake(self.container.frame.origin.x + self.container.frame.size.width, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
     
-//    [_levelsVC willMoveToParentViewController:self];
-    [_container addSubview:_levelsVC.view];
-    [self addChildViewController:_levelsVC];
+//    [self.levelVC willMoveToParentViewController:self];
+    [self.container addSubview:self.levelVC.view];
+    [self addChildViewController:self.levelVC];
     
     [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _levelsVC.view.alpha = 1.;
-        _levelsVC.view.frame = _container.frame;
+        self.levelVC.view.alpha = 1.;
+        self.levelVC.view.frame = self.container.frame;
     } completion:^(BOOL finished){
         _ready = YES;
     }];
     
-    [_levelsVC didMoveToParentViewController:self];
+    [self.levelVC didMoveToParentViewController:self];
 }
 
 - (void)removeLevelsVC{
     _ready = NO;
     
     [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        _levelsVC.view.alpha = 0.;
-        _levelsVC.view.frame = CGRectMake(_container.frame.origin.x + _container.frame.size.width, _container.frame.origin.y, _container.frame.size.width, _container.frame.size.height);
+        self.levelVC.view.alpha = 0.;
+        self.levelVC.view.frame = CGRectMake(self.container.frame.origin.x + self.container.frame.size.width, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
     } completion:^(BOOL finished) {
-        [_levelsVC willMoveToParentViewController:nil];
-        [_levelsVC.view removeFromSuperview];
-        [_levelsVC removeFromParentViewController];
-        [_levelsVC didMoveToParentViewController:nil];
-        _levelsVC = nil;
+        [self.levelVC willMoveToParentViewController:nil];
+        
+//        NSLog(@"VIEW:%@ | SUPERVIEW:%@", self.levelVC.view, self.levelVC.view.superview);
+        [self.levelVC.view removeFromSuperview];
+        [self.levelVC removeFromParentViewController];
+        [self.levelVC didMoveToParentViewController:nil];
+        self.levelVC = nil;
         
         [_undoButton setTitle:@"UNDO" forState:UIControlStateNormal];
         [_undoButton setTitle:@"UNDO" forState:UIControlStateHighlighted];
@@ -211,10 +222,10 @@
 - (void)showViewController:(UIViewController *)child{
 //    [child willMoveToParentViewController:self];
     
-    child.view.frame = _container.frame;
+    child.view.frame = self.container.frame;
 //    NSLog(@"CONTAINER FRAME:%f", self.container.frame.size.height);
     child.view.alpha = 0;
-    [_container addSubview:child.view];
+    [self.container addSubview:child.view];
     [self addChildViewController:child];
     
     [UIView animateWithDuration:.6 animations:^{
@@ -226,34 +237,12 @@
     [child didMoveToParentViewController:self];
 }
 
-- (NSString *)levelsFile{
-    if(!_levelsFile){
-        _levelsFile = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
-    }
-    return _levelsFile;
-}
-
-- (int)lastLevel{
-    int nb = (int)_levelsDescription.count;
-    int i;
-    BOOL completed;
-    
-    for (i = 0; i < nb; i++) {
-        //        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
-        completed = [_levelsDescription[i][@"completed"]  isEqual:@1];
-        if(!completed){
-            return i;
-        }
-    }
-    return i;
-}
-
 - (void)launchLevel:(int)level{
-    _currentLevel = level;
+    datas.currentLevel = level;
 //    NSLog(@"LAUNCH LEVEL %d", level);
 
     [self removeLevelsVC];
-    [_gameVC startLevel:level];
+    [self.gameVC startLevel:level];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

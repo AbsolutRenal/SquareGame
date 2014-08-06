@@ -31,6 +31,7 @@
 		9B3D7239198FC77D001D45FC /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D7221198FC77D001D45FC /* UITableViewCell+FlatUI.m */; };
 		9B3D723A198FC77D001D45FC /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D7223198FC77D001D45FC /* UIToolbar+FlatUI.m */; };
 		9B6CEFE3198E942D004BC1E8 /* LevelNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B6CEFE2198E942D004BC1E8 /* LevelNumberView.xib */; };
+		9B9D1C7C19926E0B00D9AA35 /* GameDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D1C7B19926E0B00D9AA35 /* GameDatas.m */; };
 		9BCEDD6F198BCABB005FDE5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCEDD6E198BCABB005FDE5C /* Foundation.framework */; };
 		9BCEDD71198BCABB005FDE5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCEDD70198BCABB005FDE5C /* CoreGraphics.framework */; };
 		9BCEDD73198BCABB005FDE5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCEDD72198BCABB005FDE5C /* UIKit.framework */; };
@@ -154,6 +155,8 @@
 		9B3D7265198FCB85001D45FC /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
 		9B3D7266198FCB85001D45FC /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
 		9B6CEFE2198E942D004BC1E8 /* LevelNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelNumberView.xib; sourceTree = "<group>"; };
+		9B9D1C7A19926E0B00D9AA35 /* GameDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDatas.h; sourceTree = "<group>"; };
+		9B9D1C7B19926E0B00D9AA35 /* GameDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDatas.m; sourceTree = "<group>"; };
 		9BCEDD6B198BCABB005FDE5C /* TEST_CubesGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEST_CubesGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BCEDD6E198BCABB005FDE5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9BCEDD70198BCABB005FDE5C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -360,6 +363,8 @@
 				9B6CEFE2198E942D004BC1E8 /* LevelNumberView.xib */,
 				9BCEDD9D198BCAE6005FDE5C /* MainViewController.h */,
 				9BCEDD9E198BCAE6005FDE5C /* MainViewController.m */,
+				9B9D1C7A19926E0B00D9AA35 /* GameDatas.h */,
+				9B9D1C7B19926E0B00D9AA35 /* GameDatas.m */,
 				9BCEDD80198BCABB005FDE5C /* Images.xcassets */,
 				9BCEDD75198BCABB005FDE5C /* Supporting Files */,
 			);
@@ -536,6 +541,7 @@
 				9BCEDDA0198BCAE6005FDE5C /* MainViewController.m in Sources */,
 				9B3D7228198FC77D001D45FC /* FUISegmentedControl.m in Sources */,
 				9BCEDD7B198BCABB005FDE5C /* main.m in Sources */,
+				9B9D1C7C19926E0B00D9AA35 /* GameDatas.m in Sources */,
 				9B3D7236198FC77D001D45FC /* UISlider+FlatUI.m in Sources */,
 				9BCEDDBC198BDA0B005FDE5C /* LevelNumberView.m in Sources */,
 				9B3D7239198FC77D001D45FC /* UITableViewCell+FlatUI.m in Sources */,
