@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LevelViewController.h"
+#import "GameViewController.h"
 
-@interface MainViewController : UIViewController <LevelViewControllerDelegate>
+@interface MainViewController : UIViewController <LevelViewControllerDelegate, GameViewControllerDelegate>
 
 
 @end

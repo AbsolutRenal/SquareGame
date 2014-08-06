@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "LevelViewController.h"
+#import "GameViewController.h"
 
 @interface MainViewController (){
     BOOL _ready;
@@ -24,6 +25,9 @@
     FUIButton *_levelsButton;
     FUIButton *_resetButton;
     FUIButton *_undoButton;
+    
+    GameViewController *_gameVC;
+    LevelViewController *_levelsVC;
 }
 
 @end
@@ -82,12 +86,15 @@
     
     _undoButton = [self configureButtonWithTitle:@"UNDO"];
     [_buttonContainer addSubview:_undoButton];
+    [_undoButton addTarget:self action:@selector(undoAction) forControlEvents:UIControlEventTouchUpInside];
     
     _resetButton = [self configureButtonWithTitle:@"RESET"];
     [_buttonContainer addSubview:_resetButton];
+    [_resetButton addTarget:self action:@selector(resetLevel) forControlEvents:UIControlEventTouchUpInside];
 
     _levelsButton = [self configureButtonWithTitle:@"LEVELS"];
     [_buttonContainer addSubview:_levelsButton];
+    [_levelsButton addTarget:self action:@selector(openLevelsVC) forControlEvents:UIControlEventTouchUpInside];
     
     
     _buttonContainer.translatesAutoresizingMaskIntoConstraints = NO;
@@ -101,6 +108,20 @@
 //    [_buttonContainer addConstraint:[NSLayoutConstraint constraintWithItem:_undoButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_buttonContainer attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [_buttonContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_undoButton]-[_resetButton(_undoButton)]-[_levelsButton(_resetButton)]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:_constrainedView]];
     
+}
+
+- (void)resetLevel{
+    
+}
+
+- (void)undoAction{
+//    NSLog(@"UNDO ready:%d / levelsVC:%@", _ready, _levelsVC);
+    
+    if(!_ready)
+        return;
+    
+    if(_levelsVC != nil)
+       [self removeLevelsVC];
 }
 
 - (FUIButton *)configureButtonWithTitle:(NSString *)title{
@@ -119,10 +140,66 @@
     return btn;
 }
 
+- (void)openGameVC{
+    _gameVC = [[GameViewController alloc] initWithCurrentLevel:_currentLevel];
+    _gameVC.delegate = self;
+    [self showViewController:_gameVC];
+}
+
 - (void)openLevelsVC{
-    LevelViewController *levelsVC = [[LevelViewController alloc] initWithCurrentLevel:_currentLevel withNbLevel:(int)_levelsDescription.count withLastCompleted:_currentLevel];
-    levelsVC.delegate = self;
-    [self showViewController:levelsVC];
+    if(!_ready)
+        return;
+    
+    _ready = NO;
+    
+    [_undoButton setTitle:@"BACK" forState:UIControlStateNormal];
+    [_undoButton setTitle:@"BACK" forState:UIControlStateHighlighted];
+    
+    _resetButton.hidden = YES;
+    _levelsButton.hidden = YES;
+    
+    _levelsVC = [[LevelViewController alloc] initWithCurrentLevel:_currentLevel withNbLevel:(int)_levelsDescription.count withLastCompleted:[self lastLevel]];
+    _levelsVC.delegate = self;
+    
+    _levelsVC.view.alpha = 0.;
+    _levelsVC.view.frame = CGRectMake(_container.frame.origin.x + _container.frame.size.width, _container.frame.origin.y, _container.frame.size.width, _container.frame.size.height);
+    
+//    [_levelsVC willMoveToParentViewController:self];
+    [_container addSubview:_levelsVC.view];
+    [self addChildViewController:_levelsVC];
+    
+    [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _levelsVC.view.alpha = 1.;
+        _levelsVC.view.frame = _container.frame;
+    } completion:^(BOOL finished){
+        _ready = YES;
+    }];
+    
+    [_levelsVC didMoveToParentViewController:self];
+}
+
+- (void)removeLevelsVC{
+    _ready = NO;
+    
+    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        _levelsVC.view.alpha = 0.;
+        _levelsVC.view.frame = CGRectMake(_container.frame.origin.x + _container.frame.size.width, _container.frame.origin.y, _container.frame.size.width, _container.frame.size.height);
+    } completion:^(BOOL finished) {
+        [_levelsVC willMoveToParentViewController:nil];
+        [_levelsVC.view removeFromSuperview];
+        [_levelsVC removeFromParentViewController];
+        [_levelsVC didMoveToParentViewController:nil];
+        _levelsVC = nil;
+        
+        [_undoButton setTitle:@"UNDO" forState:UIControlStateNormal];
+        [_undoButton setTitle:@"UNDO" forState:UIControlStateHighlighted];
+        
+        _resetButton.hidden = NO;
+        _levelsButton.hidden = NO;
+        
+        _ready = YES;
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -173,8 +250,10 @@
 
 - (void)launchLevel:(int)level{
     _currentLevel = level;
-    
-    NSLog(@"LAUNCH LEVEL %d", level);
+//    NSLog(@"LAUNCH LEVEL %d", level);
+
+    [self removeLevelsVC];
+    [_gameVC startLevel:level];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -184,7 +263,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [self openLevelsVC];
+    [self openGameVC];
 }
 
 @end

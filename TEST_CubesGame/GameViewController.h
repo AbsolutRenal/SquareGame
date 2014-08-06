@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GameViewControllerDelegate <NSObject>
+
+
+
+@end
+
 @interface GameViewController : UIViewController
+
+- (instancetype)initWithCurrentLevel:(int)level;
+- (void)startLevel:(int)level;
+@property (strong, nonatomic) id<GameViewControllerDelegate> delegate;
 
 @end

@@ -8,7 +8,9 @@
 
 #import "GameViewController.h"
 
-@interface GameViewController ()
+@interface GameViewController (){
+    int _level;
+}
 
 @end
 
@@ -23,10 +25,26 @@
     return self;
 }
 
+- (instancetype)initWithCurrentLevel:(int)level{
+    self = [super init];
+    
+    if(self){
+        _level = level;
+    }
+    
+    return self;
+}
+
+- (void)startLevel:(int)level{
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.view.backgroundColor = [UIColor grayColor];
 }
 
 - (void)didReceiveMemoryWarning

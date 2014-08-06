@@ -113,6 +113,8 @@
 }
 
 - (void)configureView{
+    self.view.backgroundColor = [UIColor colorWithWhite:1. alpha:.8];
+    
     _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
     _titleView.backgroundColor = [UIColor turquoiseColor];
     [self.view addSubview:_titleView];
@@ -268,6 +270,11 @@
         
         [self.delegate launchLevel:_clickedLevel];
     }
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent{
+    if(parent == nil)
+        self.delegate = nil;
 }
 
 @end
