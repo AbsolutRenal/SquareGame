@@ -190,7 +190,8 @@
 - (void)removeLevelsVC{
     _ready = NO;
     
-    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [self.levelVC close];
+    [UIView animateWithDuration:.2 delay:0.2 options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.levelVC.view.alpha = 0.;
         self.levelVC.view.frame = CGRectMake(self.container.frame.origin.x + self.container.frame.size.width, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
     } completion:^(BOOL finished) {

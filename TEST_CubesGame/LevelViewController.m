@@ -127,9 +127,10 @@
 - (void)configureView{
     self.view.backgroundColor = [UIColor colorWithWhite:1. alpha:.8];
     
-    self.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    self.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, -80, self.view.frame.size.width, 80)];
     self.titleView.backgroundColor = [UIColor turquoiseColor];
     [self.view addSubview:self.titleView];
+    self.titleView.alpha = 0;
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.font = [UIFont boldFlatFontOfSize:18];
@@ -245,6 +246,22 @@
     [self populateFromLevel:_startLevel];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:.2 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.titleView.alpha = 1.;
+        self.titleView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.titleView.frame.size.height);
+    } completion:nil];
+}
+
+- (void)close{
+    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.titleView.alpha = 0.;
+        self.titleView.frame = CGRectMake(0, -80, self.view.frame.size.width, self.titleView.frame.size.height);
+    } completion:nil];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -252,7 +269,7 @@
 }
 
 - (void)selectLevel:(int)nb{
-    NSLog(@"SELECT LEVEL %d / CURRENT:%d", nb, _currentLevel);
+//    NSLog(@"SELECT LEVEL %d / CURRENT:%d", nb, _currentLevel);
     _clickedLevel = nb;
     
     if(nb != _currentLevel){
