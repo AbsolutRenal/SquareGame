@@ -197,7 +197,7 @@
         [self.levelVC willMoveToParentViewController:nil];
         
 //        NSLog(@"VIEW:%@ | SUPERVIEW:%@", self.levelVC.view, self.levelVC.view.superview);
-        [self.levelVC.view removeFromSuperview];
+//        [self.levelVC.view removeFromSuperview];
         [self.levelVC removeFromParentViewController];
         [self.levelVC didMoveToParentViewController:nil];
         self.levelVC = nil;

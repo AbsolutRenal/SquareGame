@@ -27,13 +27,15 @@
     int _nbColumns;
     int _nbRows;
     
-    NSMutableArray *_levelButtons;
-    
-    UIView *_titleView;
+//    NSMutableArray *_levelButtons;
+//    
+//    UIView *_titleView;
 }
 
 @property (strong, nonatomic)FUIButton *nextButton;
 @property (strong, nonatomic)FUIButton *prevButton;
+@property (strong, nonatomic)NSMutableArray *levelButtons;
+@property (strong, nonatomic)UIView *titleView;
 
 @end
 
@@ -67,7 +69,7 @@
         _nbLevels = nb;
         _lastLevel = last;
         _maxRows = 4;
-        _levelButtons = [[NSMutableArray alloc] init];
+        self.levelButtons = [[NSMutableArray alloc] init];
         _nbLevelByPage = 0;
         _itemWidth = 40.0;
         _itemHeight = 40.0;
@@ -86,8 +88,8 @@
 }
 
 - (void)clearLevelButtons{
-//    NSLog(@"########## NB ITEMS : %lu", (unsigned long)_levelButtons.count);
-//    for (LevelNumberView *button in _levelButtons) {
+//    NSLog(@"########## NB ITEMS : %lu", (unsigned long)self.levelButtons.count);
+//    for (LevelNumberView *button in self.levelButtons) {
 //        NSLog(@"...");
 //        NSLog(@"BUTTON %@", button);
 //        NSLog(@"LAYER %@", button.layer);
@@ -102,14 +104,14 @@
 //            NSLog(@"OUPPS");
     
     LevelNumberView *button;
-    while (_levelButtons.count > 0) {
-        button = (LevelNumberView *)_levelButtons[0];
+    while (self.levelButtons.count > 0) {
+        button = (LevelNumberView *)self.levelButtons[0];
         [button removeFromSuperview];
-        [_levelButtons removeObjectAtIndex:0];
+        [self.levelButtons removeObjectAtIndex:0];
     }
     
-//    _levelButtons = nil;
-//    _levelButtons = [[NSMutableArray alloc] init];
+//    self.levelButtons = nil;
+//    self.levelButtons = [[NSMutableArray alloc] init];
 }
 
 - (void)showNextLevels:(id)sender{
@@ -125,9 +127,9 @@
 - (void)configureView{
     self.view.backgroundColor = [UIColor colorWithWhite:1. alpha:.8];
     
-    _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
-    _titleView.backgroundColor = [UIColor turquoiseColor];
-    [self.view addSubview:_titleView];
+    self.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    self.titleView.backgroundColor = [UIColor turquoiseColor];
+    [self.view addSubview:self.titleView];
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.font = [UIFont boldFlatFontOfSize:18];
@@ -135,8 +137,8 @@
     titleLabel.textColor = [UIColor cloudsColor];
     titleLabel.backgroundColor = [UIColor colorWithWhite:0. alpha:0.];
     [titleLabel sizeToFit];
-    titleLabel.center = CGPointMake(_titleView.frame.size.width * .5, (_titleView.frame.size.height - 10) * .5  + 10);
-    [_titleView addSubview:titleLabel];
+    titleLabel.center = CGPointMake(self.titleView.frame.size.width * .5, (self.titleView.frame.size.height - 10) * .5  + 10);
+    [self.titleView addSubview:titleLabel];
     
     
     self.nextButton = [[FUIButton alloc] init];
@@ -204,12 +206,12 @@
             break;
         }
         
-        if(_levelButtons.count == _nbLevelByPage){
-            level = _levelButtons[i-startLevel];
+        if(self.levelButtons.count == _nbLevelByPage){
+            level = self.levelButtons[i-startLevel];
             level.hidden = NO;
         } else {
             level = [LevelNumberView presentInViewController:self];
-            [_levelButtons addObject:level];
+            [self.levelButtons addObject:level];
             level.frame = CGRectMake(_offset + ((i - startLevel) % _nbColumns) * (_itemWidth + _offset), _startOffsetY + (currentRow * (_itemHeight + _offset)), _itemWidth, _itemHeight);
         }
         
@@ -227,9 +229,9 @@
         }
     }
     
-    if((_nbLevels - startLevel) < _levelButtons.count){
+    if((_nbLevels - startLevel) < self.levelButtons.count){
         for(int j = _nbLevels - startLevel; j < _nbLevelByPage; j++){
-            ((LevelNumberView *)_levelButtons[j]).hidden = YES;
+            ((LevelNumberView *)self.levelButtons[j]).hidden = YES;
         }
     }
 }
@@ -283,8 +285,16 @@
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent{
-    if(parent == nil)
+    if(parent == nil){
+        for (LevelNumberView *button in self.levelButtons) {
+            [button removeFromSuperview];
+        }
+        self.levelButtons = nil;
+        [self.titleView removeFromSuperview];
+        self.titleView = nil;
+        [self.view removeFromSuperview];
         self.delegate = nil;
+    }
 }
 
 @end
