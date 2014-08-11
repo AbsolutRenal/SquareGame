@@ -7,23 +7,20 @@
 //
 
 #import "GameViewController.h"
+#import "GameDatas.h"
+
+const int MIN_GRID_WIDTH = 4;
+const int MIN_GRID_HEIGHT = 6;
 
 @interface GameViewController (){
     int _level;
 }
 
+@property (strong, nonatomic)NSDictionary *levelDatas;
+
 @end
 
 @implementation GameViewController
-
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
 
 - (id)init{
     self = [super init];
@@ -35,17 +32,38 @@
     return self;
 }
 
-- (instancetype)initWithCurrentLevel:(int)level{
+- (instancetype)initWithCurrentLevel:(int)level withDatas:(NSDictionary *)levelDatas{
     self = [super init];
     
+//    NSLog(@"COLOR RED: %@", [GameDatas colorWithName:@"dark"]);
+//    NSLog(@"STATIC %d", [GameDatas getInstance].currentLevel);
+    
     if(self){
-        _level = level;
+        self.levelDatas = levelDatas;
+        [self startLevel:level withDatas:levelDatas];
     }
     
     return self;
 }
 
-- (void)startLevel:(int)level{
+- (void)startLevel:(int)level withDatas:(NSDictionary *)levelDatas{
+    NSLog(@"CURRENT LEVEL:%d | REQUESTED LEVEL:%d", _level, level);
+    if(level != _level){
+        NSLog(@"START");
+        _level = level;
+        
+    } else {
+        NSLog(@"DON'T RESTART SAME LEVEL");
+        // DO NOTHING => SAME LEVEL AS CURRENT PLAYING
+    }
+}
+
+
+- (void)resetLevel{
+    
+}
+
+- (void)undoLastMove{
     
 }
 

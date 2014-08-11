@@ -10,14 +10,16 @@
 
 @protocol GameViewControllerDelegate <NSObject>
 
-
+- (void)completeLevel;
 
 @end
 
 @interface GameViewController : UIViewController
 
-- (instancetype)initWithCurrentLevel:(int)level;
-- (void)startLevel:(int)level;
+- (instancetype)initWithCurrentLevel:(int)level withDatas:(NSDictionary *)levelDatas;
+- (void)startLevel:(int)level withDatas:(NSDictionary *)levelDatas;
+- (void)resetLevel;
+- (void)undoLastMove;
 @property (strong, nonatomic) id<GameViewControllerDelegate> delegate;
 
 @end

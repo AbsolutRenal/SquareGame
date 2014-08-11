@@ -12,8 +12,12 @@
 
 @property (assign, nonatomic) int currentLevel;
 
-- (instancetype)init;
++ (UIColor *)colorWithName:(NSString *)colorStr;
++ (instancetype)getInstance;
+
+//- (instancetype)init;
 - (int)nbLevels;
 - (int)lastLevel;
+- (NSDictionary *)levelDatasForLevel:(int)level;
 
 @end

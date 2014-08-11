@@ -59,7 +59,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    datas = [[GameDatas alloc] init];
+//    datas = [[GameDatas alloc] init];
+    datas = [GameDatas getInstance];
     
     [self layoutDefaultView];
 }
@@ -120,7 +121,7 @@
 }
 
 - (void)resetLevel{
-    
+    [self.gameVC resetLevel];
 }
 
 - (void)undoAction{
@@ -131,6 +132,8 @@
     
     if(self.levelVC != nil)
        [self removeLevelsVC];
+    else
+        [self.gameVC undoLastMove];
 }
 
 - (FUIButton *)configureButtonWithTitle:(NSString *)title{
@@ -150,7 +153,7 @@
 }
 
 - (void)openGameVC{
-    self.gameVC = [[GameViewController alloc] initWithCurrentLevel:datas.currentLevel];
+    self.gameVC = [[GameViewController alloc] initWithCurrentLevel:datas.currentLevel withDatas:[datas levelDatasForLevel:datas.currentLevel]];
     self.gameVC.delegate = self;
     [self showViewController:self.gameVC];
 }
@@ -243,7 +246,7 @@
 //    NSLog(@"LAUNCH LEVEL %d", level);
 
     [self removeLevelsVC];
-    [self.gameVC startLevel:level];
+    [self.gameVC startLevel:level withDatas:[datas levelDatasForLevel:level]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -254,6 +257,10 @@
     [super viewDidAppear:animated];
     
     [self openGameVC];
+}
+
+- (void)completeLevel{
+    [self launchLevel:datas.currentLevel +1];
 }
 
 @end
