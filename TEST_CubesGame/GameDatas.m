@@ -8,8 +8,6 @@
 
 #import "GameDatas.h"
 
-static GameDatas *instance;
-
 @interface GameDatas(){
     NSString *_levelsFile;
     NSArray *_levelsDescription;
@@ -23,13 +21,17 @@ static GameDatas *instance;
 
 + (UIColor *)colorWithName:(NSString *)colorStr{
 
-    return [UIColor colorFromHexCode:[instance colorStrNamed:colorStr]];
+    return [UIColor colorFromHexCode:[[GameDatas getInstance] colorStrNamed:colorStr]];
 }
 
 + (instancetype)getInstance{
-    if(instance == nil){
-        instance = [[GameDatas alloc] init];
-    }
+    static GameDatas *instance;
+    static dispatch_once_t pred;
+    
+    dispatch_once(&pred, ^{
+        NSLog(@"CREATE INSTANCE");
+        instance = [[self alloc] init];
+    });
     
     return instance;
 }
