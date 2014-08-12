@@ -251,7 +251,7 @@
 
 - (void)launchLevel:(int)level{
     datas.currentLevel = level;
-//    NSLog(@"LAUNCH LEVEL %d", level);
+    NSLog(@"[MAIN_VIEW_CONTROLLER] -(void)launchLevel:%i", level);
 
     [self removeLevelsVC];
     [self.gameVC startLevel:level withDatas:[datas levelDatasForLevel:level]];
@@ -268,8 +268,10 @@
 }
 
 - (void)completeLevel{
+    NSLog(@"COMPLETE LEVEL");
+    
     [datas completeLevel];
-    [self launchLevel:datas.currentLevel +1];
+    [self launchLevel:datas.currentLevel];
 }
 
 @end

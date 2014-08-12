@@ -9,7 +9,7 @@
 #import "GameDatas.h"
 
 @interface GameDatas(){
-    NSDictionary *_levelsDataFile;
+    NSMutableDictionary *_levelsDataFile;
     NSString *_levelsFile;
     NSArray *_levelsDescription;
     NSDictionary *_colors;
@@ -43,7 +43,7 @@
     
     if(self){
         _lastLevel = -1;
-        _levelsDataFile = [NSDictionary dictionaryWithContentsOfFile:[self levelsFile]];
+        _levelsDataFile = [NSMutableDictionary dictionaryWithContentsOfFile:[self levelsFile]];
         _levelsDescription = _levelsDataFile[@"levels"];
         _colors = _levelsDataFile[@"colors"];
         _currentLevel = [self lastLevel];
@@ -102,21 +102,24 @@
 }
 
 - (void)completeLevel{
-    if(_currentLevel < (_nbLevels -1)){
-        if(_lastLevel == _currentLevel){
-            _lastLevel ++;
-        }
+    NSLog(@"[GAME_DATAS] -(void)completeLevel");
+    NSLog(@"--- LAST ++");
+    _lastLevel ++;
+    if(_currentLevel < ([self nbLevels] -1)){
         _currentLevel ++;
+        NSLog(@"--- CURRENT ++");
     }
     
     [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
 }
 
 + (BOOL)save{
+//    NSLog(@"[GAME_DATAS] +(BOOL)save");
     return [[GameDatas getInstance] saveData];
 }
 
 - (BOOL)saveData{
+//    NSLog(@"[GAME_DATAS] -(BOOL)saveData");
     return [_levelsDataFile writeToFile:[self levelsFile] atomically:YES];
 }
 

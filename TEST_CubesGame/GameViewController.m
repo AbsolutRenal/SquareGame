@@ -33,9 +33,17 @@ const int MAX_SQUARE_SIZE = 80;
     if(self){
         self.container = [[UIView alloc] init];
         [self.view addSubview:self.container];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(complete)];
+        [self.view addGestureRecognizer:tap];
     }
     
     return self;
+}
+
+- (void)complete{
+    NSLog(@"COMPLETE");
+    [self.delegate completeLevel];
 }
 
 - (instancetype)initWithCurrentLevel:(int)level withDatas:(NSDictionary *)levelDatas{
