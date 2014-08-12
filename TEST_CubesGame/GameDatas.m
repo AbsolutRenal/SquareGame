@@ -11,6 +11,7 @@
 @interface GameDatas(){
     NSMutableDictionary *_levelsDataFile;
     NSString *_levelsFile;
+    NSString *_levelsStoreFile;
     NSArray *_levelsDescription;
     NSDictionary *_colors;
     int _nbLevels;
@@ -62,11 +63,28 @@
     return _currentLevel;
 }
 
+- (NSString *)levelsStoreFile{
+    if(!_levelsStoreFile){
+        NSString *directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        _levelsStoreFile = [directory stringByAppendingPathComponent:@"levels.plist"];
+    }
+    
+    return _levelsStoreFile;
+}
+
 - (NSString *)levelsFile{
     if(!_levelsFile){
         _levelsFile = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
     }
-    return _levelsFile;
+    
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    if(![fileManager fileExistsAtPath:[self levelsStoreFile]]){
+        NSError *error;
+        [fileManager copyItemAtPath:_levelsFile toPath:_levelsStoreFile error:&error];
+//        NSLog(@"ERROR ?? %@", error);
+    }
+    return _levelsStoreFile;
 }
 
 - (int)lastLevel{
@@ -78,7 +96,8 @@
     BOOL completed;
     
     for (i = 0; i < nb; i++) {
-//        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
+        NSLog(@"i:%i", i);
+        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
 //        completed = [_levelsDescription[i][@"completed"]  isEqual:@1];
         completed = [_levelsDescription[i][@"completed"]  boolValue];
         if(!completed){
@@ -86,8 +105,8 @@
             return i;
         }
     }
-    _lastLevel = i;
-    return i;
+    _lastLevel = i-1;
+    return _lastLevel;
 }
 
 - (int)nbLevels{
@@ -103,24 +122,26 @@
 
 - (void)completeLevel{
     NSLog(@"[GAME_DATAS] -(void)completeLevel");
+    
+    [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
+    //    NSLog(@"DATAS %@", _levelsDataFile[@"levels"][_currentLevel][@"completed"]);
+    
     NSLog(@"--- LAST ++");
     _lastLevel ++;
     if(_currentLevel < ([self nbLevels] -1)){
         _currentLevel ++;
         NSLog(@"--- CURRENT ++");
     }
-    
-    [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
 }
 
 + (BOOL)save{
-//    NSLog(@"[GAME_DATAS] +(BOOL)save");
+    NSLog(@"[GAME_DATAS] +(BOOL)save");
     return [[GameDatas getInstance] saveData];
 }
 
 - (BOOL)saveData{
-//    NSLog(@"[GAME_DATAS] -(BOOL)saveData");
-    return [_levelsDataFile writeToFile:[self levelsFile] atomically:YES];
+    NSLog(@"[GAME_DATAS] -(BOOL)saveData");
+    return [_levelsDataFile writeToFile:_levelsStoreFile atomically:YES];
 }
 
 @end

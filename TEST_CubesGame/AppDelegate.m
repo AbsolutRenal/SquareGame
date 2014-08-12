@@ -42,7 +42,7 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     NSLog(@"----- DID ENTER BACKGROUND");
-    [GameDatas save];
+    NSLog(@"SAVE DATAS %i", [GameDatas save]);
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
