@@ -30,6 +30,10 @@
 		9B3D7238198FC77D001D45FC /* UITabBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D721F198FC77D001D45FC /* UITabBar+FlatUI.m */; };
 		9B3D7239198FC77D001D45FC /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D7221198FC77D001D45FC /* UITableViewCell+FlatUI.m */; };
 		9B3D723A198FC77D001D45FC /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D7223198FC77D001D45FC /* UIToolbar+FlatUI.m */; };
+		9B43C7E019991BF60088A8E5 /* GameDisplayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B43C7DF19991BF60088A8E5 /* GameDisplayItem.m */; };
+		9B43C7E3199A140D0088A8E5 /* GameDisplaySquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B43C7E2199A140D0088A8E5 /* GameDisplaySquare.m */; };
+		9B43C7E6199A141C0088A8E5 /* GameDisplayArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B43C7E5199A141C0088A8E5 /* GameDisplayArrow.m */; };
+		9B43C7E9199A142A0088A8E5 /* GameDisplayDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B43C7E8199A142A0088A8E5 /* GameDisplayDot.m */; };
 		9B6CEFE3198E942D004BC1E8 /* LevelNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B6CEFE2198E942D004BC1E8 /* LevelNumberView.xib */; };
 		9B9D1C7C19926E0B00D9AA35 /* GameDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D1C7B19926E0B00D9AA35 /* GameDatas.m */; };
 		9BCEDD6F198BCABB005FDE5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCEDD6E198BCABB005FDE5C /* Foundation.framework */; };
@@ -154,6 +158,14 @@
 		9B3D7264198FCB85001D45FC /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
 		9B3D7265198FCB85001D45FC /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
 		9B3D7266198FCB85001D45FC /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
+		9B43C7DE19991BF60088A8E5 /* GameDisplayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDisplayItem.h; sourceTree = "<group>"; };
+		9B43C7DF19991BF60088A8E5 /* GameDisplayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDisplayItem.m; sourceTree = "<group>"; };
+		9B43C7E1199A140D0088A8E5 /* GameDisplaySquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDisplaySquare.h; sourceTree = "<group>"; };
+		9B43C7E2199A140D0088A8E5 /* GameDisplaySquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDisplaySquare.m; sourceTree = "<group>"; };
+		9B43C7E4199A141C0088A8E5 /* GameDisplayArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDisplayArrow.h; sourceTree = "<group>"; };
+		9B43C7E5199A141C0088A8E5 /* GameDisplayArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDisplayArrow.m; sourceTree = "<group>"; };
+		9B43C7E7199A142A0088A8E5 /* GameDisplayDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDisplayDot.h; sourceTree = "<group>"; };
+		9B43C7E8199A142A0088A8E5 /* GameDisplayDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDisplayDot.m; sourceTree = "<group>"; };
 		9B6CEFE2198E942D004BC1E8 /* LevelNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelNumberView.xib; sourceTree = "<group>"; };
 		9B9D1C7A19926E0B00D9AA35 /* GameDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDatas.h; sourceTree = "<group>"; };
 		9B9D1C7B19926E0B00D9AA35 /* GameDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDatas.m; sourceTree = "<group>"; };
@@ -365,6 +377,14 @@
 				9BCEDD9E198BCAE6005FDE5C /* MainViewController.m */,
 				9B9D1C7A19926E0B00D9AA35 /* GameDatas.h */,
 				9B9D1C7B19926E0B00D9AA35 /* GameDatas.m */,
+				9B43C7DE19991BF60088A8E5 /* GameDisplayItem.h */,
+				9B43C7DF19991BF60088A8E5 /* GameDisplayItem.m */,
+				9B43C7E1199A140D0088A8E5 /* GameDisplaySquare.h */,
+				9B43C7E2199A140D0088A8E5 /* GameDisplaySquare.m */,
+				9B43C7E4199A141C0088A8E5 /* GameDisplayArrow.h */,
+				9B43C7E5199A141C0088A8E5 /* GameDisplayArrow.m */,
+				9B43C7E7199A142A0088A8E5 /* GameDisplayDot.h */,
+				9B43C7E8199A142A0088A8E5 /* GameDisplayDot.m */,
 				9BCEDD80198BCABB005FDE5C /* Images.xcassets */,
 				9BCEDD75198BCABB005FDE5C /* Supporting Files */,
 			);
@@ -532,6 +552,7 @@
 			files = (
 				9B3D7226198FC77D001D45FC /* FUICellBackgroundView.m in Sources */,
 				9B3D7224198FC77D001D45FC /* FUIAlertView.m in Sources */,
+				9B43C7E6199A141C0088A8E5 /* GameDisplayArrow.m in Sources */,
 				9BCEDDB8198BD43E005FDE5C /* GameViewController.m in Sources */,
 				9B3D722F198FC77D001D45FC /* UIBarButtonItem+FlatUI.m in Sources */,
 				9B3D722A198FC77D001D45FC /* FUITextField.m in Sources */,
@@ -543,11 +564,14 @@
 				9BCEDD7B198BCABB005FDE5C /* main.m in Sources */,
 				9B9D1C7C19926E0B00D9AA35 /* GameDatas.m in Sources */,
 				9B3D7236198FC77D001D45FC /* UISlider+FlatUI.m in Sources */,
+				9B43C7E9199A142A0088A8E5 /* GameDisplayDot.m in Sources */,
 				9BCEDDBC198BDA0B005FDE5C /* LevelNumberView.m in Sources */,
 				9B3D7239198FC77D001D45FC /* UITableViewCell+FlatUI.m in Sources */,
 				9B3D7238198FC77D001D45FC /* UITabBar+FlatUI.m in Sources */,
 				9B3D7232198FC77D001D45FC /* UIImage+FlatUI.m in Sources */,
 				9B3D7235198FC77D001D45FC /* UIProgressView+FlatUI.m in Sources */,
+				9B43C7E019991BF60088A8E5 /* GameDisplayItem.m in Sources */,
+				9B43C7E3199A140D0088A8E5 /* GameDisplaySquare.m in Sources */,
 				9B3D7237198FC77D001D45FC /* UIStepper+FlatUI.m in Sources */,
 				9B3D7229198FC77D001D45FC /* FUISwitch.m in Sources */,
 				9B3D7234198FC77D001D45FC /* UIPopoverController+FlatUI.m in Sources */,

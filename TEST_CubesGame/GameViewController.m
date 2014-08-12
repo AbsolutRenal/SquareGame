@@ -9,14 +9,19 @@
 #import "GameViewController.h"
 #import "GameDatas.h"
 
-const int MIN_GRID_WIDTH = 4;
-const int MIN_GRID_HEIGHT = 6;
+const int MAX_SQUARE_SIZE = 80;
+
 
 @interface GameViewController (){
     int _level;
+    int _squareSize;
+    int _nbColumns;
+    int _nbRows;
 }
 
+@property (strong, nonatomic)NSMutableArray *moves;
 @property (strong, nonatomic)NSDictionary *levelDatas;
+@property (strong, nonatomic)UIView *container;
 
 @end
 
@@ -26,21 +31,23 @@ const int MIN_GRID_HEIGHT = 6;
     self = [super init];
     
     if(self){
-        
+        self.container = [[UIView alloc] init];
+        [self.view addSubview:self.container];
     }
     
     return self;
 }
 
 - (instancetype)initWithCurrentLevel:(int)level withDatas:(NSDictionary *)levelDatas{
-    self = [super init];
+    self = [self init];
     
 //    NSLog(@"COLOR RED: %@", [GameDatas colorWithName:@"dark"]);
 //    NSLog(@"STATIC %d", [GameDatas getInstance].currentLevel);
     
     if(self){
-        self.levelDatas = levelDatas;
-        [self startLevel:level withDatas:levelDatas];
+        _level = level;
+        _levelDatas = levelDatas;
+//        [self startLevel:level withDatas:levelDatas];
     }
     
     return self;
@@ -51,11 +58,29 @@ const int MIN_GRID_HEIGHT = 6;
     if(level != _level){
         NSLog(@"START");
         _level = level;
+        self.levelDatas = levelDatas;
         
+        [self configureLevel];
     } else {
         NSLog(@"DON'T RESTART SAME LEVEL");
         // DO NOTHING => SAME LEVEL AS CURRENT PLAYING
     }
+}
+
+- (void)configureLevel{
+    NSLog(@"HEIGHT CONFIGURE: %f", self.view.frame.size.height);
+    
+    _nbColumns = [_levelDatas[@"matrix"][@"columns"] intValue];
+    _nbRows = [_levelDatas[@"matrix"][@"rows"] intValue];
+    
+//    NSLog(@"ROWS: %i | COLUMNS:%i", _nbRows, _nbColumns);
+    _squareSize = MIN(MIN(self.view.frame.size.width / _nbRows, self.view.frame.size.height / _nbColumns), MAX_SQUARE_SIZE);
+    
+    
+    self.container.frame = CGRectMake(0, 0, _nbColumns * _squareSize, _nbRows * _squareSize);
+    self.container.center = self.view.center;
+    self.container.backgroundColor = [UIColor lightGrayColor];
+    
 }
 
 
@@ -71,8 +96,14 @@ const int MIN_GRID_HEIGHT = 6;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
     
-//    self.view.backgroundColor = [UIColor grayColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self configureLevel];
 }
 
 - (void)didReceiveMemoryWarning

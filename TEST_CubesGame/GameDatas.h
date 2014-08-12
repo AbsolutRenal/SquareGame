@@ -14,10 +14,12 @@
 
 + (UIColor *)colorWithName:(NSString *)colorStr;
 + (instancetype)getInstance;
++ (BOOL)save;
 
 //- (instancetype)init;
 - (int)nbLevels;
 - (int)lastLevel;
 - (NSDictionary *)levelDatasForLevel:(int)level;
+- (void)completeLevel;
 
 @end

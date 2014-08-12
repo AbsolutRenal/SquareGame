@@ -164,6 +164,10 @@
     
     _ready = NO;
     
+    [UIView animateWithDuration:.2 animations:^{
+        self.gameVC.view.alpha = 0;
+    }];
+    
     [_undoButton setTitle:@"BACK" forState:UIControlStateNormal];
     [_undoButton setTitle:@"BACK" forState:UIControlStateHighlighted];
     
@@ -213,6 +217,10 @@
         _levelsButton.hidden = NO;
         
         _ready = YES;
+        
+        [UIView animateWithDuration:.2 animations:^{
+            self.gameVC.view.alpha = 1;
+        }];
     }];
     
 }
@@ -260,6 +268,7 @@
 }
 
 - (void)completeLevel{
+    [datas completeLevel];
     [self launchLevel:datas.currentLevel +1];
 }
 

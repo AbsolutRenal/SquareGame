@@ -9,10 +9,12 @@
 #import "GameDatas.h"
 
 @interface GameDatas(){
+    NSDictionary *_levelsDataFile;
     NSString *_levelsFile;
     NSArray *_levelsDescription;
     NSDictionary *_colors;
     int _nbLevels;
+    int _lastLevel;
 }
 
 @end
@@ -29,7 +31,7 @@
     static dispatch_once_t pred;
     
     dispatch_once(&pred, ^{
-        NSLog(@"CREATE INSTANCE");
+//        NSLog(@"CREATE INSTANCE");
         instance = [[self alloc] init];
     });
     
@@ -38,12 +40,12 @@
 
 - (instancetype)init{
     self = [super init];
-//    instance = self;
     
     if(self){
-        NSDictionary *tmpDict = [NSDictionary dictionaryWithContentsOfFile:[self levelsFile]];
-        _levelsDescription = tmpDict[@"levels"];
-        _colors = tmpDict[@"colors"];
+        _lastLevel = -1;
+        _levelsDataFile = [NSDictionary dictionaryWithContentsOfFile:[self levelsFile]];
+        _levelsDescription = _levelsDataFile[@"levels"];
+        _colors = _levelsDataFile[@"colors"];
         _currentLevel = [self lastLevel];
         
         _nbLevels = 0;
@@ -68,17 +70,23 @@
 }
 
 - (int)lastLevel{
+    if(_lastLevel != -1)
+        return _lastLevel;
+    
     int nb = (int)_levelsDescription.count;
     int i;
     BOOL completed;
     
     for (i = 0; i < nb; i++) {
-        //        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
-        completed = [_levelsDescription[i][@"completed"]  isEqual:@1];
+//        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
+//        completed = [_levelsDescription[i][@"completed"]  isEqual:@1];
+        completed = [_levelsDescription[i][@"completed"]  boolValue];
         if(!completed){
+            _lastLevel = i;
             return i;
         }
     }
+    _lastLevel = i;
     return i;
 }
 
@@ -91,6 +99,25 @@
 
 - (NSDictionary *)levelDatasForLevel:(int)level{
     return _levelsDescription[level];
+}
+
+- (void)completeLevel{
+    if(_currentLevel < (_nbLevels -1)){
+        if(_lastLevel == _currentLevel){
+            _lastLevel ++;
+        }
+        _currentLevel ++;
+    }
+    
+    [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
+}
+
++ (BOOL)save{
+    return [[GameDatas getInstance] saveData];
+}
+
+- (BOOL)saveData{
+    return [_levelsDataFile writeToFile:[self levelsFile] atomically:YES];
 }
 
 @end
