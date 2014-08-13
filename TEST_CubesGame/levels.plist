@@ -138,7 +138,7 @@
 						<key>type</key>
 						<string>dot</string>
 						<key>position</key>
-						<string>0,2</string>
+						<string>2,0</string>
 						<key>color</key>
 						<string>red</string>
 					</dict>

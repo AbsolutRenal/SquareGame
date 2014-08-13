@@ -19,3 +19,4 @@
 #import "UIColor+FlatUI.h"
 #import "UIFont+FlatUI.h"
 #import "FUIAlertView.h"
+#import "objswitch.h"

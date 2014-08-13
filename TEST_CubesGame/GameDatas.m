@@ -124,7 +124,7 @@
     NSLog(@"[GAME_DATAS] -(void)completeLevel");
     
     [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
-    //    NSLog(@"DATAS %@", _levelsDataFile[@"levels"][_currentLevel][@"completed"]);
+//    NSLog(@"DATAS %@", _levelsDataFile[@"levels"][_currentLevel][@"completed"]);
     
     NSLog(@"--- LAST ++");
     _lastLevel ++;

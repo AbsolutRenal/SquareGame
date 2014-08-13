@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameDisplaySquare.h"
+#import "GameDisplayDot.h"
+#import "GameDisplayArrow.h"
 
 @protocol GameViewControllerDelegate <NSObject>
 
@@ -14,12 +17,13 @@
 
 @end
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController<GameDisplaySquareProtocol>
 
 - (instancetype)initWithCurrentLevel:(int)level withDatas:(NSDictionary *)levelDatas;
 - (void)startLevel:(int)level withDatas:(NSDictionary *)levelDatas;
 - (void)resetLevel;
 - (void)undoLastMove;
+
 @property (strong, nonatomic) id<GameViewControllerDelegate> delegate;
 
 @end

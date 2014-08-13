@@ -6,10 +6,22 @@
 //  Copyright (c) 2014 AbsolutRenal. All rights reserved.
 //
 
-#import "GameDisplayItem.h"
+#import "GameDisplayArrow.h"
 
-@interface GameDisplaySquare : GameDisplayItem
+@protocol GameDisplaySquareProtocol <NSObject>
 
+@required
+- (void)squareMoved:(GameDisplayItem *)square;
+
+@end
+
+@interface GameDisplaySquare : GameDisplayArrow
+
+@property (strong, nonatomic)id<GameDisplaySquareProtocol> delegate;
 @property (assign, nonatomic)BOOL isRight;
+@property (assign, nonatomic)int xSpeed;
+@property (assign, nonatomic)int ySpeed;
+
+- (void)rotateArrowAnimated:(BOOL)animated;
 
 @end

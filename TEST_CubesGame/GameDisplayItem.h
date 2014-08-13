@@ -14,5 +14,8 @@
 @property (strong, nonatomic)NSString *color;
 @property (strong, nonatomic)NSString *type;
 @property (assign, nonatomic)int squareSize;
+@property (assign, nonatomic)int posX;
+@property (assign, nonatomic)int posY;
+@property (strong, nonatomic)UIColor *itemColor;
 
 @end

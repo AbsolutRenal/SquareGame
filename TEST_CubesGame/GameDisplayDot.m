@@ -26,6 +26,20 @@
 {
     // Drawing code
 }
-*/
+ */
+
+- (void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
+    
+    NSLog(@"DRAW DOT");
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextBeginPath(ctx);
+    
+    CGContextAddEllipseInRect(ctx, CGRectMake(20, 20, self.squareSize - 40, self.squareSize - 40));
+    
+    CGContextClosePath(ctx);
+    CGContextSetFillColorWithColor(ctx, self.itemColor.CGColor);
+    CGContextDrawPath(ctx, kCGPathFill);
+}
 
 @end
