@@ -50,7 +50,7 @@
     CGContextDrawPath(ctx, kCGPathFill);
     
     if(!self.arrow){
-        NSLog(@"ADD ARROW");
+//        NSLog(@"ADD ARROW");
         self.arrow = [[ArrowView alloc] init];
         self.arrow.bounds = CGRectMake(0, 0, self.squareSize / 8, self.squareSize / 4);
         [self addSubview:self.arrow];

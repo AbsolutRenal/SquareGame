@@ -96,9 +96,9 @@
     BOOL completed;
     
     for (i = 0; i < nb; i++) {
-        NSLog(@"i:%i", i);
-        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
-//        completed = [_levelsDescription[i][@"completed"]  isEqual:@1];
+//        NSLog(@"i:%i", i);
+//        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
+        
         completed = [_levelsDescription[i][@"completed"]  boolValue];
         if(!completed){
             _lastLevel = i;
@@ -121,26 +121,26 @@
 }
 
 - (void)completeLevel{
-    NSLog(@"[GAME_DATAS] -(void)completeLevel");
+//    NSLog(@"[GAME_DATAS] -(void)completeLevel");
     
     [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
 //    NSLog(@"DATAS %@", _levelsDataFile[@"levels"][_currentLevel][@"completed"]);
     
-    NSLog(@"--- LAST ++");
+//    NSLog(@"--- LAST ++");
     _lastLevel ++;
     if(_currentLevel < ([self nbLevels] -1)){
         _currentLevel ++;
-        NSLog(@"--- CURRENT ++");
+//        NSLog(@"--- CURRENT ++");
     }
 }
 
 + (BOOL)save{
-    NSLog(@"[GAME_DATAS] +(BOOL)save");
+//    NSLog(@"[GAME_DATAS] +(BOOL)save");
     return [[GameDatas getInstance] saveData];
 }
 
 - (BOOL)saveData{
-    NSLog(@"[GAME_DATAS] -(BOOL)saveData");
+//    NSLog(@"[GAME_DATAS] -(BOOL)saveData");
     return [_levelsDataFile writeToFile:_levelsStoreFile atomically:YES];
 }
 
