@@ -37,18 +37,9 @@ const int MAX_SQUARE_SIZE = 80;
         [self.view addSubview:self.container];
         
         self.moves = [[NSMutableArray alloc] init];
-        
-        // TEST PASSAGE D'UN NIVEAU AU SUIVANT
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(complete)];
-//        [self.view addGestureRecognizer:tap];
     }
     
     return self;
-}
-
-- (void)complete{
-//    NSLog(@"COMPLETE");
-    [self.delegate completeLevel];
 }
 
 - (instancetype)initWithCurrentLevel:(int)level withDatas:(NSDictionary *)levelDatas{
@@ -161,6 +152,7 @@ const int MAX_SQUARE_SIZE = 80;
         [self.container.subviews[0] removeFromSuperview];
     }
     [self.gameItems removeAllObjects];
+    [self.moves removeAllObjects];
 }
 
 
@@ -271,7 +263,6 @@ const int MAX_SQUARE_SIZE = 80;
 }
 
 - (void)showEndText{
-    
     
     [self.delegate completeLevel];
 }
