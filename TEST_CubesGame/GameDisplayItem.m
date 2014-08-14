@@ -9,7 +9,9 @@
 #import "GameDisplayItem.h"
 #import "GameDatas.h"
 
-@interface GameDisplayItem()
+@interface GameDisplayItem(){
+    NSString *_position;
+}
 @end
 
 @implementation GameDisplayItem
@@ -38,6 +40,11 @@
     NSArray *pos = [_position  componentsSeparatedByString:@","];
     _posX = [pos[0] intValue];
     _posY = [pos[1] intValue];
+}
+
+- (NSString *)position{
+    
+    return _position = [NSString stringWithFormat:@"%i,%i", _posX, _posY];
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview{

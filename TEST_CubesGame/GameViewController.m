@@ -37,8 +37,8 @@ const int MAX_SQUARE_SIZE = 80;
         [self.view addSubview:self.container];
         
         // TEST PASSAGE D'UN NIVEAU AU SUIVANT
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(complete)];
-        [self.view addGestureRecognizer:tap];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(complete)];
+//        [self.view addGestureRecognizer:tap];
     }
     
     return self;
@@ -125,7 +125,7 @@ const int MAX_SQUARE_SIZE = 80;
         endswitch
         
         if(item){
-            item.position = _levelDatas[@"matrix"][@"items"][i][@"position"];
+            [item setPosition:_levelDatas[@"matrix"][@"items"][i][@"position"]];
             item.color = _levelDatas[@"matrix"][@"items"][i][@"color"];
             item.type = type;
             item.squareSize = _squareSize;
@@ -198,7 +198,37 @@ const int MAX_SQUARE_SIZE = 80;
 }
 
 - (void)squareMoved:(GameDisplayItem *)square{
+//    NSLog(@"SQUARE MOVED");
+    [self.container bringSubviewToFront:square];
     
+    BOOL completed = YES;
+    
+    for (GameDisplayItem *item in self.gameItems) {
+        if(item == square)
+            continue;
+        
+        if([[item position] isEqualToString:[square position]]){
+            ((GameDisplaySquare *)square).isRight = [item.color isEqualToString:square.color];
+            
+            completed &= ((GameDisplaySquare *)square).isRight;
+            
+            
+            if([item.type isEqualToString:@"square"]){
+                item.posX += ((GameDisplaySquare *)square).xSpeed;
+                item.posY += ((GameDisplaySquare *)square).ySpeed;
+                [((GameDisplaySquare *)item) updatePosition];
+                
+            } else if([item.type isEqualToString:@"arrow"]){
+                ((GameDisplaySquare *)square).direction = ((GameDisplayArrow *)item).direction;
+                [((GameDisplaySquare *)square) rotateArrowAnimated:YES];
+            }
+        } else {
+            completed = NO;
+        }
+    }
+    
+    if(completed)
+       [self.delegate completeLevel];
 }
 
 @end

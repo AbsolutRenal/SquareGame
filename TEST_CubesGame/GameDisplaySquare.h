@@ -23,5 +23,6 @@
 @property (assign, nonatomic)int ySpeed;
 
 - (void)rotateArrowAnimated:(BOOL)animated;
+- (void)updatePosition;
 
 @end

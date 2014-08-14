@@ -9,8 +9,12 @@
 #import "GameDisplaySquare.h"
 #import "ArrowView.h"
 
-@interface GameDisplaySquare()
+@interface GameDisplaySquare(){
+    BOOL _ready;
+}
+
 @property (strong, nonatomic)ArrowView *arrow;
+@property (strong, nonatomic)UITapGestureRecognizer *tap;
 @end
 
 @implementation GameDisplaySquare
@@ -20,8 +24,36 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
+        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(move)];
+        [self addGestureRecognizer:self.tap];
+        
+        _ready = YES;
     }
     return self;
+}
+
+- (void)move{
+//    NSLog(@"MOVE");
+    
+    if(!_ready)
+        return;
+    
+    _ready = NO;
+    
+    self.posX += _xSpeed;
+    self.posY += _ySpeed;
+    
+    [self updatePosition];
+}
+
+- (void)updatePosition{
+    [UIView animateWithDuration:.3 animations:^{
+        self.frame = CGRectMake(self.posX * self.squareSize, self.posY * self.squareSize, self.squareSize, self.squareSize);
+    } completion:^(BOOL finished) {
+        _ready = YES;
+    }];
+    [self.delegate squareMoved:self];
 }
 
 /*
@@ -108,6 +140,7 @@
         [self.arrow removeFromSuperview];
         self.arrow = nil;
         self.delegate = nil;
+        [self removeGestureRecognizer:self.tap];
     }
 }
 
