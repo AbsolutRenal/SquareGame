@@ -136,11 +136,24 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
+    [self storePositions];
+    
     
     [UIView animateWithDuration:.3 animations:^{
         self.container.alpha = 1.;
     }];
     
+}
+
+- (void)storePositions{
+    NSMutableDictionary *currentPositions = [[NSMutableDictionary alloc] init];
+    for (GameDisplaySquare *item in self.gameItems) {
+        if([item isKindOfClass:[GameDisplaySquare class]]){
+            [currentPositions setValue:item forKey:item.position];
+        }
+    }
+    
+    [self.moves addObject:currentPositions];
 }
 
 - (void)emptyContainer{
@@ -159,10 +172,21 @@ const int MAX_SQUARE_SIZE = 80;
     }
     
     [self.moves removeAllObjects];
+    [self storePositions];
 }
 
 - (void)undoLastMove{
-    
+    if(self.moves.count > 1){
+        [self.moves removeLastObject];
+        NSDictionary *lastPositions = (NSDictionary *)[self.moves lastObject];
+        [lastPositions enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            [(GameDisplaySquare *)obj moveToPosition:(NSString *)key];
+        }];
+        
+//        for (NSString *position in lastPositions keyEnumerator) {
+//            
+//        }
+    }
 }
 
 - (void)viewDidLoad
@@ -223,6 +247,8 @@ const int MAX_SQUARE_SIZE = 80;
     
     if([self isCompleted]){
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
+    } else {
+        [self storePositions];
     }
 }
 

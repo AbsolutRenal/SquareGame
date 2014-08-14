@@ -25,5 +25,6 @@
 - (void)rotateArrowAnimated:(BOOL)animated;
 - (void)updatePosition;
 - (void)resetPosition;
+- (void)moveToPosition:(NSString *)position;
 
 @end

@@ -52,7 +52,19 @@
     self.frame = CGRectMake(self.posX * self.squareSize, self.posY * self.squareSize, self.squareSize, self.squareSize);
 }
 
+- (void)moveToPosition:(NSString *)position{
+    [self setPosition:position];
+    
+    _ready = NO;
+    [UIView animateWithDuration:.3 animations:^{
+        self.frame = CGRectMake(self.posX * self.squareSize, self.posY * self.squareSize, self.squareSize, self.squareSize);
+    } completion:^(BOOL finished) {
+        _ready = YES;
+    }];
+}
+
 - (void)updatePosition{
+    _ready = NO;
     [UIView animateWithDuration:.3 animations:^{
         self.frame = CGRectMake(self.posX * self.squareSize, self.posY * self.squareSize, self.squareSize, self.squareSize);
     } completion:^(BOOL finished) {
