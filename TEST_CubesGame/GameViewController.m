@@ -130,6 +130,9 @@ const int MAX_SQUARE_SIZE = 80;
             
             [self.gameItems addObject:item];
             [self.container addSubview:item];
+            
+            if(![type isEqualToString:@"square"])
+                [self.container sendSubviewToBack:item];
         }
     }
     

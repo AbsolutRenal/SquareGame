@@ -10,6 +10,8 @@
 		<string>#2980b9</string>
 		<key>red</key>
 		<string>#c0392b</string>
+		<key>orange</key>
+		<string>#e67e22</string>
 		<key>arrow</key>
 		<string>#5a5957</string>
 	</dict>
@@ -486,7 +488,76 @@
 				<integer>3</integer>
 			</dict>
 			<key>end</key>
-			<string>Luckily, it's not exactly an AAA type of game, so I don't have to feed you empty promises</string>
+			<string>I really don't want you to get the wrong impression of what's awaiting ahead</string>
+		</dict>
+		
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,2</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,0</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,0</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,2</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>3</integer>
+			</dict>
+			<key>end</key>
+			<string>I really don't want you to get the wrong impression of what's awaiting ahead</string>
 		</dict>
 	</array>
 </dict>
