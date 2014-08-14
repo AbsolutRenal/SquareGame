@@ -43,7 +43,6 @@
 }
 
 - (NSString *)position{
-    
     return _position = [NSString stringWithFormat:@"%i,%i", _posX, _posY];
 }
 

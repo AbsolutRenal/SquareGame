@@ -201,16 +201,21 @@ const int MAX_SQUARE_SIZE = 80;
 //    NSLog(@"SQUARE MOVED");
     [self.container bringSubviewToFront:square];
     
-    BOOL completed = YES;
+//    BOOL completed = YES;
+    if(((GameDisplaySquare *)square).isRight)
+        ((GameDisplaySquare *)square).isRight = NO;
     
     for (GameDisplayItem *item in self.gameItems) {
         if(item == square)
             continue;
         
         if([[item position] isEqualToString:[square position]]){
-            ((GameDisplaySquare *)square).isRight = [item.color isEqualToString:square.color];
+            if([item.type isEqualToString:@"dot"] && [item.color isEqualToString:square.color]){
+                ((GameDisplaySquare *)square).isRight = YES;
+            }
+//            ((GameDisplaySquare *)square).isRight = [item.color isEqualToString:square.color];
             
-            completed &= ((GameDisplaySquare *)square).isRight;
+//            completed &= ((GameDisplaySquare *)square).isRight;
             
             
             if([item.type isEqualToString:@"square"]){
@@ -222,13 +227,39 @@ const int MAX_SQUARE_SIZE = 80;
                 ((GameDisplaySquare *)square).direction = ((GameDisplayArrow *)item).direction;
                 [((GameDisplaySquare *)square) rotateArrowAnimated:YES];
             }
-        } else {
-            completed = NO;
+//        } else {
+//            completed = NO;
         }
     }
     
-    if(completed)
-       [self.delegate completeLevel];
+    if([self isCompleted]){
+        [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
+//       [self.delegate completeLevel];
+    }
+}
+
+- (BOOL)isCompleted{
+    for (GameDisplayItem *item in self.gameItems) {
+//        NSLog(@"--- isKindOfClass:%i", [item isKindOfClass:[GameDisplaySquare class]]);
+        
+        if([item isKindOfClass:[GameDisplaySquare class]]){
+//            NSLog(@"----- isRight:%i", ((GameDisplaySquare *)item).isRight);
+
+            
+            if(((GameDisplaySquare *)item).isRight)
+                continue;
+            else
+                return NO;
+        }
+    }
+    
+    return YES;
+}
+
+- (void)showEndText{
+    
+    
+    [self.delegate completeLevel];
 }
 
 @end
