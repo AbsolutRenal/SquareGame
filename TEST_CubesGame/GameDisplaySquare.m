@@ -25,7 +25,7 @@
     if (self) {
         // Initialization code
         
-        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(move)];
+        self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touched)];
         [self addGestureRecognizer:self.tap];
         
         _ready = YES;
@@ -33,8 +33,8 @@
     return self;
 }
 
-- (void)move{
-//    NSLog(@"MOVE");
+- (void)touched{
+//    NSLog(@"TOUCHED");
     
     if(!_ready)
         return;
@@ -47,6 +47,15 @@
     [self updatePosition];
 }
 
+- (void)move{
+    _ready = NO;
+    [UIView animateWithDuration:.3 animations:^{
+        self.frame = [self getFrame];
+    } completion:^(BOOL finished) {
+        _ready = YES;
+    }];
+}
+
 - (void)resetPosition{
     [self setPosition:self.initialPosition];
     self.frame = [self getFrame];
@@ -57,22 +66,11 @@
 
 - (void)moveToPosition:(NSString *)position{
     [self setPosition:position];
-    
-    _ready = NO;
-    [UIView animateWithDuration:.3 animations:^{
-        self.frame = [self getFrame];
-    } completion:^(BOOL finished) {
-        _ready = YES;
-    }];
+    [self move];
 }
 
 - (void)updatePosition{
-    _ready = NO;
-    [UIView animateWithDuration:.3 animations:^{
-        self.frame = [self getFrame];
-    } completion:^(BOOL finished) {
-        _ready = YES;
-    }];
+    [self move];
     [self.delegate squareMoved:self];
 }
 
