@@ -12,16 +12,28 @@
     BOOL _ready;
 }
 
+@property (strong, nonatomic)UIColor *color;
+
 @end
 
 @implementation ArrowView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+//- (id)initWithFrame:(CGRect)frame
+//{
+//    self = [super initWithFrame:frame];
+//    if (self) {
+//        // Initialization code
+//        self.backgroundColor = [UIColor colorWithWhite:1. alpha:0.];
+//    }
+//    return self;
+//}
+
+- (instancetype)initWithColor:(UIColor *)color{
+    self = [super init];
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor colorWithWhite:1. alpha:0.];
+        self.color = color;
     }
     return self;
 }
@@ -37,7 +49,7 @@
 
 - (void)drawRect:(CGRect)rect{
     if(!_ready){
-        [super drawRect:rect];
+//        [super drawRect:rect];
         
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         CGContextBeginPath(ctx);
@@ -47,7 +59,7 @@
         CGContextAddLineToPoint(ctx, 0, 0);
         
         CGContextClosePath(ctx);
-        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+        CGContextSetFillColorWithColor(ctx, self.color.CGColor);
         
         CGContextDrawPath(ctx, kCGPathFill);
         _ready = YES;

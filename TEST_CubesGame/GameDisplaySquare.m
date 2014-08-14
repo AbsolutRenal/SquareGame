@@ -50,6 +50,9 @@
 - (void)resetPosition{
     [self setPosition:self.initialPosition];
     self.frame = [self getFrame];
+    
+    self.direction = self.initialDirection;
+    [self rotateArrowAnimated:NO];
 }
 
 - (void)moveToPosition:(NSString *)position{
@@ -83,7 +86,7 @@
  */
 
 - (void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
+//    [super drawRect:rect];
     
 //    NSLog(@"ARROW:%@ \\ %@", _arrow, self);
     
@@ -100,7 +103,7 @@
     
     if(!self.arrow){
 //        NSLog(@"ADD ARROW");
-        self.arrow = [[ArrowView alloc] init];
+        self.arrow = [[ArrowView alloc] initWithColor:[UIColor whiteColor]];
         self.arrow.bounds = CGRectMake(0, 0, self.squareSize / 8, self.squareSize / 4);
         [self addSubview:self.arrow];
         [self rotateArrowAnimated:NO];
@@ -139,7 +142,7 @@
     endswitch
     
     if(animated){
-        [UIView animateWithDuration:.2 animations:^{
+        [UIView animateWithDuration:.3 animations:^{
             _arrow.transform =  CGAffineTransformMakeRotation(angle);
 //            _arrow.center = self.center;
             _arrow.frame = CGRectMake((self.bounds.size.width - _arrow.frame.size.width) * .5, (self.bounds.size.height - _arrow.frame.size.height) * .5, _arrow.frame.size.width, _arrow.frame.size.height);

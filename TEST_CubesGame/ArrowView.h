@@ -10,4 +10,6 @@
 
 @interface ArrowView : UIView
 
+- (instancetype)initWithColor:(UIColor *)color;
+
 @end

@@ -11,5 +11,6 @@
 @interface GameDisplayArrow : GameDisplayItem
 
 @property (strong, nonatomic)NSString *direction;
+@property (strong, nonatomic)NSString *initialDirection;
 
 @end

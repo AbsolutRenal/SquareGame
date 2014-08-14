@@ -29,7 +29,7 @@
  */
 
 - (void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
+//    [super drawRect:rect];
     
 //    NSLog(@"DRAW DOT");
     CGContextRef ctx = UIGraphicsGetCurrentContext();

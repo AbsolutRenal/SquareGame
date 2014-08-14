@@ -87,7 +87,6 @@ const int MAX_SQUARE_SIZE = 80;
     _squareSize = MIN(MIN(self.view.frame.size.width / _nbColumns, self.view.frame.size.height / _nbRows), MAX_SQUARE_SIZE);
     
     
-//    self.container.frame = CGRectMake(0, 0, _nbColumns * _squareSize, _nbRows * _squareSize);
     double offsetX = (self.container.frame.size.width - _nbColumns * _squareSize) * .5;
     double offsetY = (self.container.frame.size.height - _nbRows * _squareSize) * .5;
     
@@ -100,7 +99,6 @@ const int MAX_SQUARE_SIZE = 80;
         objswitch(type)
             objcase(@"square"){
                 item = [[GameDisplaySquare alloc] init];
-                ((GameDisplaySquare *)item).direction = _levelDatas[@"matrix"][@"items"][i][@"direction"];
                 ((GameDisplaySquare *)item).delegate = self;
             };
         
@@ -110,7 +108,6 @@ const int MAX_SQUARE_SIZE = 80;
         
             objcase(@"arrow"){
                 item = [[GameDisplayArrow alloc] init];
-                ((GameDisplayArrow *)item).direction = _levelDatas[@"matrix"][@"items"][i][@"direction"];
             };
         
             defaultcase{
@@ -123,9 +120,14 @@ const int MAX_SQUARE_SIZE = 80;
             item.offsetY = offsetY;
             
             [item setPosition:_levelDatas[@"matrix"][@"items"][i][@"position"]];
-            item.color = _levelDatas[@"matrix"][@"items"][i][@"color"];
+            
+            if(![type isEqualToString:@"arrow"])
+                item.color = _levelDatas[@"matrix"][@"items"][i][@"color"];
+            if(![type isEqualToString:@"dot"])
+                ((GameDisplayArrow *)item).direction = ((GameDisplayArrow *)item).initialDirection = _levelDatas[@"matrix"][@"items"][i][@"direction"];
             item.type = type;
             item.squareSize = _squareSize;
+            
             [self.gameItems addObject:item];
             [self.container addSubview:item];
         }
@@ -211,7 +213,10 @@ const int MAX_SQUARE_SIZE = 80;
 }
 
 - (void)squareMoved:(GameDisplayItem *)square{
-//    NSLog(@"SQUARE MOVED");
+//    NSLog(@"SQUARE MOVED %@", square.color);
+    static int xSpeed;
+    static int ySpeed;
+    
     [self.container bringSubviewToFront:square];
     
     if(((GameDisplaySquare *)square).isRight)
@@ -226,10 +231,14 @@ const int MAX_SQUARE_SIZE = 80;
                 ((GameDisplaySquare *)square).isRight = YES;
             }
             
-            
             if([item.type isEqualToString:@"square"]){
-                item.posX += ((GameDisplaySquare *)square).xSpeed;
-                item.posY += ((GameDisplaySquare *)square).ySpeed;
+                if(xSpeed == 0 && ySpeed == 0){
+                    xSpeed = ((GameDisplaySquare *)square).xSpeed;
+                    ySpeed = ((GameDisplaySquare *)square).ySpeed;
+                }
+                
+                item.posX += xSpeed;
+                item.posY += ySpeed;
                 [((GameDisplaySquare *)item) updatePosition];
                 
             } else if([item.type isEqualToString:@"arrow"]){
@@ -244,6 +253,9 @@ const int MAX_SQUARE_SIZE = 80;
     } else {
         [self storePositions];
     }
+    
+    xSpeed = ySpeed = 0;
+//    NSLog(@"--- END SQUARE MOVED %@", square.color);
 }
 
 - (BOOL)isCompleted{

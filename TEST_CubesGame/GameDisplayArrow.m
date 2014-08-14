@@ -8,6 +8,7 @@
 
 #import "GameDisplayArrow.h"
 #import "ArrowView.h"
+#import "GameDatas.h"
 
 @interface GameDisplayArrow()
 
@@ -36,10 +37,10 @@
  */
 
 - (void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
+//    [super drawRect:rect];
     
     if(!self.arrow){
-        self.arrow = [[ArrowView alloc] init];
+        self.arrow = [[ArrowView alloc] initWithColor:[GameDatas colorWithName:self.type]];
         self.arrow.bounds = CGRectMake(0, 0, self.squareSize / 8, self.squareSize / 4);
         [self addSubview:self.arrow];
         [self rotateArrow];
