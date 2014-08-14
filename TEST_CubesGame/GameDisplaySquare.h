@@ -24,5 +24,6 @@
 
 - (void)rotateArrowAnimated:(BOOL)animated;
 - (void)updatePosition;
+- (void)resetPosition;
 
 @end

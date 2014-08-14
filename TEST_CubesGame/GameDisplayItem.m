@@ -37,6 +37,9 @@
 - (void)setPosition:(NSString *)position{
     _position = position;
     
+    if(!_initialPosition)
+        _initialPosition = _position;
+    
     NSArray *pos = [_position  componentsSeparatedByString:@","];
     _posX = [pos[0] intValue];
     _posY = [pos[1] intValue];

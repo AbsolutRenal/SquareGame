@@ -47,6 +47,11 @@
     [self updatePosition];
 }
 
+- (void)resetPosition{
+    [self setPosition:self.initialPosition];
+    self.frame = CGRectMake(self.posX * self.squareSize, self.posY * self.squareSize, self.squareSize, self.squareSize);
+}
+
 - (void)updatePosition{
     [UIView animateWithDuration:.3 animations:^{
         self.frame = CGRectMake(self.posX * self.squareSize, self.posY * self.squareSize, self.squareSize, self.squareSize);

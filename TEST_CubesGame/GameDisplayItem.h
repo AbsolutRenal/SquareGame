@@ -13,6 +13,7 @@
 //@property (strong, nonatomic)NSString *position;
 - (NSString *)position;
 - (void)setPosition:(NSString *)position;
+@property (strong, nonatomic)NSString *initialPosition;
 @property (strong, nonatomic)NSString *color;
 @property (strong, nonatomic)NSString *type;
 @property (assign, nonatomic)int squareSize;

@@ -36,6 +36,8 @@ const int MAX_SQUARE_SIZE = 80;
         self.container.alpha = 0;
         [self.view addSubview:self.container];
         
+        self.moves = [[NSMutableArray alloc] init];
+        
         // TEST PASSAGE D'UN NIVEAU AU SUIVANT
 //        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(complete)];
 //        [self.view addGestureRecognizer:tap];
@@ -132,19 +134,6 @@ const int MAX_SQUARE_SIZE = 80;
             [self.gameItems addObject:item];
             [self.container addSubview:item];
         }
-
-//        switch (_levelDatas[@"matrix"][@"items"][i][@"type"]) {
-//            case @"square":
-//            default:
-//                
-//                break;
-//            case @"dot":
-//                
-//                break;
-//            case @"arrow":
-//                
-//                break;
-//        }
     }
     
     
@@ -163,7 +152,13 @@ const int MAX_SQUARE_SIZE = 80;
 
 
 - (void)resetLevel{
+    for (GameDisplaySquare *item in self.gameItems) {
+        if([item isKindOfClass:[GameDisplaySquare class]]){
+            [item resetPosition];
+        }
+    }
     
+    [self.moves removeAllObjects];
 }
 
 - (void)undoLastMove{
@@ -201,7 +196,6 @@ const int MAX_SQUARE_SIZE = 80;
 //    NSLog(@"SQUARE MOVED");
     [self.container bringSubviewToFront:square];
     
-//    BOOL completed = YES;
     if(((GameDisplaySquare *)square).isRight)
         ((GameDisplaySquare *)square).isRight = NO;
     
@@ -213,9 +207,6 @@ const int MAX_SQUARE_SIZE = 80;
             if([item.type isEqualToString:@"dot"] && [item.color isEqualToString:square.color]){
                 ((GameDisplaySquare *)square).isRight = YES;
             }
-//            ((GameDisplaySquare *)square).isRight = [item.color isEqualToString:square.color];
-            
-//            completed &= ((GameDisplaySquare *)square).isRight;
             
             
             if([item.type isEqualToString:@"square"]){
@@ -227,14 +218,11 @@ const int MAX_SQUARE_SIZE = 80;
                 ((GameDisplaySquare *)square).direction = ((GameDisplayArrow *)item).direction;
                 [((GameDisplaySquare *)square) rotateArrowAnimated:YES];
             }
-//        } else {
-//            completed = NO;
         }
     }
     
     if([self isCompleted]){
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
-//       [self.delegate completeLevel];
     }
 }
 
