@@ -34,6 +34,10 @@
 }
 */
 
+- (CGRect)getFrame{
+    return CGRectMake((_posX * _squareSize) + _offsetX, (_posY * _squareSize) + _offsetY, _squareSize, _squareSize);
+}
+
 - (void)setPosition:(NSString *)position{
     _position = position;
     
@@ -55,7 +59,7 @@
     [super willMoveToSuperview:newSuperview];
     
     if(newSuperview){
-        self.frame = CGRectMake(_posX * _squareSize, _posY * _squareSize, _squareSize, _squareSize);
+        self.frame = [self getFrame];
         self.backgroundColor = [UIColor colorWithWhite:1. alpha:0.];
     }
 }

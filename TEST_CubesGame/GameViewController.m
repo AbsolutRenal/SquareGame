@@ -35,6 +35,7 @@ const int MAX_SQUARE_SIZE = 80;
         self.container = [[UIView alloc] init];
         self.container.alpha = 0;
         [self.view addSubview:self.container];
+//        self.container.backgroundColor = [UIColor lightGrayColor];
         
         self.moves = [[NSMutableArray alloc] init];
     }
@@ -83,12 +84,12 @@ const int MAX_SQUARE_SIZE = 80;
     _nbRows = [_levelDatas[@"matrix"][@"rows"] intValue];
     
 //    NSLog(@"ROWS: %i | COLUMNS:%i", _nbRows, _nbColumns);
-    _squareSize = MIN(MIN(self.view.frame.size.width / _nbRows, self.view.frame.size.height / _nbColumns), MAX_SQUARE_SIZE);
+    _squareSize = MIN(MIN(self.view.frame.size.width / _nbColumns, self.view.frame.size.height / _nbRows), MAX_SQUARE_SIZE);
     
     
-    self.container.frame = CGRectMake(0, 0, _nbColumns * _squareSize, _nbRows * _squareSize);
-    self.container.center = self.view.center;
-//    self.container.backgroundColor = [UIColor lightGrayColor];
+//    self.container.frame = CGRectMake(0, 0, _nbColumns * _squareSize, _nbRows * _squareSize);
+    double offsetX = (self.container.frame.size.width - _nbColumns * _squareSize) * .5;
+    double offsetY = (self.container.frame.size.height - _nbRows * _squareSize) * .5;
     
     
     int nbItems = (int)[_levelDatas[@"matrix"][@"items"] count];
@@ -118,6 +119,9 @@ const int MAX_SQUARE_SIZE = 80;
         endswitch
         
         if(item){
+            item.offsetX = offsetX;
+            item.offsetY = offsetY;
+            
             [item setPosition:_levelDatas[@"matrix"][@"items"][i][@"position"]];
             item.color = _levelDatas[@"matrix"][@"items"][i][@"color"];
             item.type = type;
@@ -174,10 +178,6 @@ const int MAX_SQUARE_SIZE = 80;
         [lastPositions enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             [(GameDisplaySquare *)obj moveToPosition:(NSString *)key];
         }];
-        
-//        for (NSString *position in lastPositions keyEnumerator) {
-//            
-//        }
     }
 }
 
@@ -198,6 +198,8 @@ const int MAX_SQUARE_SIZE = 80;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    self.container.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
     
     [self configureLevel];
 }
@@ -246,12 +248,7 @@ const int MAX_SQUARE_SIZE = 80;
 
 - (BOOL)isCompleted{
     for (GameDisplayItem *item in self.gameItems) {
-//        NSLog(@"--- isKindOfClass:%i", [item isKindOfClass:[GameDisplaySquare class]]);
-        
         if([item isKindOfClass:[GameDisplaySquare class]]){
-//            NSLog(@"----- isRight:%i", ((GameDisplaySquare *)item).isRight);
-
-            
             if(((GameDisplaySquare *)item).isRight)
                 continue;
             else

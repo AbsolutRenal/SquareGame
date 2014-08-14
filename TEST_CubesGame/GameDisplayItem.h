@@ -20,5 +20,8 @@
 @property (assign, nonatomic)int posX;
 @property (assign, nonatomic)int posY;
 @property (strong, nonatomic)UIColor *itemColor;
+@property (assign, nonatomic)double offsetX;
+@property (assign, nonatomic)double offsetY;
+- (CGRect)getFrame;
 
 @end
