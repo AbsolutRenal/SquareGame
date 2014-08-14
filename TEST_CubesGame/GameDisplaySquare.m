@@ -64,9 +64,12 @@
     [self rotateArrowAnimated:NO];
 }
 
-- (void)moveToPosition:(NSString *)position{
+- (void)restoreStateWithPosition:(NSString *)position widthDirection:(NSString *)direction{
     [self setPosition:position];
     [self move];
+    
+    self.direction = direction;
+    [self rotateArrowAnimated:YES];
 }
 
 - (void)updatePosition{

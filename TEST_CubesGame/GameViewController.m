@@ -143,14 +143,14 @@ const int MAX_SQUARE_SIZE = 80;
 }
 
 - (void)storePositions{
-    NSMutableDictionary *currentPositions = [[NSMutableDictionary alloc] init];
+    NSMutableArray *itemsState = [[NSMutableArray alloc] init];
     for (GameDisplaySquare *item in self.gameItems) {
         if([item isKindOfClass:[GameDisplaySquare class]]){
-            [currentPositions setValue:item forKey:item.position];
+            [itemsState addObject:@{@"item":item, @"position":item.position, @"direction":item.direction}];
         }
     }
     
-    [self.moves addObject:currentPositions];
+    [self.moves addObject:itemsState];
 }
 
 - (void)emptyContainer{
@@ -176,10 +176,13 @@ const int MAX_SQUARE_SIZE = 80;
 - (void)undoLastMove{
     if(self.moves.count > 1){
         [self.moves removeLastObject];
-        NSDictionary *lastPositions = (NSDictionary *)[self.moves lastObject];
-        [lastPositions enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            [(GameDisplaySquare *)obj moveToPosition:(NSString *)key];
-        }];
+        NSArray *lastItemsState = (NSArray *)[self.moves lastObject];
+//        [lastPositions enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+//            [(GameDisplaySquare *)obj moveToPosition:(NSString *)key];
+//        }];
+        for(NSDictionary *state in lastItemsState){
+            [((GameDisplaySquare *)state[@"item"]) restoreStateWithPosition:state[@"position"] widthDirection:state[@"direction"]];
+        }
     }
 }
 
