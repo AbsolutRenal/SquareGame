@@ -128,7 +128,7 @@
 //            [datas addEntriesFromDictionary:@{@"version":[self versionNumber], @"build":[self buildNumber]}];
             
 //        } else {
-//            NSLog(@"$$$ FILE IS UP TO DATE $$$");
+            NSLog(@"$$$ FILE IS UP TO DATE $$$");
             // FILE IS UP TO DATE
         }
     }
