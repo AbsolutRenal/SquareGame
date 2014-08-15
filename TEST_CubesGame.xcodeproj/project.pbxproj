@@ -485,6 +485,7 @@
 			buildPhases = (
 				9BCEDD67198BCABB005FDE5C /* Sources */,
 				9BCEDD68198BCABB005FDE5C /* Frameworks */,
+				9B15527B199E152A00FCF103 /* ShellScript */,
 				9BCEDD69198BCABB005FDE5C /* Resources */,
 			);
 			buildRules = (
@@ -577,6 +578,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B15527B199E152A00FCF103 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9BCEDD67198BCABB005FDE5C /* Sources */ = {
@@ -730,6 +747,7 @@
 		9BCEDD98198BCABB005FDE5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TEST_CubesGame/TEST_CubesGame-Prefix.pch";
 				INFOPLIST_FILE = "TEST_CubesGame/TEST_CubesGame-Info.plist";
@@ -742,6 +760,7 @@
 		9BCEDD99198BCABB005FDE5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TEST_CubesGame/TEST_CubesGame-Prefix.pch";
 				INFOPLIST_FILE = "TEST_CubesGame/TEST_CubesGame-Info.plist";

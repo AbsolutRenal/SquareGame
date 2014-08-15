@@ -22,6 +22,18 @@
 
 @implementation GameDatas
 
+- (NSString*) version {
+    return [NSString stringWithFormat:@"%@ build %@", [self versionNumber], [self buildNumber]];
+}
+
+- (NSString *)buildNumber{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (NSString *)versionNumber{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
 + (UIColor *)colorWithName:(NSString *)colorStr{
 
     return [UIColor colorFromHexCode:[[GameDatas getInstance] colorStrNamed:colorStr]];
@@ -44,7 +56,7 @@
     
     if(self){
         _lastLevel = -1;
-        _levelsDataFile = [NSMutableDictionary dictionaryWithContentsOfFile:[self levelsFile]];
+        _levelsDataFile = [self levelsData];
         _levelsDescription = _levelsDataFile[@"levels"];
         _colors = _levelsDataFile[@"colors"];
         _currentLevel = [self lastLevel];
@@ -72,7 +84,9 @@
     return _levelsStoreFile;
 }
 
-- (NSString *)levelsFile{
+- (NSMutableDictionary *)levelsData{
+    NSMutableDictionary *datas;
+    
     if(!_levelsFile){
         _levelsFile = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
     }
@@ -80,11 +94,47 @@
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     
     if(![fileManager fileExistsAtPath:[self levelsStoreFile]]){
+//        NSLog(@"$$$ FILE DOESN'T EXIST $$$");
+        
         NSError *error;
         [fileManager copyItemAtPath:_levelsFile toPath:_levelsStoreFile error:&error];
-//        NSLog(@"ERROR ?? %@", error);
+        
+        datas = [NSMutableDictionary dictionaryWithContentsOfFile:_levelsStoreFile];
+        [datas addEntriesFromDictionary:@{@"version":[self versionNumber], @"build":[self buildNumber]}];
+        
+    } else {
+        datas = [NSMutableDictionary dictionaryWithContentsOfFile:_levelsStoreFile];
+        NSLog(@"$$$ FILE EXISTS IN VERSION:%@ BUILD:%@", [datas valueForKey:@"version"], [datas valueForKey:@"build"]);
+        NSLog(@"CURRENT RUNNING VERSION:%@", [self version]);
+        
+        if([[datas objectForKey:@"version"] doubleValue] < [[self versionNumber] doubleValue] || ([[datas objectForKey:@"version"] doubleValue] == [[self versionNumber] doubleValue] && [[datas objectForKey:@"build"] intValue] < [[self buildNumber] intValue])){
+            NSLog(@"$$$ FILE NEEDS UPDATE $$$");
+            
+            NSMutableDictionary *newDatas = [NSMutableDictionary dictionaryWithContentsOfFile:_levelsFile];
+            int nb = (int)((NSArray *)datas[@"levels"]).count;
+            for (int i = 0; i < nb; i++) {
+                if([datas[@"levels"][i][@"completed"] boolValue]){
+                    [newDatas[@"levels"][i] setValue:@YES forKey:@"completed"];
+                } else {
+                    break;
+                }
+            }
+            
+            [newDatas setValue:[self versionNumber] forKey:@"version"];
+            [newDatas setValue:[self buildNumber] forKey:@"build"];
+            return newDatas;
+            
+//            NSLog(@"%@", datas);
+//            [datas addEntriesFromDictionary:@{@"version":[self versionNumber], @"build":[self buildNumber]}];
+            
+//        } else {
+//            NSLog(@"$$$ FILE IS UP TO DATE $$$");
+            // FILE IS UP TO DATE
+        }
     }
-    return _levelsStoreFile;
+    
+    
+    return datas;
 }
 
 - (int)lastLevel{
