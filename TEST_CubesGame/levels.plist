@@ -50,7 +50,9 @@
 				<integer>3</integer>
 			</dict>
 			<key>end</key>
-			<string>Click Me</string>
+			<array>
+				<string>Click Me</string>
+			</array>
 		</dict>
 		<!-- LEVEL 2 -->
 		<dict>
@@ -103,7 +105,9 @@
 				<integer>4</integer>
 			</dict>
 			<key>end</key>
-			<string>So, this is a game about squares. You can probably already tell</string>
+			<array>
+				<string>So, this is a game about squares. You can probably already tell</string>
+			</array>
 		</dict>
 		<!-- LEVEL 3 -->
 		<dict>
@@ -174,7 +178,9 @@
 				<integer>3</integer>
 			</dict>
 			<key>end</key>
-			<string>Squares are what this game is about, for the most part</string>
+			<array>
+				<string>Squares are what this game is about, for the most part</string>
+			</array>
 		</dict>
 		<!-- LEVEL 4 -->
 		<dict>
@@ -227,7 +233,9 @@
 				<integer>6</integer>
 			</dict>
 			<key>end</key>
-			<string>Hence the title</string>
+			<array>
+				<string>Hence the title</string>
+			</array>
 		</dict>
 		<!-- LEVEL 5 -->
 		<dict>
@@ -298,7 +306,9 @@
 				<integer>4</integer>
 			</dict>
 			<key>end</key>
-			<string>You see, this game is exactly about what it claims to be about</string>
+			<array>
+				<string>You see, this game is exactly about what it claims to be about</string>
+			</array>
 		</dict>
 		<!-- LEVEL 6 -->
 		<dict>
@@ -369,7 +379,9 @@
 				<integer>4</integer>
 			</dict>
 			<key>end</key>
-			<string>Luckily, it's not exactly an AAA type of game, so I don't have to feed you empty promises</string>
+			<array>
+				<string>Luckily, it's not exactly an AAA type of game, so I don't have to feed you empty promises</string>
+			</array>
 		</dict>
 		<!-- LEVEL 7 -->
 		<dict>
@@ -440,7 +452,9 @@
 				<integer>4</integer>
 			</dict>
 			<key>end</key>
-			<string>Honesty is the best policy, right ?</string>
+			<array>
+				<string>Honesty is the best policy, right ?</string>
+			</array>
 		</dict>
 		<!-- LEVEL 8 -->
 		<dict>
@@ -491,7 +505,9 @@
 				<integer>3</integer>
 			</dict>
 			<key>end</key>
-			<string>I really don't want you to get the wrong impression of what's awaiting ahead</string>
+			<array>
+				<string>I really don't want you to get the wrong impression of what's awaiting ahead</string>
+			</array>
 		</dict>
 		<!-- LEVEL 9 -->
 		<dict>
@@ -560,7 +576,777 @@
 				<integer>3</integer>
 			</dict>
 			<key>end</key>
-			<string>I really don't want you to get the wrong impression of what's awaiting ahead</string>
+			<array>
+				<string>I really don't want you to get the wrong impression of what's awaiting ahead</string>
+			</array>
+		</dict>
+		<!-- LEVEL 10 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,0</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,0</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,1</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>2</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>There will be no monsters to kill,</string>
+				<string>No princess to save,</string>
+				<string>no dungeons to crawl,</string>
+				<string>no levels to up,</string>
+				<string>no quests to complete</string>
+				<string>no horses to tame,</string>
+				<string>and...</string>
+			</array>
+		</dict>
+		<!-- LEVEL 11 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,0</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>4,2</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,4</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>0,2</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>5</integer>
+				<key>rows</key>
+				<integer>5</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>And I can tell you with all my sincerity that nothing will ever jump on you from behind in this game</string>
+			</array>
+		</dict>
+		<!-- LEVEL 12 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>4,0</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,4</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,2</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>5</integer>
+				<key>rows</key>
+				<integer>5</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>But enough about about the game, let's talk about you!</string>
+			</array>
+		</dict>
+		<!-- LEVEL 13 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,2</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,3</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,1</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>4</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>So, who is your favorite character in the game, so far?</string>
+			</array>
+		</dict>
+		<!-- LEVEL 14 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>3,3</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>0,4</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,5</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,0</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>6</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>Your progress will be saved after the next level</string>
+			</array>
+		</dict>
+		<!-- LEVEL 15 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,1</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,3</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>3,2</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,3</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>5</integer>
+				<key>rows</key>
+				<integer>5</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>In fact, your progress is automatically saved after each level</string>
+			</array>
+		</dict>
+		<!-- LEVEL 16 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,0</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>3</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>Okay, no more hints. You're on your own now</string>
+			</array>
+		</dict>
+		<!-- LEVEL 17 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,1</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>3</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>How far will you get?</string>
+			</array>
+		</dict>
+		<!-- LEVEL 18 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>3,0</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,1</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,0</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>3</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string></string>
+			</array>
 		</dict>
 	</array>
 </dict>

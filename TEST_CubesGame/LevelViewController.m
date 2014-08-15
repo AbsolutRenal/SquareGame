@@ -190,6 +190,8 @@
 - (void)populateFromLevel:(int)startLevel{
 //    [self clearLevelButtons];
     
+//    NSLog(@"START LEVEL:%i", startLevel);
+    
     _startLevel = startLevel;
     if(startLevel == 0)
         self.prevButton.hidden = YES;
@@ -203,13 +205,14 @@
     
     for (int i = startLevel; i < _nbLevels; i++) {
         currentRow = floor((i - startLevel) / _nbColumns);
+//        NSLog(@"--- CurrentRow:%i", currentRow);
         
         if(currentRow >= _nbRows){
             self.nextButton.hidden = NO;
             break;
         }
         
-        if(self.levelButtons.count == _nbLevelByPage){
+        if((i - startLevel) < self.levelButtons.count){
             level = self.levelButtons[i-startLevel];
             level.hidden = NO;
         } else {
