@@ -278,15 +278,10 @@ const int MAX_SQUARE_SIZE = 80;
             } else if([item.type isEqualToString:@"arrow"]){
                 ((GameDisplaySquare *)square).direction = ((GameDisplayArrow *)item).direction;
                 [((GameDisplaySquare *)square) rotateArrowAnimated:YES];
-                
-//                [((GameDisplaySquare *)square) tintArrow:YES animated:YES];
             }
-//        } else {
-//            [((GameDisplaySquare *)square) tintArrow:NO animated:YES];
         }
-        
-//        [((GameDisplaySquare *)square) tintArrow:[self checkOverArrow:(GameDisplaySquare *)square] animated:YES];
     }
+    
     [((GameDisplaySquare *)square) tintArrow:[self checkOverArrow:(GameDisplaySquare *)square] animated:YES];
     
     if([self isCompleted]){
