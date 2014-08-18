@@ -35,7 +35,7 @@
 */
 
 - (CGRect)getFrame{
-    return CGRectMake((_posX * _squareSize) + _offsetX, (_posY * _squareSize) + _offsetY, _squareSize, _squareSize);
+    return CGRectMake((_posX * (_squareSize +1)) + _offsetX, (_posY * (_squareSize +1)) + _offsetY, _squareSize, _squareSize);
 }
 
 - (void)setPosition:(NSString *)position{

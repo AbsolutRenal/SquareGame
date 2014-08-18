@@ -87,8 +87,8 @@ const int MAX_SQUARE_SIZE = 80;
     _squareSize = MIN(MIN(self.view.frame.size.width / _nbColumns, self.view.frame.size.height / _nbRows), MAX_SQUARE_SIZE);
     
     
-    double offsetX = (self.container.frame.size.width - _nbColumns * _squareSize) * .5;
-    double offsetY = (self.container.frame.size.height - _nbRows * _squareSize) * .5;
+    double offsetX = (self.container.frame.size.width - _nbColumns * (_squareSize +1) -1) * .5;
+    double offsetY = (self.container.frame.size.height - _nbRows * (_squareSize +1) -1) * .5;
     
     
     int nbItems = (int)[_levelDatas[@"matrix"][@"items"] count];
@@ -181,6 +181,8 @@ const int MAX_SQUARE_SIZE = 80;
 }
 
 - (void)undoLastMove{
+    NSLog(@"UNDO %i", (int)self.moves.count);
+    
     if(self.moves.count > 1){
         [self.moves removeLastObject];
         NSArray *lastItemsState = (NSArray *)[self.moves lastObject];
@@ -311,10 +313,11 @@ const int MAX_SQUARE_SIZE = 80;
     
     
     if([self isCompleted]){
+        touchedSquare = nil;
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
     } else if(touchedSquare == square){
 //        NSLog(@"--- RESET touchedSquare %@", square.color);
-        xSpeed = ySpeed = 0;
+//        xSpeed = ySpeed = 0;
         touchedSquare = nil;
         
         [self tintSquareArrowIfOverArrowAnimated:YES];
@@ -326,7 +329,7 @@ const int MAX_SQUARE_SIZE = 80;
     [(GameDisplaySquare *)square showDotOverlayColor:[self checkOverDot:(GameDisplaySquare *)square] animated:YES];
     
 //    NSLog(@"----- RESET SPEED %@", square.color);
-//    xSpeed = ySpeed = 0;
+    xSpeed = ySpeed = 0;
     
 //    NSLog(@"--- END SQUARE MOVED %@", square.color);
 }

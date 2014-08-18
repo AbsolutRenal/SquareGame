@@ -60,12 +60,16 @@
     if(color){
         self.mask.frame = CGRectMake(self.bounds.size.width * .5, -self.bounds.size.height * .5, self.bounds.size.width, self.bounds.size.height);
         
-        if(_isRight)
+        if([color isEqual:self.itemColor]){
+            _isRight = YES;
             self.dotOvelay.backgroundColor = [UIColor colorWithWhite:0. alpha:.3];
-        else
+        } else {
+            _isRight = NO;
             self.dotOvelay.backgroundColor = color;
+        }
         fram = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     } else {
+        _isRight = NO;
         fram = CGRectMake(self.bounds.size.width * .5, -self.bounds.size.height * .5, self.bounds.size.width, self.bounds.size.height);
     }
     
