@@ -11,6 +11,7 @@
 
 @interface GameDisplaySquare(){
     BOOL _ready;
+    BOOL _overArrow;
 }
 
 @property (strong, nonatomic)ArrowView *arrow;
@@ -29,8 +30,34 @@
         [self addGestureRecognizer:self.tap];
         
         _ready = YES;
+        _overArrow = NO;
     }
     return self;
+}
+
+- (void)tintArrow:(BOOL)over animated:(BOOL)animated{
+    if(over != _overArrow){
+//        NSLog(@"POS: %@ => TINT IT", self.position);
+        _overArrow = over;
+//        UIColor *tint = (over)? [UIColor colorWithWhite:0. alpha:.7] : [UIColor colorWithWhite:1. alpha:1.] ;
+//        
+//        if(animated){
+//            [UIView animateWithDuration:.3 animations:^{
+//                self.arrow.tintColor = tint;
+//            }];
+//        } else {
+//            self.arrow.tintColor = tint;
+//        }
+        
+        float alp = (over)? .3 : 1. ;
+        if(animated){
+            [UIView animateWithDuration:.3 animations:^{
+                self.arrow.alpha = alp;
+            }];
+        } else {
+            self.arrow.alpha = alp;
+        }
+    }
 }
 
 - (void)touched{

@@ -136,6 +136,7 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
+    [self tintSquareArrowIfOverArrow];
     [self storePositions];
     
     
@@ -172,6 +173,7 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
+    [self tintSquareArrowIfOverArrow];
     [self.moves removeAllObjects];
     [self storePositions];
 }
@@ -218,11 +220,33 @@ const int MAX_SQUARE_SIZE = 80;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)tintSquareArrowIfOverArrow{
+    for(GameDisplaySquare *square in _gameItems){
+        if([square isKindOfClass:[GameDisplaySquare class]]){
+//            NSLog(@"SQUARE over:%i", [self checkOverArrow:square]);
+            [square tintArrow:[self checkOverArrow:square] animated:NO];
+        }
+    }
+}
+
+- (BOOL)checkOverArrow:(GameDisplaySquare *)square{
+    for(GameDisplayArrow *arrow in _gameItems){
+//        NSLog(@"square:%@ | item:%@", square.position, arrow.position);
+        if([arrow isKindOfClass:[GameDisplayArrow class]] && [arrow.position isEqualToString:square.position])
+            return YES;
+    }
+    
+    return NO;
+}
+
 - (void)squareMoved:(GameDisplayItem *)square{
 //    NSLog(@"SQUARE MOVED %@", square.color);
+    
+    static GameDisplayItem *touchedSquare;
+    if(touchedSquare == nil)
+        touchedSquare = square;
     static int xSpeed;
     static int ySpeed;
-    BOOL needToStore = NO;
     
     [self.container bringSubviewToFront:square];
     
@@ -242,7 +266,6 @@ const int MAX_SQUARE_SIZE = 80;
                 if(xSpeed == 0 && ySpeed == 0){
                     xSpeed = ((GameDisplaySquare *)square).xSpeed;
                     ySpeed = ((GameDisplaySquare *)square).ySpeed;
-                    needToStore = YES;
                 }
                 
                 item.posX += xSpeed;
@@ -254,15 +277,18 @@ const int MAX_SQUARE_SIZE = 80;
                 [((GameDisplaySquare *)square) rotateArrowAnimated:YES];
             }
         }
+        
+        [((GameDisplaySquare *)square) tintArrow:[self checkOverArrow:(GameDisplaySquare *)square] animated:YES];
     }
     
     if([self isCompleted]){
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
-    } else if(needToStore){
+    } else if(touchedSquare == square){
+        xSpeed = ySpeed = 0;
+        touchedSquare = nil;
         [self storePositions];
     }
     
-    xSpeed = ySpeed = 0;
 //    NSLog(@"--- END SQUARE MOVED %@", square.color);
 }
 

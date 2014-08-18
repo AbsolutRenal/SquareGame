@@ -26,5 +26,6 @@
 - (void)updatePosition;
 - (void)resetPosition;
 - (void)restoreStateWithPosition:(NSString *)position widthDirection:(NSString *)direction;
+- (void)tintArrow:(BOOL)over animated:(BOOL)animated;
 
 @end
