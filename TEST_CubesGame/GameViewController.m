@@ -349,7 +349,28 @@ const int MAX_SQUARE_SIZE = 80;
 }
 
 - (void)showEndText{
+    for (GameDisplayItem *item in _gameItems) {
+        if([item isKindOfClass:[GameDisplayDot class]] || ([item isKindOfClass:[GameDisplayArrow class]] && ![item isKindOfClass:[GameDisplaySquare class]])){
+            
+            item.hidden = YES;
+            
+        } else {
+            [UIView animateWithDuration:.1 delay:0. options:UIViewAnimationOptionCurveEaseOut animations:^{
+                item.transform = CGAffineTransformMakeScale(1.1, 1.1);
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                    item.transform = CGAffineTransformMakeScale(0., 0.);
+                } completion:^(BOOL finished) {
+                    item.hidden = YES;
+                }];
+            }];
+        }
+    }
     
+    [self performSelector:@selector(switchToNextLevel) withObject:nil afterDelay:.8];
+}
+
+- (void)switchToNextLevel{
     [self.delegate completeLevel];
 }
 
