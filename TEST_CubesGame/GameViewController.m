@@ -77,6 +77,7 @@ const int MAX_SQUARE_SIZE = 80;
 
 - (void)configureLevel{
 //    NSLog(@"HEIGHT CONFIGURE: %f", self.view.frame.size.height);
+//    NSLog(@"---- height=%f", self.container.frame.size.height);
     
     [self emptyContainer];
     
@@ -84,9 +85,8 @@ const int MAX_SQUARE_SIZE = 80;
     _nbRows = [_levelDatas[@"matrix"][@"rows"] intValue];
     
 //    NSLog(@"ROWS: %i | COLUMNS:%i", _nbRows, _nbColumns);
-    _squareSize = MIN(MIN(self.view.frame.size.width / _nbColumns, self.view.frame.size.height / _nbRows), MAX_SQUARE_SIZE);
-    
-    
+    _squareSize = MIN(MIN((self.container.frame.size.width -_nbColumns + 1) / _nbColumns, (self.container.frame.size.height -_nbRows +1) / _nbRows), MAX_SQUARE_SIZE);
+
     double offsetX = (self.container.frame.size.width - _nbColumns * (_squareSize +1) -1) * .5;
     double offsetY = (self.container.frame.size.height - _nbRows * (_squareSize +1) -1) * .5;
     
@@ -181,7 +181,7 @@ const int MAX_SQUARE_SIZE = 80;
 }
 
 - (void)undoLastMove{
-    NSLog(@"UNDO %i", (int)self.moves.count);
+//    NSLog(@"UNDO %i", (int)self.moves.count);
     
     if(self.moves.count > 1){
         [self.moves removeLastObject];
@@ -217,6 +217,7 @@ const int MAX_SQUARE_SIZE = 80;
     [super viewWillAppear:animated];
     
     self.container.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+//    NSLog(@"WILL APPEAR: height=%f", self.container.frame.size.height);
     
     [self configureLevel];
 }
