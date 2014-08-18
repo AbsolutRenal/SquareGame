@@ -355,10 +355,10 @@ const int MAX_SQUARE_SIZE = 80;
             item.hidden = YES;
             
         } else {
-            [UIView animateWithDuration:.1 delay:0. options:UIViewAnimationOptionCurveEaseOut animations:^{
-                item.transform = CGAffineTransformMakeScale(1.1, 1.1);
+            [UIView animateWithDuration:.3 delay:0. options:UIViewAnimationOptionCurveEaseOut animations:^{
+                item.transform = CGAffineTransformMakeScale(1.2, 1.2);
             } completion:^(BOOL finished) {
-                [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
                     item.transform = CGAffineTransformMakeScale(0., 0.);
                 } completion:^(BOOL finished) {
                     item.hidden = YES;
