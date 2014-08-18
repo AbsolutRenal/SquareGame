@@ -38,6 +38,23 @@
     return self;
 }
 
+- (void)tintColorDidChange{
+    NSLog(@"TINT DID CHANGE");
+    [self setNeedsDisplay];
+}
+
+- (void)tintOver:(BOOL)over animated:(BOOL)animated{
+    UIColor *tint = (over)? [UIColor colorWithWhite:0. alpha:.6] : [UIColor colorWithWhite:1. alpha:1.] ;
+    
+    if(animated){
+        [UIView animateWithDuration:.3 animations:^{
+            self.tintColor = tint;
+        }];
+    } else {
+        self.tintColor = tint;
+    }
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -48,7 +65,7 @@
 */
 
 - (void)drawRect:(CGRect)rect{
-    if(!_ready){
+//    if(!_ready){
 //        [super drawRect:rect];
         
         CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -59,7 +76,7 @@
         CGContextAddLineToPoint(ctx, 0, 0);
         
         CGContextClosePath(ctx);
-        CGContextSetFillColorWithColor(ctx, self.color.CGColor);
+        CGContextSetFillColorWithColor(ctx, self.tintColor.CGColor);
         
         CGContextDrawPath(ctx, kCGPathFill);
         _ready = YES;
@@ -67,7 +84,7 @@
 //        NSLog(@"-- [FRAME] x:%f / y:%f", self.frame.origin.x, self.frame.origin.y);
 //        NSLog(@"---- [BOUNDS] x:%f / y:%f", self.frame.origin.x, self.frame.origin.y);
 //        NSLog(@"DRAW ARROW VIEW --- W:%f H:%f", self.bounds.size.width, self.bounds.size.height);
-    }
+//    }
 
 }
 

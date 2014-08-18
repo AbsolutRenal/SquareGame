@@ -12,4 +12,6 @@
 
 - (instancetype)initWithColor:(UIColor *)color;
 
+- (void)tintOver:(BOOL)over animated:(BOOL)animated;
+
 @end

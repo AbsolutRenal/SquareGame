@@ -136,7 +136,7 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
-    [self tintSquareArrowIfOverArrow];
+    [self tintSquareArrowIfOverArrowAnimated:NO];
     [self storePositions];
     
     
@@ -173,7 +173,7 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
-    [self tintSquareArrowIfOverArrow];
+    [self tintSquareArrowIfOverArrowAnimated:NO];
     [self.moves removeAllObjects];
     [self storePositions];
 }
@@ -188,6 +188,8 @@ const int MAX_SQUARE_SIZE = 80;
         for(NSDictionary *state in lastItemsState){
             [((GameDisplaySquare *)state[@"item"]) restoreStateWithPosition:state[@"position"] widthDirection:state[@"direction"]];
         }
+        
+        [self tintSquareArrowIfOverArrowAnimated:YES];
     }
 }
 
@@ -220,20 +222,21 @@ const int MAX_SQUARE_SIZE = 80;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)tintSquareArrowIfOverArrow{
+- (void)tintSquareArrowIfOverArrowAnimated:(BOOL)animated{
     for(GameDisplaySquare *square in _gameItems){
         if([square isKindOfClass:[GameDisplaySquare class]]){
 //            NSLog(@"SQUARE over:%i", [self checkOverArrow:square]);
-            [square tintArrow:[self checkOverArrow:square] animated:NO];
+            [square tintArrow:[self checkOverArrow:square] animated:animated];
         }
     }
 }
 
 - (BOOL)checkOverArrow:(GameDisplaySquare *)square{
     for(GameDisplayArrow *arrow in _gameItems){
-//        NSLog(@"square:%@ | item:%@", square.position, arrow.position);
-        if([arrow isKindOfClass:[GameDisplayArrow class]] && [arrow.position isEqualToString:square.position])
+        if([arrow isKindOfClass:[GameDisplayArrow class]] && ![arrow isKindOfClass:[GameDisplaySquare class]] && [arrow.position isEqualToString:square.position]){
+//            NSLog(@"square:%@ | arrow:%@", square.position, arrow.position);
             return YES;
+        }
     }
     
     return NO;
@@ -275,17 +278,25 @@ const int MAX_SQUARE_SIZE = 80;
             } else if([item.type isEqualToString:@"arrow"]){
                 ((GameDisplaySquare *)square).direction = ((GameDisplayArrow *)item).direction;
                 [((GameDisplaySquare *)square) rotateArrowAnimated:YES];
+                
+//                [((GameDisplaySquare *)square) tintArrow:YES animated:YES];
             }
+//        } else {
+//            [((GameDisplaySquare *)square) tintArrow:NO animated:YES];
         }
         
-        [((GameDisplaySquare *)square) tintArrow:[self checkOverArrow:(GameDisplaySquare *)square] animated:YES];
+//        [((GameDisplaySquare *)square) tintArrow:[self checkOverArrow:(GameDisplaySquare *)square] animated:YES];
     }
+    [((GameDisplaySquare *)square) tintArrow:[self checkOverArrow:(GameDisplaySquare *)square] animated:YES];
     
     if([self isCompleted]){
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
     } else if(touchedSquare == square){
         xSpeed = ySpeed = 0;
         touchedSquare = nil;
+        
+        [self tintSquareArrowIfOverArrowAnimated:YES];
+        
         [self storePositions];
     }
     

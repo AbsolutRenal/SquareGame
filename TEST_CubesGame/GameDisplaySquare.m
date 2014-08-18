@@ -12,6 +12,7 @@
 @interface GameDisplaySquare(){
     BOOL _ready;
     BOOL _overArrow;
+    BOOL _forceTint;
 }
 
 @property (strong, nonatomic)ArrowView *arrow;
@@ -29,34 +30,31 @@
         self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touched)];
         [self addGestureRecognizer:self.tap];
         
-        _ready = YES;
+        _ready = NO;
         _overArrow = NO;
+        _forceTint = NO;
     }
     return self;
 }
 
 - (void)tintArrow:(BOOL)over animated:(BOOL)animated{
-    if(over != _overArrow){
-//        NSLog(@"POS: %@ => TINT IT", self.position);
+    if(over != _overArrow || _forceTint){
+        if(!_ready){
+            _forceTint = YES;
+//            return;
+        }
+//        NSLog(@"POS: %@ => TINT IT %i", self.position, over);
         _overArrow = over;
-//        UIColor *tint = (over)? [UIColor colorWithWhite:0. alpha:.7] : [UIColor colorWithWhite:1. alpha:1.] ;
-//        
+        
+        [self.arrow tintOver:over animated:animated];
+//        float alp = (over)? .3 : 1. ;
 //        if(animated){
 //            [UIView animateWithDuration:.3 animations:^{
-//                self.arrow.tintColor = tint;
+//                self.arrow.alpha = alp;
 //            }];
 //        } else {
-//            self.arrow.tintColor = tint;
+//            self.arrow.alpha = alp;
 //        }
-        
-        float alp = (over)? .3 : 1. ;
-        if(animated){
-            [UIView animateWithDuration:.3 animations:^{
-                self.arrow.alpha = alp;
-            }];
-        } else {
-            self.arrow.alpha = alp;
-        }
     }
 }
 
@@ -135,6 +133,13 @@
         self.arrow.bounds = CGRectMake(0, 0, self.squareSize / 8, self.squareSize / 4);
         [self addSubview:self.arrow];
         [self rotateArrowAnimated:NO];
+    }
+    
+    _ready = YES;
+    
+    if(_forceTint){
+        [self tintArrow:_overArrow animated:NO];
+        _forceTint = NO;
     }
 }
 
