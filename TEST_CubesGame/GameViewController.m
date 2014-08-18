@@ -23,6 +23,8 @@ const int MAX_SQUARE_SIZE = 80;
 @property (strong, nonatomic)NSDictionary *levelDatas;
 @property (strong, nonatomic)UIView *container;
 @property (strong, nonatomic)NSMutableArray *gameItems;
+@property (strong, nonatomic)UITapGestureRecognizer *tap;
+@property (strong, nonatomic)UILabel *endText;
 
 @end
 
@@ -313,18 +315,20 @@ const int MAX_SQUARE_SIZE = 80;
     }
     
     
-    if([self isCompleted]){
-        touchedSquare = nil;
-        [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
-    } else if(touchedSquare == square){
+    if(touchedSquare == square){
+        if([self isCompleted]){
+            touchedSquare = nil;
+            [self performSelector:@selector(removeSquares) withObject:nil afterDelay:.4];
+        } else {
 //        NSLog(@"--- RESET touchedSquare %@", square.color);
 //        xSpeed = ySpeed = 0;
-        touchedSquare = nil;
-        
-        [self tintSquareArrowIfOverArrowAnimated:YES];
+            touchedSquare = nil;
+            
+            [self tintSquareArrowIfOverArrowAnimated:YES];
 //        [self tintSquareIfOverDotAnimated:YES];
-        
-        [self storePositions];
+            
+            [self storePositions];
+        }
     }
     
     [(GameDisplaySquare *)square showDotOverlayColor:[self checkOverDot:(GameDisplaySquare *)square] animated:YES];
@@ -348,7 +352,7 @@ const int MAX_SQUARE_SIZE = 80;
     return YES;
 }
 
-- (void)showEndText{
+- (void)removeSquares{
     for (GameDisplayItem *item in _gameItems) {
         if([item isKindOfClass:[GameDisplayDot class]] || ([item isKindOfClass:[GameDisplayArrow class]] && ![item isKindOfClass:[GameDisplaySquare class]])){
             
@@ -367,7 +371,51 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
-    [self performSelector:@selector(switchToNextLevel) withObject:nil afterDelay:.8];
+    [self performSelector:@selector(showEndText) withObject:nil afterDelay:.6];
+}
+
+- (void)showEndText{
+    static int idx = 0;
+    
+    NSLog(@"SHOW END TEXT");
+    NSLog(@"- idx:%i / count:%i", idx, (int)((NSArray *)self.levelDatas[@"end"]).count);
+    
+    if(idx == ((NSArray *)self.levelDatas[@"end"]).count){
+        NSLog(@"--- NEXT");
+        
+        idx = 0;
+        [self.container removeGestureRecognizer:self.tap];
+        self.tap = nil;
+        [self.endText removeFromSuperview];
+        self.endText = nil;
+        
+        [self switchToNextLevel];
+    } else {
+        NSLog(@"-- SHOW TEXT %i", idx);
+        if(idx == 0){
+            NSLog(@"---- ADD GESTURE RECOGNIZER");
+            self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEndText)];
+            [self.container addGestureRecognizer:self.tap];
+        }
+        
+        if(self.endText == nil){
+            NSLog(@"CREATE LABEL");
+            self.endText = [[UILabel alloc] init];
+            self.endText.font = [UIFont boldFlatFontOfSize:20];
+            self.endText.lineBreakMode = NSLineBreakByWordWrapping;
+            self.endText.numberOfLines = 0;
+            self.endText.textColor = [UIColor grayColor];
+            self.endText.textAlignment = NSTextAlignmentCenter;
+            self.endText.frame = CGRectMake(20, 20, self.container.bounds.size.width - 40, self.container.bounds.size.height - 40);
+//            txt.transform = CGAffineTransformMakeRotation(-M_PI * .5);
+            [self.container addSubview:self.endText];
+        }
+        
+        self.endText.text = self.levelDatas[@"end"][idx];
+        
+        
+        idx++;
+    }
 }
 
 - (void)switchToNextLevel{
