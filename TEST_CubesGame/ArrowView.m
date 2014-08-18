@@ -13,6 +13,7 @@
 }
 
 @property (strong, nonatomic)UIColor *color;
+@property (strong, nonatomic)UIColor *currentTint;
 
 @end
 
@@ -34,17 +35,18 @@
         // Initialization code
         self.backgroundColor = [UIColor colorWithWhite:1. alpha:0.];
         self.color = color;
+        self.currentTint = color;
     }
     return self;
 }
 
 - (void)tintColorDidChange{
-    NSLog(@"TINT DID CHANGE");
     [self setNeedsDisplay];
 }
 
 - (void)tintOver:(BOOL)over animated:(BOOL)animated{
-    UIColor *tint = (over)? [UIColor colorWithWhite:0. alpha:.6] : [UIColor colorWithWhite:1. alpha:1.] ;
+    UIColor *tint = (over)? [UIColor colorWithWhite:0. alpha:.2] : [UIColor colorWithWhite:1. alpha:1.] ;
+    self.currentTint = tint;
     
     if(animated){
         [UIView animateWithDuration:.3 animations:^{
@@ -76,7 +78,7 @@
         CGContextAddLineToPoint(ctx, 0, 0);
         
         CGContextClosePath(ctx);
-        CGContextSetFillColorWithColor(ctx, self.tintColor.CGColor);
+        CGContextSetFillColorWithColor(ctx, self.currentTint.CGColor);
         
         CGContextDrawPath(ctx, kCGPathFill);
         _ready = YES;
