@@ -292,6 +292,7 @@ const int MAX_SQUARE_SIZE = 80;
     if([self isCompleted]){
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
     } else if(touchedSquare == square){
+//        NSLog(@"--- RESET touchedSquare %@", square.color);
         xSpeed = ySpeed = 0;
         touchedSquare = nil;
         
@@ -299,6 +300,9 @@ const int MAX_SQUARE_SIZE = 80;
         
         [self storePositions];
     }
+    
+//    NSLog(@"----- RESET SPEED %@", square.color);
+//    xSpeed = ySpeed = 0;
     
 //    NSLog(@"--- END SQUARE MOVED %@", square.color);
 }
