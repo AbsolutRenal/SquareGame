@@ -27,5 +27,6 @@
 - (void)resetPosition;
 - (void)restoreStateWithPosition:(NSString *)position widthDirection:(NSString *)direction;
 - (void)tintArrow:(BOOL)over animated:(BOOL)animated;
+- (void)showDotOverlayColor:(UIColor *)color animated:(BOOL)animated;
 
 @end

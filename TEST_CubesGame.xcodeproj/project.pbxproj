@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B155278199B77B100FCF103 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B155277199B77B100FCF103 /* ArrowView.m */; };
+		9B15527E19A2233200FCF103 /* LayerMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B15527D19A2233200FCF103 /* LayerMask.m */; };
 		9B3D7224198FC77D001D45FC /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D71FB198FC77D001D45FC /* FUIAlertView.m */; };
 		9B3D7225198FC77D001D45FC /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D71FD198FC77D001D45FC /* FUIButton.m */; };
 		9B3D7226198FC77D001D45FC /* FUICellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3D71FF198FC77D001D45FC /* FUICellBackgroundView.m */; };
@@ -77,6 +78,8 @@
 /* Begin PBXFileReference section */
 		9B155276199B77B100FCF103 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
 		9B155277199B77B100FCF103 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrowView.m; sourceTree = "<group>"; };
+		9B15527C19A2233200FCF103 /* LayerMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerMask.h; sourceTree = "<group>"; };
+		9B15527D19A2233200FCF103 /* LayerMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerMask.m; sourceTree = "<group>"; };
 		9B3D71F9198FC77D001D45FC /* FlatUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
 		9B3D71FA198FC77D001D45FC /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		9B3D71FB198FC77D001D45FC /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 		9B155275199B778500FCF103 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				9B15527C19A2233200FCF103 /* LayerMask.h */,
+				9B15527D19A2233200FCF103 /* LayerMask.m */,
 				9B155276199B77B100FCF103 /* ArrowView.h */,
 				9B155277199B77B100FCF103 /* ArrowView.m */,
 			);
@@ -621,6 +626,7 @@
 				9BB18658199A69DB001D69D4 /* SelectorMatcher.m in Sources */,
 				9B3D7239198FC77D001D45FC /* UITableViewCell+FlatUI.m in Sources */,
 				9B3D7238198FC77D001D45FC /* UITabBar+FlatUI.m in Sources */,
+				9B15527E19A2233200FCF103 /* LayerMask.m in Sources */,
 				9B3D7232198FC77D001D45FC /* UIImage+FlatUI.m in Sources */,
 				9B3D7235198FC77D001D45FC /* UIProgressView+FlatUI.m in Sources */,
 				9B43C7E019991BF60088A8E5 /* GameDisplayItem.m in Sources */,

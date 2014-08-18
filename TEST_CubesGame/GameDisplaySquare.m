@@ -8,6 +8,7 @@
 
 #import "GameDisplaySquare.h"
 #import "ArrowView.h"
+#import "LayerMask.h"
 
 @interface GameDisplaySquare(){
     BOOL _ready;
@@ -17,6 +18,10 @@
 
 @property (strong, nonatomic)ArrowView *arrow;
 @property (strong, nonatomic)UITapGestureRecognizer *tap;
+@property (strong, nonatomic)UIView *dotOvelay;
+@property (strong, nonatomic)CALayer *maskLayer;
+@property (strong, nonatomic)LayerMask *mask;
+
 @end
 
 @implementation GameDisplaySquare
@@ -43,18 +48,33 @@
             _forceTint = YES;
 //            return;
         }
-//        NSLog(@"POS: %@ => TINT IT %i", self.position, over);
         _overArrow = over;
         
         [self.arrow tintOver:over animated:animated];
-//        float alp = (over)? .3 : 1. ;
-//        if(animated){
-//            [UIView animateWithDuration:.3 animations:^{
-//                self.arrow.alpha = alp;
-//            }];
-//        } else {
-//            self.arrow.alpha = alp;
-//        }
+    }
+}
+
+- (void)showDotOverlayColor:(UIColor *)color animated:(BOOL)animated{
+    CGRect fram;
+    
+    if(color){
+        self.mask.frame = CGRectMake(self.bounds.size.width * .5, -self.bounds.size.height * .5, self.bounds.size.width, self.bounds.size.height);
+        
+        if(_isRight)
+            self.dotOvelay.backgroundColor = [UIColor colorWithWhite:0. alpha:.3];
+        else
+            self.dotOvelay.backgroundColor = color;
+        fram = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    } else {
+        fram = CGRectMake(self.bounds.size.width * .5, -self.bounds.size.height * .5, self.bounds.size.width, self.bounds.size.height);
+    }
+    
+    if(animated){
+        [UIView animateWithDuration:.4 animations:^{
+            self.mask.frame = fram;
+        }];
+    } else {
+        self.mask.frame = fram;
     }
 }
 
@@ -134,6 +154,16 @@
         [self addSubview:self.arrow];
         [self rotateArrowAnimated:NO];
     }
+    
+    self.dotOvelay = [[UIView alloc] init];
+    self.dotOvelay.frame = self.bounds;
+    self.dotOvelay.backgroundColor = [UIColor purpleColor];
+    [self addSubview:self.dotOvelay];
+    self.maskLayer = [CALayer layer];
+    self.mask = [[LayerMask alloc] initWithFrame:CGRectMake(self.bounds.size.width * .5, -self.bounds.size.height * .5, self.bounds.size.width, self.bounds.size.height)];
+    self.mask.backgroundColor = [UIColor colorWithWhite:1. alpha:0.];
+    self.maskLayer.contents = self.mask;
+    self.dotOvelay.layer.mask = self.mask.layer;
     
     _ready = YES;
     

@@ -137,6 +137,7 @@ const int MAX_SQUARE_SIZE = 80;
     }
     
     [self tintSquareArrowIfOverArrowAnimated:NO];
+    [self tintSquareIfOverDotAnimated:NO];
     [self storePositions];
     
     
@@ -174,6 +175,7 @@ const int MAX_SQUARE_SIZE = 80;
     }
     
     [self tintSquareArrowIfOverArrowAnimated:NO];
+    [self tintSquareIfOverDotAnimated:NO];
     [self.moves removeAllObjects];
     [self storePositions];
 }
@@ -190,6 +192,7 @@ const int MAX_SQUARE_SIZE = 80;
         }
         
         [self tintSquareArrowIfOverArrowAnimated:YES];
+        [self tintSquareIfOverDotAnimated:YES];
     }
 }
 
@@ -234,12 +237,32 @@ const int MAX_SQUARE_SIZE = 80;
 - (BOOL)checkOverArrow:(GameDisplaySquare *)square{
     for(GameDisplayArrow *arrow in _gameItems){
         if([arrow isKindOfClass:[GameDisplayArrow class]] && ![arrow isKindOfClass:[GameDisplaySquare class]] && [arrow.position isEqualToString:square.position]){
-//            NSLog(@"square:%@ | arrow:%@", square.position, arrow.position);
+            //            NSLog(@"square:%@ | arrow:%@", square.position, arrow.position);
             return YES;
         }
     }
     
     return NO;
+}
+
+- (void)tintSquareIfOverDotAnimated:(BOOL)animated{
+    for(GameDisplaySquare *square in _gameItems){
+        if([square isKindOfClass:[GameDisplaySquare class]]){
+            //            NSLog(@"SQUARE over:%i", [self checkOverArrow:square]);
+            [square showDotOverlayColor:[self checkOverDot:square] animated:animated];
+        }
+    }
+}
+
+- (UIColor *)checkOverDot:(GameDisplaySquare *)square{
+    for(GameDisplayDot *dot in _gameItems){
+        if([dot isKindOfClass:[GameDisplayDot class]] && [dot.position isEqualToString:square.position]){
+            //            NSLog(@"square:%@ | arrow:%@", square.position, arrow.position);
+            return dot.itemColor;
+        }
+    }
+    
+    return nil;
 }
 
 - (void)squareMoved:(GameDisplayItem *)square{
@@ -261,8 +284,12 @@ const int MAX_SQUARE_SIZE = 80;
             continue;
         
         if([[item position] isEqualToString:[square position]]){
-            if([item.type isEqualToString:@"dot"] && [item.color isEqualToString:square.color]){
-                ((GameDisplaySquare *)square).isRight = YES;
+//            if([item.type isEqualToString:@"dot"] && [item.color isEqualToString:square.color]){
+            if([item.type isEqualToString:@"dot"]){
+                if([item.color isEqualToString:square.color])
+                    ((GameDisplaySquare *)square).isRight = YES;
+                
+                
             }
             
             if([item.type isEqualToString:@"square"]){
@@ -282,7 +309,6 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
-    [((GameDisplaySquare *)square) tintArrow:[self checkOverArrow:(GameDisplaySquare *)square] animated:YES];
     
     if([self isCompleted]){
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
@@ -292,9 +318,12 @@ const int MAX_SQUARE_SIZE = 80;
         touchedSquare = nil;
         
         [self tintSquareArrowIfOverArrowAnimated:YES];
+//        [self tintSquareIfOverDotAnimated:YES];
         
         [self storePositions];
     }
+    
+    [(GameDisplaySquare *)square showDotOverlayColor:[self checkOverDot:(GameDisplaySquare *)square] animated:YES];
     
 //    NSLog(@"----- RESET SPEED %@", square.color);
 //    xSpeed = ySpeed = 0;
