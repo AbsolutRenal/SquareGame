@@ -64,7 +64,7 @@
     
     self = [super init];
     
-    NSLog(@"[LEVEL_VIEW_CONTROLLER] -(instancetype)initWithCurrentLevel:%i withNbLevel:%i withLastCompleted:%i", current, nb, last);
+//    NSLog(@"[LEVEL_VIEW_CONTROLLER] -(instancetype)initWithCurrentLevel:%i withNbLevel:%i withLastCompleted:%i", current, nb, last);
     
     if(self){
         _currentLevel = current;

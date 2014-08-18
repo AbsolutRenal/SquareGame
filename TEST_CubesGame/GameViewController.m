@@ -222,6 +222,7 @@ const int MAX_SQUARE_SIZE = 80;
 //    NSLog(@"SQUARE MOVED %@", square.color);
     static int xSpeed;
     static int ySpeed;
+    BOOL needToStore = NO;
     
     [self.container bringSubviewToFront:square];
     
@@ -241,6 +242,7 @@ const int MAX_SQUARE_SIZE = 80;
                 if(xSpeed == 0 && ySpeed == 0){
                     xSpeed = ((GameDisplaySquare *)square).xSpeed;
                     ySpeed = ((GameDisplaySquare *)square).ySpeed;
+                    needToStore = YES;
                 }
                 
                 item.posX += xSpeed;
@@ -256,7 +258,7 @@ const int MAX_SQUARE_SIZE = 80;
     
     if([self isCompleted]){
         [self performSelector:@selector(showEndText) withObject:nil afterDelay:.4];
-    } else {
+    } else if(needToStore){
         [self storePositions];
     }
     
