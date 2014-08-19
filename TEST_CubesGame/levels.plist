@@ -2780,7 +2780,7 @@
 				<string>you're nothing like Don Quixote fighting a windmill</string>
 			</array>
 		</dict>
-		<!-- LEVEL 30 --> <!-- ROTATE -->
+		<!-- LEVEL 30 -->
 		<dict>
 			<key>completed</key>
 			<false/>
@@ -2904,6 +2904,122 @@
 			<key>end</key>
 			<array>
 				<string>You might want to look for some motivational quotes on the Internet</string>
+			</array>
+		</dict>
+		<!-- LEVEL 31 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>2,3</string>
+						<key>direction</key>
+						<string>t</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>0,3</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>0,2</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,0</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,0</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,3</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,3</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>4</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>Okay, I'va got some for you</string>
+				<string>Patience is bitter, but its fruit is sweet\n- Aristotle</string>
+				<string>He that can have patience can have what he will\n- Benjamin Franklin</string>
+				<string>A battle is won by the side that is absolutely determined to win\n- Leo Tolstoy</string>
+				<string>And I must say that the square has no determination whatsoever, so it's not too much of a requirement to meet</string>
 			</array>
 		</dict>
 	</array>
