@@ -2794,7 +2794,7 @@
 						<key>optional</key>
 						<false />
 						<key>position</key>
-						<string>2,0</string>
+						<string>3,1</string>
 						<key>direction</key>
 						<string>b</string>
 						<key>color</key>
@@ -2804,7 +2804,7 @@
 						<key>type</key>
 						<string>dot</string>
 						<key>position</key>
-						<string>3,2</string>
+						<string>4,3</string>
 						<key>color</key>
 						<string>blue</string>
 					</dict>
@@ -2814,7 +2814,7 @@
 						<key>optional</key>
 						<false />
 						<key>position</key>
-						<string>0,2</string>
+						<string>1,3</string>
 						<key>direction</key>
 						<string>r</string>
 						<key>color</key>
@@ -2824,7 +2824,7 @@
 						<key>type</key>
 						<string>dot</string>
 						<key>position</key>
-						<string>2,1</string>
+						<string>3,2</string>
 						<key>color</key>
 						<string>red</string>
 					</dict>
@@ -2834,7 +2834,7 @@
 						<key>optional</key>
 						<false />
 						<key>position</key>
-						<string>4,2</string>
+						<string>5,3</string>
 						<key>direction</key>
 						<string>l</string>
 						<key>color</key>
@@ -2844,7 +2844,7 @@
 						<key>type</key>
 						<string>dot</string>
 						<key>position</key>
-						<string>2,3</string>
+						<string>3,4</string>
 						<key>color</key>
 						<string>dark</string>
 					</dict>
@@ -2854,7 +2854,7 @@
 						<key>optional</key>
 						<false />
 						<key>position</key>
-						<string>2,4</string>
+						<string>3,5</string>
 						<key>direction</key>
 						<string>t</string>
 						<key>color</key>
@@ -2864,7 +2864,7 @@
 						<key>type</key>
 						<string>dot</string>
 						<key>position</key>
-						<string>1,2</string>
+						<string>2,3</string>
 						<key>color</key>
 						<string>orange</string>
 					</dict>
@@ -2873,7 +2873,7 @@
 						<key>type</key>
 						<string>arrow</string>
 						<key>position</key>
-						<string>2,0</string>
+						<string>3,1</string>
 						<key>direction</key>
 						<string>b</string>
 					</dict>
@@ -2881,7 +2881,7 @@
 						<key>type</key>
 						<string>arrow</string>
 						<key>position</key>
-						<string>4,2</string>
+						<string>5,3</string>
 						<key>direction</key>
 						<string>l</string>
 					</dict>
@@ -2889,21 +2889,21 @@
 						<key>type</key>
 						<string>arrow</string>
 						<key>position</key>
-						<string>2,4</string>
+						<string>3,5</string>
 						<key>direction</key>
 						<string>t</string>
 					</dict>
 				</array>
 				<key>columns</key>
-				<integer>5</integer>
+				<integer>7</integer>
 				<key>rows</key>
-				<integer>5</integer>
+				<integer>7</integer>
 				<key>rotate</key>
 				<integer>15</integer>
 			</dict>
 			<key>end</key>
 			<array>
-				<string>HEY</string>
+				<string>You might want to look for some motivational quotes on the Internet</string>
 			</array>
 		</dict>
 	</array>
