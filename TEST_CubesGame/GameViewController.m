@@ -167,6 +167,18 @@ const int MAX_SQUARE_SIZE = 80;
     }
     [self.gameItems removeAllObjects];
     [self.moves removeAllObjects];
+    
+    if(self.endText != nil){
+        if(self.endText.superview != nil)
+           [self.endText removeFromSuperview];
+        self.endText = nil;
+    }
+    
+    if(self.tap != nil){
+        if([self.container.gestureRecognizers containsObject:self.tap])
+           [self.container removeGestureRecognizer:self.tap];
+        self.tap = nil;
+    }
 }
 
 
@@ -378,29 +390,31 @@ const int MAX_SQUARE_SIZE = 80;
 - (void)showEndText{
     static int idx = 0;
     
-    NSLog(@"SHOW END TEXT");
-    NSLog(@"- idx:%i / count:%i", idx, (int)((NSArray *)self.levelDatas[@"end"]).count);
+//    NSLog(@"SHOW END TEXT");
     
     if(idx == ((NSArray *)self.levelDatas[@"end"]).count){
-        NSLog(@"--- NEXT");
-        
         idx = 0;
-        [self.container removeGestureRecognizer:self.tap];
-        self.tap = nil;
-        [self.endText removeFromSuperview];
-        self.endText = nil;
+        
+        if(self.tap != nil){
+            if([self.container.gestureRecognizers containsObject:self.tap])
+                [self.container removeGestureRecognizer:self.tap];
+            self.tap = nil;
+        }
+        
+        if(self.endText != nil){
+            if(self.endText.superview != nil)
+                [self.endText removeFromSuperview];
+            self.endText = nil;
+        }
         
         [self switchToNextLevel];
     } else {
-        NSLog(@"-- SHOW TEXT %i", idx);
         if(idx == 0){
-            NSLog(@"---- ADD GESTURE RECOGNIZER");
             self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEndText)];
             [self.container addGestureRecognizer:self.tap];
         }
         
         if(self.endText == nil){
-            NSLog(@"CREATE LABEL");
             self.endText = [[UILabel alloc] init];
             self.endText.font = [UIFont boldFlatFontOfSize:20];
             self.endText.lineBreakMode = NSLineBreakByWordWrapping;
@@ -414,13 +428,29 @@ const int MAX_SQUARE_SIZE = 80;
         
         self.endText.text = self.levelDatas[@"end"][idx];
         
-        
         idx++;
     }
 }
 
 - (void)switchToNextLevel{
+//    NSLog(@"SWITCH TO NEXT LEVEL");
     [self.delegate completeLevel];
+}
+
+- (void)congratulate{
+//    NSLog(@"----- CONGRATULATION !!");
+    [self emptyContainer];
+    
+    self.endText = [[UILabel alloc] init];
+    self.endText.font = [UIFont boldFlatFontOfSize:30];
+    self.endText.lineBreakMode = NSLineBreakByWordWrapping;
+    self.endText.numberOfLines = 0;
+    self.endText.textColor = [UIColor grayColor];
+    self.endText.textAlignment = NSTextAlignmentCenter;
+    self.endText.frame = CGRectMake(20, 20, self.container.bounds.size.width - 40, self.container.bounds.size.height - 40);
+    [self.container addSubview:self.endText];
+    
+    self.endText.text = @"CONGRATULATION !!\nYou finished it :)";
 }
 
 @end

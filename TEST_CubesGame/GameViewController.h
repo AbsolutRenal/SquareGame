@@ -23,6 +23,7 @@
 - (void)startLevel:(int)level withDatas:(NSDictionary *)levelDatas;
 - (void)resetLevel;
 - (void)undoLastMove;
+- (void)congratulate;
 
 @property (strong, nonatomic) id<GameViewControllerDelegate> delegate;
 

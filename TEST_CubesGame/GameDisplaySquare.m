@@ -44,7 +44,7 @@
 }
 
 - (BOOL)isRight{
-    NSLog(@"isRight:%i | optional:%i", _isRight, self.optional);
+//    NSLog(@"isRight:%i | optional:%i", _isRight, self.optional);
     return _isRight || self.optional;
 }
 
