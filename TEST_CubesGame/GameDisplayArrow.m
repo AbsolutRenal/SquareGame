@@ -41,7 +41,7 @@
     
     if(!self.arrow){
         self.arrow = [[ArrowView alloc] initWithColor:[GameDatas colorWithName:self.type]];
-        self.arrow.bounds = CGRectMake(0, 0, self.squareSize / 8, self.squareSize / 4);
+        self.arrow.bounds = CGRectMake(0, 0, self.squareSize / 6, self.squareSize / 3);
         [self addSubview:self.arrow];
         [self rotateArrow];
     }

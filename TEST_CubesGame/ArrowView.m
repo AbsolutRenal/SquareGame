@@ -45,7 +45,7 @@
 }
 
 - (void)tintOver:(BOOL)over animated:(BOOL)animated{
-    UIColor *tint = (over)? [UIColor colorWithWhite:0. alpha:.2] : [UIColor colorWithWhite:1. alpha:1.] ;
+    UIColor *tint = (over)? [UIColor colorWithWhite:0. alpha:.3] : [UIColor colorWithWhite:1. alpha:1.] ;
     self.currentTint = tint;
     
     if(animated){
