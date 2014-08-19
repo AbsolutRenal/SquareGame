@@ -3022,6 +3022,118 @@
 				<string>And I must say that the square has no determination whatsoever, so it's not too much of a requirement to meet</string>
 			</array>
 		</dict>
+		<!-- LEVEL 32 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>2,0</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>0,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>3,2</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>4,2</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,2</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,4</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>5</integer>
+				<key>rows</key>
+				<integer>5</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<!--<string></string>-->
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>
