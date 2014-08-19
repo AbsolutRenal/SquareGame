@@ -17,6 +17,9 @@ const int MAX_SQUARE_SIZE = 80;
     int _squareSize;
     int _nbColumns;
     int _nbRows;
+    float _rotation;
+    float _angle;
+    int idx;
 }
 
 @property (strong, nonatomic)NSMutableArray *moves;
@@ -37,6 +40,9 @@ const int MAX_SQUARE_SIZE = 80;
         self.container = [[UIView alloc] init];
         self.container.alpha = 0;
         [self.view addSubview:self.container];
+        _rotation = 0;
+        _angle = 0.;
+        idx = 0;
 //        self.container.backgroundColor = [UIColor lightGrayColor];
         
         self.moves = [[NSMutableArray alloc] init];
@@ -82,6 +88,12 @@ const int MAX_SQUARE_SIZE = 80;
 //    NSLog(@"---- height=%f", self.container.frame.size.height);
     
     [self emptyContainer];
+    
+    if(_levelDatas[@"matrix"][@"rotate"] != nil){
+        NSLog(@"-- ROTATE");
+        _rotation = [_levelDatas[@"matrix"][@"rotate"] doubleValue] * .001;
+        NSLog(@"--- value:%f", _rotation);
+    }
     
     _nbColumns = [_levelDatas[@"matrix"][@"columns"] intValue];
     _nbRows = [_levelDatas[@"matrix"][@"rows"] intValue];
@@ -146,8 +158,20 @@ const int MAX_SQUARE_SIZE = 80;
     
     [UIView animateWithDuration:.3 animations:^{
         self.container.alpha = 1.;
+    } completion:^(BOOL finished) {
+        if(_rotation != 0.){
+            [self rotateContainer];
+        }
     }];
     
+}
+
+- (void)rotateContainer{
+    _angle += _rotation;
+    
+    self.container.transform = CGAffineTransformMakeRotation(_angle);
+    
+    [self performSelector:@selector(rotateContainer) withObject:nil afterDelay:.01];
 }
 
 - (void)storePositions{
@@ -178,6 +202,20 @@ const int MAX_SQUARE_SIZE = 80;
         if([self.container.gestureRecognizers containsObject:self.tap])
            [self.container removeGestureRecognizer:self.tap];
         self.tap = nil;
+    }
+    
+    [self deleteRotationAnimation];
+    
+    idx = 0;
+}
+
+- (void)deleteRotationAnimation{
+    if(_rotation != 0.){
+//        NSLog(@"-- CANCEL");
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(rotateContainer) object:nil];
+        _angle = 0.;
+        _rotation = 0.;
+        self.container.transform = CGAffineTransformMakeRotation(0.);
     }
 }
 
@@ -384,13 +422,13 @@ const int MAX_SQUARE_SIZE = 80;
         }
     }
     
-    [self performSelector:@selector(showEndText) withObject:nil afterDelay:.6];
+    [self performSelector:@selector(showEndText) withObject:nil afterDelay:.7];
 }
 
 - (void)showEndText{
-    static int idx = 0;
-    
 //    NSLog(@"SHOW END TEXT");
+    
+    [self deleteRotationAnimation];
     
     if(idx == ((NSArray *)self.levelDatas[@"end"]).count){
         idx = 0;
