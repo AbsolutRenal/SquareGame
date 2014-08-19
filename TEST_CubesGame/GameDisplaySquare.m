@@ -21,6 +21,7 @@
 @property (strong, nonatomic)UIView *dotOvelay;
 @property (strong, nonatomic)CALayer *maskLayer;
 @property (strong, nonatomic)LayerMask *mask;
+@property (strong, nonatomic)UIColor *previousOverlayColor;
 
 @end
 
@@ -58,7 +59,9 @@
     CGRect fram;
     
     if(color){
-        self.mask.frame = CGRectMake(self.bounds.size.width * .5, -self.bounds.size.height * .5, self.bounds.size.width, self.bounds.size.height);
+        if(![color isEqual:self.previousOverlayColor]){
+            self.mask.frame = CGRectMake(self.bounds.size.width * .5, -self.bounds.size.height * .5, self.bounds.size.width, self.bounds.size.height);
+        }
         
         if([color isEqual:self.itemColor]){
             _isRight = YES;
@@ -80,6 +83,8 @@
     } else {
         self.mask.frame = fram;
     }
+    
+    self.previousOverlayColor = color;
 }
 
 - (void)touched{
