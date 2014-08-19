@@ -21,6 +21,7 @@
 @property (assign, nonatomic)BOOL isRight;
 @property (assign, nonatomic)int xSpeed;
 @property (assign, nonatomic)int ySpeed;
+@property (assign, nonatomic)BOOL optional;
 
 - (void)rotateArrowAnimated:(BOOL)animated;
 - (void)updatePosition;

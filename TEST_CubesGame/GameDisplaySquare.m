@@ -43,6 +43,11 @@
     return self;
 }
 
+- (BOOL)isRight{
+    NSLog(@"isRight:%i | optional:%i", _isRight, self.optional);
+    return _isRight || self.optional;
+}
+
 - (void)tintArrow:(BOOL)over animated:(BOOL)animated{
     if(over != _overArrow || _forceTint){
         if(!_ready){

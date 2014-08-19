@@ -102,6 +102,7 @@ const int MAX_SQUARE_SIZE = 80;
             objcase(@"square"){
                 item = [[GameDisplaySquare alloc] init];
                 ((GameDisplaySquare *)item).delegate = self;
+                ((GameDisplaySquare *)item).optional = [_levelDatas[@"matrix"][@"items"][i][@"optional"] boolValue];
             };
         
             objcase(@"dot"){

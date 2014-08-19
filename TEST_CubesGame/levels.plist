@@ -34,6 +34,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -71,6 +73,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -89,6 +93,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,3</string>
 						<key>direction</key>
@@ -126,6 +132,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>1,2</string>
 						<key>direction</key>
@@ -144,6 +152,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -162,6 +172,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>3,1</string>
 						<key>direction</key>
@@ -199,6 +211,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,0</string>
 						<key>direction</key>
@@ -217,6 +231,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>4,2</string>
 						<key>direction</key>
@@ -254,6 +270,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,1</string>
 						<key>direction</key>
@@ -272,6 +290,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>1,0</string>
 						<key>direction</key>
@@ -290,6 +310,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,1</string>
 						<key>direction</key>
@@ -327,6 +349,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,1</string>
 						<key>direction</key>
@@ -345,6 +369,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>1,0</string>
 						<key>direction</key>
@@ -363,6 +389,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,1</string>
 						<key>direction</key>
@@ -400,6 +428,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>4,1</string>
 						<key>direction</key>
@@ -418,6 +448,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>3,0</string>
 						<key>direction</key>
@@ -436,6 +468,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,2</string>
 						<key>direction</key>
@@ -473,6 +507,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -526,6 +562,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,2</string>
 						<key>direction</key>
@@ -544,6 +582,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -597,6 +637,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,1</string>
 						<key>direction</key>
@@ -615,6 +657,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,1</string>
 						<key>direction</key>
@@ -682,6 +726,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,0</string>
 						<key>direction</key>
@@ -700,6 +746,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>4,2</string>
 						<key>direction</key>
@@ -718,6 +766,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,4</string>
 						<key>direction</key>
@@ -764,6 +814,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -782,6 +834,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>4,0</string>
 						<key>direction</key>
@@ -800,6 +854,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,4</string>
 						<key>direction</key>
@@ -846,6 +902,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,2</string>
 						<key>direction</key>
@@ -864,6 +922,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,3</string>
 						<key>direction</key>
@@ -918,6 +978,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>3,3</string>
 						<key>direction</key>
@@ -936,6 +998,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,5</string>
 						<key>direction</key>
@@ -954,6 +1018,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>1,1</string>
 						<key>direction</key>
@@ -1000,6 +1066,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>1,2</string>
 						<key>direction</key>
@@ -1018,6 +1086,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,3</string>
 						<key>direction</key>
@@ -1036,6 +1106,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>3,2</string>
 						<key>direction</key>
@@ -1054,6 +1126,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,1</string>
 						<key>direction</key>
@@ -1091,6 +1165,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,2</string>
 						<key>direction</key>
@@ -1109,6 +1185,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -1171,6 +1249,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,1</string>
 						<key>direction</key>
@@ -1189,6 +1269,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -1259,6 +1341,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>3,0</string>
 						<key>direction</key>
@@ -1277,6 +1361,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -1295,6 +1381,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,1</string>
 						<key>direction</key>
@@ -1365,6 +1453,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>3,0</string>
 						<key>direction</key>
@@ -1383,6 +1473,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,1</string>
 						<key>direction</key>
@@ -1401,6 +1493,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -1471,6 +1565,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>1,4</string>
 						<key>direction</key>
@@ -1489,6 +1585,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,3</string>
 						<key>direction</key>
@@ -1507,6 +1605,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,5</string>
 						<key>direction</key>
@@ -1601,6 +1701,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,0</string>
 						<key>direction</key>
@@ -1619,6 +1721,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,0</string>
 						<key>direction</key>
@@ -1637,6 +1741,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,2</string>
 						<key>direction</key>
@@ -1655,6 +1761,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,2</string>
 						<key>direction</key>
@@ -1733,6 +1841,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,2</string>
 						<key>direction</key>
@@ -1751,6 +1861,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,2</string>
 						<key>direction</key>
@@ -1769,6 +1881,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>0,6</string>
 						<key>direction</key>
@@ -1787,6 +1901,8 @@
 					<dict>
 						<key>type</key>
 						<string>square</string>
+						<key>optional</key>
+						<false />
 						<key>position</key>
 						<string>2,6</string>
 						<key>direction</key>
@@ -1860,6 +1976,102 @@
 			<key>end</key>
 			<array>
 				<string>Now that was radical! Yeah... Let's just restore the status quo</string>
+			</array>
+		</dict>
+		<!-- LEVEL 23 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<true />
+						<key>position</key>
+						<string>4,2</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>0,3</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<true />
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,3</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>4,4</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,5</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>5</integer>
+				<key>rows</key>
+				<integer>7</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string></string>
 			</array>
 		</dict>
 	</array>
