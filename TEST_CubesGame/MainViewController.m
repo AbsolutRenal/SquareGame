@@ -270,7 +270,7 @@
 - (void)completeLevel{
 //    NSLog(@"COMPLETE LEVEL");
     
-    if([datas completeLevel]){
+    if([datas switchToNExtLevel]){
 //        NSLog(@"-- LAUNCH NEXT");
         [self launchLevel:datas.currentLevel];
     } else {

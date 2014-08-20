@@ -170,20 +170,23 @@
     return _levelsDescription[level];
 }
 
-- (BOOL)completeLevel{
+- (void)completeLevel{
 //    NSLog(@"[GAME_DATAS] -(void)completeLevel");
     
     [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
 //    NSLog(@"DATAS %@", _levelsDataFile[@"levels"][_currentLevel][@"completed"]);
-    
+}
+
+
+- (BOOL)switchToNExtLevel{
     _lastLevel ++;
     if(_currentLevel < ([self nbLevels] -1)){
-        NSLog(@"COMPLETE YES");
+//        NSLog(@"SWITCH TO NEXT LEVEL: YES");
         _currentLevel ++;
         return YES;
         
     } else {
-        NSLog(@"COMPLETE NO");
+//        NSLog(@"SWITCH TO NEXT LEVEL: NO");
         _currentLevel = -1;
         return NO;
     }

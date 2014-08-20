@@ -371,6 +371,8 @@ const int MAX_SQUARE_SIZE = 80;
     if(touchedSquare == square){
         _completed = [self isCompleted];
         if(_completed){
+            [[GameDatas getInstance] completeLevel];
+            
             touchedSquare = nil;
             [self performSelector:@selector(removeSquares) withObject:nil afterDelay:.4];
         } else {

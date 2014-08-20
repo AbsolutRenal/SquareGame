@@ -20,6 +20,7 @@
 - (int)nbLevels;
 - (int)lastLevel;
 - (NSDictionary *)levelDatasForLevel:(int)level;
-- (BOOL)completeLevel;
+- (void)completeLevel;
+- (BOOL)switchToNExtLevel;
 
 @end
