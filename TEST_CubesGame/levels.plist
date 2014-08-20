@@ -3135,6 +3135,115 @@
 				<string>Be sure to check it out</string>
 			</array>
 		</dict>
+		<!-- LEVEL 33 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>0,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>0,3</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<true />
+						<key>position</key>
+						<string>4,2</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,1</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,3</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>4,4</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,5</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>5</integer>
+				<key>rows</key>
+				<integer>7</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>Remember that guy who gave up?</string>
+				<string>Neither does anyone else</string>
+				<string>Not that you will be remembered for completing this game</string>
+				<string>But, you know, at least something to brag about</string>
+				<string>And if nobody understands why you are sucha boaster, you know what you do</string>
+				<string>I mean, drop them a link to this game, come on!</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>
