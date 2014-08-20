@@ -13,6 +13,9 @@
 @required
 - (void)squareMoved:(GameDisplayItem *)square;
 
+@optional
+- (BOOL)shouldMove;
+
 @end
 
 @interface GameDisplaySquare : GameDisplayArrow

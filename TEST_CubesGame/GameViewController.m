@@ -20,6 +20,7 @@ const int MAX_SQUARE_SIZE = 80;
     float _rotation;
     float _angle;
     int idx;
+    BOOL _completed;
 }
 
 @property (strong, nonatomic)NSMutableArray *moves;
@@ -88,6 +89,7 @@ const int MAX_SQUARE_SIZE = 80;
 //    NSLog(@"---- height=%f", self.container.frame.size.height);
     
     [self emptyContainer];
+    _completed = NO;
     
     if(_levelDatas[@"matrix"][@"rotate"] != nil){
         NSLog(@"-- ROTATE");
@@ -367,7 +369,8 @@ const int MAX_SQUARE_SIZE = 80;
     
     
     if(touchedSquare == square){
-        if([self isCompleted]){
+        _completed = [self isCompleted];
+        if(_completed){
             touchedSquare = nil;
             [self performSelector:@selector(removeSquares) withObject:nil afterDelay:.4];
         } else {
@@ -468,6 +471,11 @@ const int MAX_SQUARE_SIZE = 80;
         
         idx++;
     }
+}
+
+- (BOOL)shouldMove{
+//    NSLog(@"SHOULD MOVE");
+    return !_completed;
 }
 
 - (void)switchToNextLevel{

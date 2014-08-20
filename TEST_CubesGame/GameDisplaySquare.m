@@ -95,15 +95,17 @@
 - (void)touched{
 //    NSLog(@"TOUCHED");
     
-    if(!_ready)
-        return;
-    
-    _ready = NO;
-    
-    self.posX += _xSpeed;
-    self.posY += _ySpeed;
-    
-    [self updatePosition];
+    if(![self.delegate respondsToSelector:@selector(shouldMove)] || [self.delegate shouldMove]){
+        if(!_ready)
+            return;
+        
+        _ready = NO;
+        
+        self.posX += _xSpeed;
+        self.posY += _ySpeed;
+        
+        [self updatePosition];
+    }
 }
 
 - (void)move{
