@@ -3469,6 +3469,141 @@
 				<string>I know I know. The last one. I miss you already</string>
 			</array>
 		</dict>
+		<!-- LEVEL 36 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>0,4</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>4,0</string>
+						<key>color</key>
+						<string>orange</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>1,4</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,0</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>2,4</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,0</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>1,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>4,1</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,3</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,4</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>5</integer>
+				<key>rows</key>
+				<integer>5</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>Wow, dude</string>
+				<string>You've beaten them all!</string>
+				<string>I have nothing left to test you. You've probably proven something.</string>
+				<string>Congratulations!</string>
+				<string>Don't forget the time we had together</string>
+				<string>In memory of you will remain here in the form of statistics</string>
+				<string>Nothing personal, as they say</string>
+				<string>So that's that. Good Bye</string>
+				<string>Good bye, buddy, no more squares for you</string>
+				<string>You're still clicking...</string>
+				<string>Now I feel like I should have thought of something to say at parting</string>
+				<string>But I haven't</string>
+				<string>Seriously, no levels after this one</string>
+				<string>Sorry about that</string>
+				<string>Listen, I know these messages look pretty much like those that had levels after them, but this time it's different</string>
+				<string>What are you expecting, anyway? Blizzard-style cinematic ending?</string>
+				<string>Well, I'm kind of short of budget for that kind of thing</string>
+				<string>I had to spend all the money to pay the script writter</string>
+				<string>Okay, there was no script writter</string>
+				<string>But that kind of compensates for the total lack of any kind of budget, so anyway...</string>
+				<string>No levels. No cinematic. No ending. No hope. Nothing</string>
+				<string>Just some letters in a seemingly random order</string>
+				<string>like ,f!en--lk30fu)&02j,3 ; :-)</string>
+				<string>Final levels weren't as though as you were expecting, were they?</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>
