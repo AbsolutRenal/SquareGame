@@ -3357,6 +3357,118 @@
 				<string>I wonder that was more tiring, the problems the levels presented, or may wannabe jokes between them</string>
 			</array>
 		</dict>
+		<!-- LEVEL 35 -->
+		<dict>
+			<key>completed</key>
+			<false/>
+			<key>matrix</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>3,0</string>
+						<key>direction</key>
+						<string>l</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>3,2</string>
+						<key>color</key>
+						<string>blue</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>0,1</string>
+						<key>direction</key>
+						<string>r</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>2,1</string>
+						<key>color</key>
+						<string>red</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>square</string>
+						<key>optional</key>
+						<false />
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>dot</string>
+						<key>position</key>
+						<string>1,2</string>
+						<key>color</key>
+						<string>dark</string>
+					</dict>
+					
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,0</string>
+						<key>direction</key>
+						<string>b</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>3,0</string>
+						<key>direction</key>
+						<string>l</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>0,1</string>
+						<key>direction</key>
+						<string>r</string>
+					</dict>
+					<dict>
+						<key>type</key>
+						<string>arrow</string>
+						<key>position</key>
+						<string>2,2</string>
+						<key>direction</key>
+						<string>t</string>
+					</dict>
+				</array>
+				<key>columns</key>
+				<integer>4</integer>
+				<key>rows</key>
+				<integer>3</integer>
+			</dict>
+			<key>end</key>
+			<array>
+				<string>I know I know. The last one. I miss you already</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>
