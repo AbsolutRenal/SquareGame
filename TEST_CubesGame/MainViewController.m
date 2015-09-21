@@ -44,6 +44,8 @@
 //    return self;
 //}
 
+#pragma mark - Instance Public Methods
+
 - (id)init{
     self = [super init];
     
@@ -64,6 +66,27 @@
     
     [self layoutDefaultView];
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self openGameVC];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    
+    NSLog(@"[MainViewController] -- !!! MEMORY WARNING !!!");
+}
+
+
+#pragma mark - Instance Private Methods
 
 - (void)layoutDefaultView{
     self.container = [[UIView alloc] init];
@@ -184,9 +207,11 @@
     [self.container addSubview:self.levelVC.view];
     [self addChildViewController:self.levelVC];
     
+    __weak typeof(self) weakSelf = self;
+    
     [UIView animateWithDuration:.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.levelVC.view.alpha = 1.;
-        self.levelVC.view.frame = self.container.frame;
+        weakSelf.levelVC.view.alpha = 1.;
+        weakSelf.levelVC.view.frame = self.container.frame;
     } completion:^(BOOL finished){
         _ready = YES;
     }];
@@ -225,12 +250,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)showViewController:(UIViewController *)child{
 //    [child willMoveToParentViewController:self];
     
@@ -249,32 +268,25 @@
     [child didMoveToParentViewController:self];
 }
 
+
+#pragma mark - Delegate Methods
+
 - (void)launchLevel:(int)level{
     datas.currentLevel = level;
-//    NSLog(@"[MAIN_VIEW_CONTROLLER] -(void)launchLevel:%i", level);
-
+    //    NSLog(@"[MAIN_VIEW_CONTROLLER] -(void)launchLevel:%i", level);
+    
     [self removeLevelsVC];
     [self.gameVC startLevel:level withDatas:[datas levelDatasForLevel:level]];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    [self openGameVC];
-}
-
 - (void)completeLevel{
-//    NSLog(@"COMPLETE LEVEL");
+    //    NSLog(@"COMPLETE LEVEL");
     
     if([datas switchToNExtLevel]){
-//        NSLog(@"-- LAUNCH NEXT");
+        //        NSLog(@"-- LAUNCH NEXT");
         [self launchLevel:datas.currentLevel];
     } else {
-//        NSLog(@"-- CONGRATULATE")
+        //        NSLog(@"-- CONGRATULATE")
         [self.gameVC congratulate];
     }
 }

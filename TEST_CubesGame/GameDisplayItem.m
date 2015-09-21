@@ -16,6 +16,8 @@
 
 @implementation GameDisplayItem
 
+#pragma mark - Instance Public Methods
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

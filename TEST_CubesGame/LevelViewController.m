@@ -41,6 +41,9 @@
 
 @implementation LevelViewController
 
+
+#pragma mark - Instance Public Methods
+
 - (id)init{
     self = [super init];
     
@@ -88,6 +91,58 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self configureView];
+    
+    _startLevel = _currentLevel - (_currentLevel % _nbLevelByPage);
+    [self populateFromLevel:_startLevel];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:.2 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.titleView.alpha = 1.;
+        self.titleView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.titleView.frame.size.height);
+    } completion:nil];
+}
+
+- (void)close{
+    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.titleView.alpha = 0.;
+        self.titleView.frame = CGRectMake(0, -80, self.view.frame.size.width, self.titleView.frame.size.height);
+    } completion:nil];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    
+    NSLog(@"[LevelViewController] -- !!! MEMORY WARNING !!!");
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent{
+    if(parent == nil){
+        for (LevelNumberView *button in self.levelButtons) {
+            if(self.view && [self.view.subviews containsObject:button]){
+                NSLog(@"-- button:%@", button);
+                [button removeFromSuperview];
+            }
+        }
+        self.levelButtons = nil;
+        [self.titleView removeFromSuperview];
+        self.titleView = nil;
+        [self.view removeFromSuperview];
+        self.delegate = nil;
+    }
+}
+
+
+#pragma mark - Instance Private Methods
 
 - (void)clearLevelButtons{
 //    NSLog(@"########## NB ITEMS : %lu", (unsigned long)self.levelButtons.count);
@@ -219,6 +274,7 @@
             level = [LevelNumberView presentInViewController:self];
             [self.levelButtons addObject:level];
             level.frame = CGRectMake(_offset + ((i - startLevel) % _nbColumns) * (_itemWidth + _offset), _startOffsetY + (currentRow * (_itemHeight + _offset)), _itemWidth, _itemHeight);
+            NSLog(@"LEVEL_FRAME: %@", NSStringFromCGRect(level.frame));
         }
         
         
@@ -242,39 +298,38 @@
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    [self configureView];
-    
-    _startLevel = _currentLevel - (_currentLevel % _nbLevelByPage);
-    [self populateFromLevel:_startLevel];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    [UIView animateWithDuration:.2 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.titleView.alpha = 1.;
-        self.titleView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.titleView.frame.size.height);
-    } completion:nil];
-}
-
-- (void)close{
-    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.titleView.alpha = 0.;
-        self.titleView.frame = CGRectMake(0, -80, self.view.frame.size.width, self.titleView.frame.size.height);
-    } completion:nil];
-}
-
-- (void)didReceiveMemoryWarning
+- (void)viewDidLayoutSubviews
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.view layoutSubviews];
+    
+    int currentRow;
+    for (int i = _startLevel; i < _nbLevels; i++) {
+        currentRow = floor((i - _startLevel) / _nbColumns);
+        
+        if(currentRow >= _nbRows){
+            self.nextButton.hidden = NO;
+            break;
+        }
+        
+        ((LevelNumberView *)self.levelButtons[i-_startLevel]).frame = CGRectMake(_offset + ((i - _startLevel) % _nbColumns) * (_itemWidth + _offset), _startOffsetY + (currentRow * (_itemHeight + _offset)), _itemWidth, _itemHeight);
+    }
+    
+    [super viewDidLayoutSubviews];
+}
+
+
+#pragma mark - Delegate Methods
+
+- (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex != alertView.cancelButtonIndex){
+        _currentLevel = _clickedLevel;
+        
+        [self.delegate launchLevel:_clickedLevel];
+    }
 }
 
 - (void)selectLevel:(int)nb{
-//    NSLog(@"SELECT LEVEL %d / CURRENT:%d", nb, _currentLevel);
+    //    NSLog(@"SELECT LEVEL %d / CURRENT:%d", nb, _currentLevel);
     _clickedLevel = nb;
     
     if(nb != _currentLevel){
@@ -298,25 +353,6 @@
     }
 }
 
-- (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(buttonIndex != alertView.cancelButtonIndex){
-        _currentLevel = _clickedLevel;
-        
-        [self.delegate launchLevel:_clickedLevel];
-    }
-}
 
-- (void)didMoveToParentViewController:(UIViewController *)parent{
-    if(parent == nil){
-        for (LevelNumberView *button in self.levelButtons) {
-            [button removeFromSuperview];
-        }
-        self.levelButtons = nil;
-        [self.titleView removeFromSuperview];
-        self.titleView = nil;
-        [self.view removeFromSuperview];
-        self.delegate = nil;
-    }
-}
 
 @end

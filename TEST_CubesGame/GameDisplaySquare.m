@@ -27,6 +27,9 @@
 
 @implementation GameDisplaySquare
 
+
+#pragma mark - Instance Public Methods
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -44,7 +47,7 @@
 }
 
 - (BOOL)isRight{
-//    NSLog(@"isRight:%i | optional:%i", _isRight, self.optional);
+    //    NSLog(@"isRight:%i | optional:%i", _isRight, self.optional);
     return _isRight || self.optional;
 }
 
@@ -52,7 +55,7 @@
     if(over != _overArrow || _forceTint){
         if(!_ready){
             _forceTint = YES;
-//            return;
+            //            return;
         }
         _overArrow = over;
         
@@ -92,31 +95,6 @@
     self.previousOverlayColor = color;
 }
 
-- (void)touched{
-//    NSLog(@"TOUCHED");
-    
-    if(![self.delegate respondsToSelector:@selector(shouldMove)] || [self.delegate shouldMove]){
-        if(!_ready)
-            return;
-        
-        _ready = NO;
-        
-        self.posX += _xSpeed;
-        self.posY += _ySpeed;
-        
-        [self updatePosition];
-    }
-}
-
-- (void)move{
-    _ready = NO;
-    [UIView animateWithDuration:.3 animations:^{
-        self.frame = [self getFrame];
-    } completion:^(BOOL finished) {
-        _ready = YES;
-    }];
-}
-
 - (void)resetPosition{
     [self setPosition:self.initialPosition];
     self.frame = [self getFrame];
@@ -139,20 +117,20 @@
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
  */
 
 - (void)drawRect:(CGRect)rect{
-//    [super drawRect:rect];
+    //    [super drawRect:rect];
     
-//    NSLog(@"ARROW:%@ \\ %@", _arrow, self);
+    //    NSLog(@"ARROW:%@ \\ %@", _arrow, self);
     
-//    NSLog(@"DRAW SQUARE");
+    //    NSLog(@"DRAW SQUARE");
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextBeginPath(ctx);
     
@@ -164,7 +142,7 @@
     CGContextDrawPath(ctx, kCGPathFill);
     
     if(!self.arrow){
-//        NSLog(@"ADD ARROW");
+        //        NSLog(@"ADD ARROW");
         self.arrow = [[ArrowView alloc] initWithColor:[UIColor whiteColor]];
         self.arrow.bounds = CGRectMake(0, 0, self.squareSize / 6, self.squareSize / 3);
         [self addSubview:self.arrow];
@@ -223,24 +201,52 @@
     if(animated){
         [UIView animateWithDuration:.3 animations:^{
             _arrow.transform =  CGAffineTransformMakeRotation(angle);
-//            _arrow.center = self.center;
+            //            _arrow.center = self.center;
             _arrow.frame = CGRectMake((self.bounds.size.width - _arrow.frame.size.width) * .5, (self.bounds.size.height - _arrow.frame.size.height) * .5, _arrow.frame.size.width, _arrow.frame.size.height);
         }];
     } else {
         _arrow.transform =  CGAffineTransformMakeRotation(angle);
-//        _arrow.center = self.center;
+        //        _arrow.center = self.center;
         _arrow.frame = CGRectMake((self.bounds.size.width - _arrow.frame.size.width) * .5, (self.bounds.size.height - _arrow.frame.size.height) * .5, _arrow.frame.size.width, _arrow.frame.size.height);
     }
 }
 
 - (void)didMoveToSuperview{
     if(!self.superview){
-//        NSLog(@"--[SUB CLASS] CLEAN ITEM");
+        //        NSLog(@"--[SUB CLASS] CLEAN ITEM");
         [self.arrow removeFromSuperview];
         self.arrow = nil;
         self.delegate = nil;
         [self removeGestureRecognizer:self.tap];
     }
+}
+
+
+#pragma mark - Instance Private Methods
+
+- (void)touched{
+//    NSLog(@"TOUCHED");
+    
+    if(![self.delegate respondsToSelector:@selector(shouldMove)] || [self.delegate shouldMove]){
+        if(!_ready)
+            return;
+        
+        _ready = NO;
+        
+        self.posX += _xSpeed;
+        self.posY += _ySpeed;
+        
+        [self updatePosition];
+    }
+}
+
+- (void)move{
+    _ready = NO;
+    [UIView animateWithDuration:.3 animations:^{
+        self.frame = [self getFrame];
+    } completion:^(BOOL finished) {
+        _ready = YES;
+    }];
 }
 
 @end

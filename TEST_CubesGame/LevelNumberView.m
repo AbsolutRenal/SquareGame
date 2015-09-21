@@ -74,6 +74,15 @@
     
     if(newSuperview == nil)
         self.delegateViewController = nil;
+//    else
+//        NSLog(@"WILL MOVE FRAME: %@ %@", self, NSStringFromCGRect(self.frame));
+}
+
+- (void)didMoveToSuperview
+{
+    [super didMoveToSuperview];
+    
+//    NSLog(@"DID MOVE FRAME: %@ %@", self, NSStringFromCGRect(self.frame));
 }
 
 /*
