@@ -9,14 +9,15 @@
 #import "GameDatas.h"
 
 @interface GameDatas(){
-    NSMutableDictionary *_levelsDataFile;
-    NSString *_levelsFile;
-    NSString *_levelsStoreFile;
-    NSArray *_levelsDescription;
-    NSDictionary *_colors;
     int _nbLevels;
     int _lastLevel;
 }
+
+@property (strong, nonatomic)NSMutableDictionary *levelsDataFile;
+@property (strong, nonatomic)NSString *levelsFile;
+@property (strong, nonatomic)NSString *levelsStoreFile;
+@property (strong, nonatomic)NSArray *levelsDescription;
+@property (strong, nonatomic)NSDictionary *colors;
 
 @end
 
@@ -55,9 +56,9 @@
     
     if(self){
         _lastLevel = -1;
-        _levelsDataFile = [self levelsData];
-        _levelsDescription = _levelsDataFile[@"levels"];
-        _colors = _levelsDataFile[@"colors"];
+        self.levelsDataFile = [self levelsData];
+        self.levelsDescription = self.levelsDataFile[@"levels"];
+        self.colors = self.levelsDataFile[@"colors"];
         _currentLevel = [self lastLevel];
         
         _nbLevels = 0;
@@ -70,15 +71,15 @@
     if(_lastLevel != -1)
         return _lastLevel;
     
-    int nb = (int)_levelsDescription.count;
+    int nb = (int)self.levelsDescription.count;
     int i;
     BOOL completed;
     
     for (i = 0; i < nb; i++) {
         //        NSLog(@"i:%i", i);
-        //        NSLog(@"i:%d, COMPLETED:%@", i, _levelsDescription[i][@"completed"]);
+        //        NSLog(@"i:%d, COMPLETED:%@", i, self.levelsDescription[i][@"completed"]);
         
-        completed = [_levelsDescription[i][@"completed"]  boolValue];
+        completed = [self.levelsDescription[i][@"completed"]  boolValue];
         if(!completed){
             _lastLevel = i;
             return i;
@@ -90,20 +91,20 @@
 
 - (int)nbLevels{
     if (_nbLevels == 0)
-        _nbLevels = (int)_levelsDescription.count;
+        _nbLevels = (int)self.levelsDescription.count;
     
     return _nbLevels;
 }
 
 - (NSDictionary *)levelDatasForLevel:(int)level{
-    return _levelsDescription[level];
+    return self.levelsDescription[level];
 }
 
 - (void)completeLevel{
-    //    NSLog(@"[GAME_DATAS] -(void)completeLevel");
+//    NSLog(@"[GAME_DATAS] -(void)completeLevel");
     
-    [_levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
-    //    NSLog(@"DATAS %@", _levelsDataFile[@"levels"][_currentLevel][@"completed"]);
+    [self.levelsDataFile[@"levels"][_currentLevel] setValue:@YES forKey:@"completed"];
+//    NSLog(@"DATAS %@", self.levelsDataFile[@"levels"][_currentLevel][@"completed"]);
 }
 
 
@@ -138,7 +139,7 @@
 }
 
 - (NSString *)colorStrNamed:(NSString *)name{
-    return _colors[name];
+    return self.colors[name];
 }
 
 - (int)currentLevel{
@@ -157,30 +158,30 @@
 - (NSMutableDictionary *)levelsData{
     NSMutableDictionary *datas;
     
-    if(!_levelsFile){
-        _levelsFile = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
+    if(!self.levelsFile){
+        self.levelsFile = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"plist"];
     }
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     
-    if(![fileManager fileExistsAtPath:[self levelsStoreFile]]){
+    if(![fileManager fileExistsAtPath:self.levelsStoreFile]){
 //        NSLog(@"$$$ FILE DOESN'T EXIST $$$");
         
         NSError *error;
-        [fileManager copyItemAtPath:_levelsFile toPath:_levelsStoreFile error:&error];
+        [fileManager copyItemAtPath:self.levelsFile toPath:self.levelsStoreFile error:&error];
         
-        datas = [NSMutableDictionary dictionaryWithContentsOfFile:_levelsStoreFile];
+        datas = [NSMutableDictionary dictionaryWithContentsOfFile:self.levelsStoreFile];
         [datas addEntriesFromDictionary:@{@"version":[self versionNumber], @"build":[self buildNumber]}];
         
     } else {
-        datas = [NSMutableDictionary dictionaryWithContentsOfFile:_levelsStoreFile];
+        datas = [NSMutableDictionary dictionaryWithContentsOfFile:self.levelsStoreFile];
         NSLog(@"$$$ FILE EXISTS IN VERSION:%@ BUILD:%@", [datas valueForKey:@"version"], [datas valueForKey:@"build"]);
         NSLog(@"CURRENT RUNNING VERSION:%@", [self version]);
         
         if([[datas objectForKey:@"version"] doubleValue] < [[self versionNumber] doubleValue] || ([[datas objectForKey:@"version"] doubleValue] == [[self versionNumber] doubleValue] && [[datas objectForKey:@"build"] intValue] < [[self buildNumber] intValue])){
             NSLog(@"$$$ FILE NEEDS UPDATE $$$");
             
-            NSMutableDictionary *newDatas = [NSMutableDictionary dictionaryWithContentsOfFile:_levelsFile];
+            NSMutableDictionary *newDatas = [NSMutableDictionary dictionaryWithContentsOfFile:self.levelsFile];
             int nb = (int)((NSArray *)datas[@"levels"]).count;
             for (int i = 0; i < nb; i++) {
                 if([datas[@"levels"][i][@"completed"] boolValue]){
@@ -209,7 +210,7 @@
 
 - (BOOL)saveData{
 //    NSLog(@"[GAME_DATAS] -(BOOL)saveData");
-    return [_levelsDataFile writeToFile:_levelsStoreFile atomically:YES];
+    return [self.levelsDataFile writeToFile:self.levelsStoreFile atomically:YES];
 }
 
 @end
