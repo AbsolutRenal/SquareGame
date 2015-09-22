@@ -17,20 +17,17 @@
     
 //    UIView *_buttonContainer;
 //    UIView *_container;
-    
-    FUIButton *_levelsButton;
-    FUIButton *_resetButton;
-    FUIButton *_undoButton;
-    
 //    GameViewController *_gameVC;
 //    LevelViewController *_levelVC;
-    
-    GameDatas *datas;
 }
 @property (strong, nonatomic)LevelViewController *levelVC;
 @property (strong, nonatomic)GameViewController *gameVC;
 @property (strong, nonatomic)UIView *container;
 @property (strong, nonatomic)UIView *buttonContainer;
+
+@property (strong, nonatomic)FUIButton * levelsButton;
+@property (strong, nonatomic)FUIButton * resetButton;
+@property (strong, nonatomic)FUIButton * undoButton;
 @end
 
 @implementation MainViewController
@@ -60,9 +57,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-//    datas = [[GameDatas alloc] init];
-    datas = [GameDatas getInstance];
     
     [self layoutDefaultView];
 }
@@ -176,7 +170,7 @@
 }
 
 - (void)openGameVC{
-    self.gameVC = [[GameViewController alloc] initWithCurrentLevel:datas.currentLevel withDatas:[datas levelDatasForLevel:datas.currentLevel]];
+    self.gameVC = [[GameViewController alloc] initWithCurrentLevel:[GameDatas getInstance].currentLevel withDatas:[[GameDatas getInstance] levelDatasForLevel:[GameDatas getInstance].currentLevel]];
     self.gameVC.delegate = self;
     [self showViewController:self.gameVC];
 }
@@ -197,7 +191,7 @@
     _resetButton.hidden = YES;
     _levelsButton.hidden = YES;
     
-    self.levelVC = [[LevelViewController alloc] initWithCurrentLevel:datas.currentLevel withNbLevel:(int)[datas nbLevels] withLastCompleted:[datas lastLevel]];
+    self.levelVC = [[LevelViewController alloc] initWithCurrentLevel:[GameDatas getInstance].currentLevel withNbLevel:(int)[[GameDatas getInstance] nbLevels] withLastCompleted:[[GameDatas getInstance] lastLevel]];
     self.levelVC.delegate = self;
     
     self.levelVC.view.alpha = 0.;
@@ -272,19 +266,19 @@
 #pragma mark - Delegate Methods
 
 - (void)launchLevel:(int)level{
-    datas.currentLevel = level;
+    [GameDatas getInstance].currentLevel = level;
     //    NSLog(@"[MAIN_VIEW_CONTROLLER] -(void)launchLevel:%i", level);
     
     [self removeLevelsVC];
-    [self.gameVC startLevel:level withDatas:[datas levelDatasForLevel:level]];
+    [self.gameVC startLevel:level withDatas:[[GameDatas getInstance] levelDatasForLevel:level]];
 }
 
 - (void)completeLevel{
     //    NSLog(@"COMPLETE LEVEL");
     
-    if([datas switchToNExtLevel]){
+    if([[GameDatas getInstance] switchToNExtLevel]){
         //        NSLog(@"-- LAUNCH NEXT");
-        [self launchLevel:datas.currentLevel];
+        [self launchLevel:[GameDatas getInstance].currentLevel];
     } else {
         //        NSLog(@"-- CONGRATULATE")
         [self.gameVC congratulate];

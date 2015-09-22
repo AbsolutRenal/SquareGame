@@ -129,7 +129,7 @@
     if(parent == nil){
         for (LevelNumberView *button in self.levelButtons) {
             if(self.view && [self.view.subviews containsObject:button]){
-                NSLog(@"-- button:%@", button);
+//                NSLog(@"-- button:%@", button);
                 [button removeFromSuperview];
             }
         }
@@ -145,30 +145,12 @@
 #pragma mark - Instance Private Methods
 
 - (void)clearLevelButtons{
-//    NSLog(@"########## NB ITEMS : %lu", (unsigned long)self.levelButtons.count);
-//    for (LevelNumberView *button in self.levelButtons) {
-//        NSLog(@"...");
-//        NSLog(@"BUTTON %@", button);
-//        NSLog(@"LAYER %@", button.layer);
-//        NSLog(@"-- SUPER VIEW %@", button.superview);
-//        if(button && button.superview == self.view)
-//            NSLog(@"OK");
-//        else
-//            NSLog(@"OUPPS");
-//        if([button isKindOfClass:[LevelNumberView class]])
-//            NSLog(@"OK");
-//        else
-//            NSLog(@"OUPPS");
-    
     LevelNumberView *button;
     while (self.levelButtons.count > 0) {
         button = (LevelNumberView *)self.levelButtons[0];
         [button removeFromSuperview];
         [self.levelButtons removeObjectAtIndex:0];
     }
-    
-//    self.levelButtons = nil;
-//    self.levelButtons = [[NSMutableArray alloc] init];
 }
 
 - (void)showNextLevels:(id)sender{
@@ -238,15 +220,9 @@
     _startOffsetY = (self.view.bounds.size.height - (_nbRows * (_itemHeight + _offset) - _offset)) * .5;
     
     _nbLevelByPage = _nbRows * _nbColumns;
-//    NSLog(@"HEIGHT:%f / OFFSET_Y:%f", self.view.bounds.size.height, _startOffsetY);
-//    NSLog(@"NB COLUMNS:%d, NB ROWS:%d, OFFSET:%f", _nbColumns, _nbRows, _offset);
 }
 
 - (void)populateFromLevel:(int)startLevel{
-//    [self clearLevelButtons];
-    
-//    NSLog(@"START LEVEL:%i", startLevel);
-    
     _startLevel = startLevel;
     if(startLevel == 0)
         self.prevButton.hidden = YES;
@@ -260,7 +236,6 @@
     
     for (int i = startLevel; i < _nbLevels; i++) {
         currentRow = floor((i - startLevel) / _nbColumns);
-//        NSLog(@"--- CurrentRow:%i", currentRow);
         
         if(currentRow >= _nbRows){
             self.nextButton.hidden = NO;
@@ -274,7 +249,7 @@
             level = [LevelNumberView presentInViewController:self];
             [self.levelButtons addObject:level];
             level.frame = CGRectMake(_offset + ((i - startLevel) % _nbColumns) * (_itemWidth + _offset), _startOffsetY + (currentRow * (_itemHeight + _offset)), _itemWidth, _itemHeight);
-            NSLog(@"LEVEL_FRAME: %@", NSStringFromCGRect(level.frame));
+//            NSLog(@"LEVEL_FRAME: %@", NSStringFromCGRect(level.frame));
         }
         
         
